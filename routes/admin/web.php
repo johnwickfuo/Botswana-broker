@@ -309,3 +309,19 @@ Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
         Route::get('/count', [AdminNotificationController::class, 'getUnreadCount'])->name('admin.notifications.count');
     });
 });
+
+// Asset Management (Republic of Botswana investment platform — Phase 2)
+Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
+    Route::controller(\App\Http\Controllers\Admin\AssetController::class)
+        ->prefix('assets')->name('admin.assets.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{asset}/edit', 'edit')->name('edit');
+            Route::put('/{asset}', 'update')->name('update');
+            Route::delete('/{asset}', 'destroy')->name('destroy');
+            Route::post('/{asset}/toggle', 'toggleStatus')->name('toggle');
+            Route::delete('/document/{document}', 'destroyDocument')->name('document.destroy');
+            Route::get('/document/{document}/download', 'downloadDocument')->name('document.download');
+        });
+});

@@ -49,6 +49,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item {{ request()->routeIs('admin.assets.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.assets.index') }}">
+                            <i class="fa fa-certificate" aria-hidden="true"></i>
+                            <p>Assets</p>
+                        </a>
+                    </li>
+
                 <li
                     class="nav-item {{ request()->routeIs('plans') ? 'active' : '' }} {{ request()->routeIs('newplan') ? 'active' : '' }} {{ request()->routeIs('editplan') ? 'active' : '' }} {{ request()->routeIs('investments') ? 'active' : '' }} {{ request()->routeIs('admin.plans.*') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#pln">

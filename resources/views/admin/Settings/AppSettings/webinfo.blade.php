@@ -112,6 +112,22 @@
                 </div>
             </div>
 
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <h5 class="text-{{ $text }}">National Emblem / Coat of Arms</h5>
+                    <input name="emblem" class="form-control" type="file" accept=".jpg,.jpeg,.png">
+                    <small class="form-text text-muted">Official client-supplied emblem only (JPG/PNG, max 1&nbsp;MB). Leave empty if not yet provided.</small>
+                    <div class="text-center border p-2 mt-2 rounded-none">
+                        @if (!empty($settings->emblem))
+                            <img src="{{ asset('storage/app/public/' . $settings->emblem) }}" alt="National emblem"
+                                class="w-25 img-fluid">
+                        @else
+                            <span class="text-muted">No emblem uploaded</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
             <div class="mt-3 form-row">
                 <div class="col-12">
                     <input type="submit" class="px-5 btn btn-primary btn-lg" value="Update">

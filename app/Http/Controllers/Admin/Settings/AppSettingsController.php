@@ -41,6 +41,7 @@ class AppSettingsController extends Controller
         $this->validate($request, [
             'logo' => 'mimes:jpg,jpeg,png|max:500|image',
             'favicon' => 'mimes:jpg,jpeg,png,ico|max:500',
+            'emblem' => 'nullable|mimes:jpg,jpeg,png|max:1024|image',
         ]);
 
         $settings = Settings::where('id', '=', '1')->first();
@@ -61,6 +62,15 @@ class AppSettingsController extends Controller
             $pathfav = $settings->favicon;
         }
 
+        // National emblem / coat of arms — always client-uploaded, never fabricated.
+        if ($request->hasfile('emblem')) {
+            $emblemfile = $request->file('emblem');
+            Storage::disk('public')->delete($settings->emblem);
+            $pathemblem = $emblemfile->store('photos', 'public');
+        } else {
+            $pathemblem = $settings->emblem;
+        }
+
         Settings::where('id', '1')
             ->update([
                 'newupdate' => $request['update'],
@@ -73,6 +83,7 @@ class AppSettingsController extends Controller
                 'logo' => $path,
                 'merchant_key' => $request->merchant_key,
                 'favicon' => $pathfav,
+                'emblem' => $pathemblem,
                 'tawk_to' => strip_tags($request['tawk_to']),
                 'site_address' => $request['site_address'],
                 'welcome_message' => $request->welcome_message,
