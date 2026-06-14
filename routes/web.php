@@ -91,3 +91,12 @@ Route::get('index', function(){
     return view('home.index');
 });
 
+
+// Public investor-facing investment plans (Republic of Botswana — Phase 4)
+Route::controller(\App\Http\Controllers\PublicPlanController::class)
+    ->prefix('invest')->name('invest.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/certificate/{document}', 'certificate')->name('certificate');
+        Route::get('/{plan}', 'show')->name('show');
+        Route::get('/{plan}/quote', 'quote')->name('quote');
+    });

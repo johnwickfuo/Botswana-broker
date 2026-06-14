@@ -38,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
 
         Paginator::useBootstrap();
 
+        // Pula currency directive: @pula($amount) => "P1,500.00"
+        \Illuminate\Support\Facades\Blade::directive('pula', function ($expression) {
+            return "<?php echo \\App\\Support\\Money::pula($expression); ?>";
+        });
+
         // Sharing settings with all view
         $settings = Settings::where('id', '1')->first();
         $terms =  TermsPrivacy::find(1);
