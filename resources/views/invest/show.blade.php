@@ -7,6 +7,13 @@
 <section class="bg-gray-50 dark:bg-gray-900 min-h-screen py-12">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        @if (session('error'))
+            <div class="mb-6 rounded-lg bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm dark:bg-red-900/30 dark:border-red-800 dark:text-red-300">{{ session('error') }}</div>
+        @endif
+        @if (session('success'))
+            <div class="mb-6 rounded-lg bg-green-50 border border-green-200 text-green-700 px-4 py-3 text-sm dark:bg-green-900/30 dark:border-green-800 dark:text-green-300">{{ session('success') }}</div>
+        @endif
+
         <a href="{{ route('invest.index') }}" class="inline-flex items-center text-sm text-blue-600 hover:underline mb-6">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
             Back to all plans
@@ -153,6 +160,27 @@
                     <p class="mt-4 text-sm text-red-600" x-show="error" x-text="error" x-cloak></p>
                     <p class="mt-3 text-xs text-gray-400" x-show="loading" x-cloak>Calculating…</p>
                     <p class="mt-4 text-xs text-gray-400">Figures are calculated server-side and are indicative.</p>
+
+                    {{-- Invest action (Phase 5) --}}
+                    @auth
+                        <form method="POST" action="{{ route('investments.store', $plan->id) }}" class="mt-6 border-t border-gray-100 dark:border-gray-700 pt-5">
+                            @csrf
+                            <input type="hidden" name="amount" :value="amount">
+                            <label class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300">
+                                <input type="checkbox" name="accept_terms" value="1" required class="mt-0.5">
+                                <span>I accept the investment terms and understand my funds are <strong>locked until maturity</strong> (no early redemption).</span>
+                            </label>
+                            <button type="submit"
+                                class="mt-3 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg transition-colors">
+                                Invest now
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ url('login') }}"
+                            class="mt-6 block text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg">
+                            Log in to invest
+                        </a>
+                    @endauth
                 </div>
             </div>
         </div>

@@ -53,6 +53,10 @@ class Plan extends Model
         'max_amount',
         'fixed_return',
         'return_percentage',
+        // Phase 5 investment limits
+        'capacity_amount',
+        'offer_starts_at',
+        'offer_ends_at',
     ];
 
     protected $casts = [
@@ -71,7 +75,49 @@ class Plan extends Model
         'max_amount' => 'decimal:2',
         'fixed_return' => 'decimal:2',
         'return_percentage' => 'decimal:2',
+        // Phase 5 investment limits
+        'capacity_amount' => 'decimal:2',
+        'offer_starts_at' => 'datetime',
+        'offer_ends_at' => 'datetime',
     ];
+
+    /**
+     * Is the plan's offer window currently open? (Phase 5)
+     */
+    public function isOfferOpen(?\DateTimeInterface $now = null): bool
+    {
+        $now = $now ? \Illuminate\Support\Carbon::instance($now) : now();
+
+        if ($this->offer_starts_at && $now->lt($this->offer_starts_at)) {
+            return false;
+        }
+        if ($this->offer_ends_at && $now->gt($this->offer_ends_at)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Total principal already committed to this plan by active/matured
+     * investments. (Phase 5)
+     */
+    public function committedCapacity(): float
+    {
+        return (float) $this->userPlans()
+            ->whereIn('status', ['active', 'matured'])
+            ->sum('invested_amount');
+    }
+
+    /**
+     * Remaining investable capacity, or null when uncapped. (Phase 5)
+     */
+    public function remainingCapacity(): ?float
+    {
+        if ($this->capacity_amount === null) {
+            return null;
+        }
+        return max(0.0, (float) $this->capacity_amount - $this->committedCapacity());
+    }
 
     /**
      * Get the user plans associated with this plan

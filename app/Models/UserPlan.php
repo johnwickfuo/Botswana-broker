@@ -30,6 +30,11 @@ class UserPlan extends Model
         'payment_method',
         'payment_reference',
         'notes',
+        // Phase 5 investment-record fields
+        'start_date',
+        'maturity_date',
+        'locked',
+        'terms_accepted_at',
     ];
 
     protected $casts = [
@@ -42,7 +47,34 @@ class UserPlan extends Model
         'activated_at' => 'datetime',
         'expires_at' => 'datetime',
         'last_payout_at' => 'datetime',
+        // Phase 5 investment-record fields
+        'start_date' => 'datetime',
+        'maturity_date' => 'datetime',
+        'locked' => 'boolean',
+        'terms_accepted_at' => 'datetime',
     ];
+
+    /**
+     * Has this investment reached its maturity date? (Phase 5)
+     */
+    public function isMatured(?\DateTimeInterface $now = null): bool
+    {
+        if (!$this->maturity_date) {
+            return false;
+        }
+        $now = $now ? Carbon::instance($now) : Carbon::now();
+
+        return $now->gte($this->maturity_date);
+    }
+
+    /**
+     * An active investment can only be redeemed once matured — no early
+     * redemption. (Phase 5)
+     */
+    public function canRedeem(?\DateTimeInterface $now = null): bool
+    {
+        return $this->status === 'active' && $this->isMatured($now);
+    }
 
     /**
      * Get the user that owns the plan
@@ -58,6 +90,21 @@ class UserPlan extends Model
     public function plan(): BelongsTo
     {
         return $this->belongsTo(Plan::class);
+    }
+
+    /**
+     * Collision-free relations for the Phase 5 invest flow. The legacy
+     * `user_plans.user`/`plan` integer columns shadow the user()/plan() magic
+     * accessors, so the modern flow uses these explicitly-keyed relations.
+     */
+    public function investor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function investmentPlan(): BelongsTo
+    {
+        return $this->belongsTo(Plan::class, 'plan_id');
     }
 
     /**

@@ -100,3 +100,10 @@ Route::controller(\App\Http\Controllers\PublicPlanController::class)
         Route::get('/{plan}', 'show')->name('show');
         Route::get('/{plan}/quote', 'quote')->name('quote');
     });
+
+// Authenticated citizen invest / redeem flow (Republic of Botswana — Phase 5)
+Route::middleware(['auth:sanctum', 'verified', 'complete.kyc'])->group(function () {
+    Route::post('/invest/{plan}', [\App\Http\Controllers\InvestmentController::class, 'store'])->name('investments.store');
+    Route::get('/my-investments', [\App\Http\Controllers\InvestmentController::class, 'myInvestments'])->name('investments.mine');
+    Route::post('/my-investments/{investment}/redeem', [\App\Http\Controllers\InvestmentController::class, 'redeem'])->name('investments.redeem');
+});
