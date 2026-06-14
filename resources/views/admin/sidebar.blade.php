@@ -56,6 +56,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item {{ request()->routeIs('admin.investment-plans.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.investment-plans.index') }}">
+                            <i class="fa fa-chart-line" aria-hidden="true"></i>
+                            <p>Investment Plans</p>
+                        </a>
+                    </li>
+
                 <li
                     class="nav-item {{ request()->routeIs('plans') ? 'active' : '' }} {{ request()->routeIs('newplan') ? 'active' : '' }} {{ request()->routeIs('editplan') ? 'active' : '' }} {{ request()->routeIs('investments') ? 'active' : '' }} {{ request()->routeIs('admin.plans.*') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#pln">

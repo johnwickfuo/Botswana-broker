@@ -13,6 +13,15 @@ class Plan extends Model
 {
     use HasFactory, SoftDeletes;
 
+    // amount_type values (Phase 3 investment-plan builder)
+    public const AMOUNT_FIXED = 'fixed';
+    public const AMOUNT_RANGED = 'ranged';
+
+    // return_type values (shared with the legacy column; "fixed_amount" is the
+    // legacy alias for a flat fixed return)
+    public const RETURN_FIXED = 'fixed';
+    public const RETURN_PERCENTAGE = 'percentage';
+
     protected $fillable = [
         'name',
         'slug',
@@ -36,6 +45,14 @@ class Plan extends Model
         'active',
         'sort_order',
         'features',
+        // Phase 3 investment-plan fields
+        'asset_id',
+        'amount_type',
+        'fixed_amount',
+        'min_amount',
+        'max_amount',
+        'fixed_return',
+        'return_percentage',
     ];
 
     protected $casts = [
@@ -48,6 +65,12 @@ class Plan extends Model
         'featured' => 'boolean',
         'active' => 'boolean',
         'features' => 'array',
+        // Phase 3 investment-plan fields
+        'fixed_amount' => 'decimal:2',
+        'min_amount' => 'decimal:2',
+        'max_amount' => 'decimal:2',
+        'fixed_return' => 'decimal:2',
+        'return_percentage' => 'decimal:2',
     ];
 
     /**
@@ -56,6 +79,26 @@ class Plan extends Model
     public function userPlans(): HasMany
     {
         return $this->hasMany(UserPlan::class);
+    }
+
+    /**
+     * The government asset this investment plan belongs to (Phase 3).
+     */
+    public function asset()
+    {
+        return $this->belongsTo(\App\Models\Asset::class);
+    }
+
+    /**
+     * Spec-compliant return breakdown for this plan, delegated to the single
+     * ReturnCalculator service. Handles all four amount_type/return_type
+     * combinations.
+     *
+     * @return array{principal: float, return: float, total: float}
+     */
+    public function calculateReturn(?float $amount = null): array
+    {
+        return app(\App\Services\ReturnCalculator::class)->calculate($this, $amount);
     }
 
     /**
