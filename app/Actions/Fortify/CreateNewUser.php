@@ -6,7 +6,6 @@ use App\Mail\WelcomeEmail;
 use App\Models\User;
 use App\Models\Settings;
 use App\Models\Agent;
-use App\Models\CryptoAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -86,9 +85,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        $cryptoaccnt = new CryptoAccount();
-        $cryptoaccnt->user_id = $user->id;
-        $cryptoaccnt->save();
         $request->session()->forget('ref_by');
 
         try {

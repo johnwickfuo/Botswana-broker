@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Http\Controllers\Controller;
 use App\Mail\WelcomeEmail;
-use App\Models\CryptoAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -35,10 +34,6 @@ class ApiAuthController extends Controller
             'status' => 'active',
             'password' => Hash::make($request['password']),
         ]);
-
-        $cryptoaccnt = new CryptoAccount();
-        $cryptoaccnt->user_id = $user->id;
-        $cryptoaccnt->save();
 
         Mail::to($user->email)->send(new WelcomeEmail($user));
 

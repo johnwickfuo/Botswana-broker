@@ -95,40 +95,4 @@ class TransferController extends Controller
     }
 
 
-    public function renewSignalSub()
-    {
-        $user = User::find(Auth::user()->id);
-        $response = $this->fetctApi('/subscription', [
-            'id' => auth()->user()->id
-        ]);
-        $res = json_decode($response);
-        $sub = $res->data;
-
-        $responseSt = $this->fetctApi('/signal-settings');
-        $info = json_decode($responseSt);
-        $settings = $info->data->settings;
-
-        if ($sub->subscription == 'Monthly') {
-            $amount = $settings->signal_monthly_fee;
-        } elseif ($sub->subscription == 'Quarterly') {
-            $amount = $settings->signal_quartly_fee;
-        } else {
-            $amount = $settings->signal_yearly_fee;
-        }
-
-        if ($user->account_bal <  floatval($amount)) {
-            return redirect()->back()->with('message', 'Your have insufficient funds in your account balance to perform this operation');
-        }
-
-        $renew =  $this->fetctApi('/renew-subscription', [
-            'id' => $user->id,
-        ], 'POST');
-
-        if ($renew->successful()) {
-            $user->account_bal = $user->account_bal - floatval($amount);
-            $user->save();
-            return redirect()->back()->with('success', 'Your subscription have been renewed successfully.');
-        }
-        return redirect()->back()->with('Something went wrong');
-    }
 }

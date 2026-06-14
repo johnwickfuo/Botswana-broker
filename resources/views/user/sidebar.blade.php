@@ -68,8 +68,8 @@
             </a>
         @endif
         @if ($mod['investment'])
-            <a href="{{ route('tradinghistory') }}"
-                class="text-sm btn btn-square {{ request()->routeIs('tradinghistory') ? 'active' : '' }}">
+            <a href="{{ route('accounthistory') }}"
+                class="text-sm btn btn-square {{ request()->routeIs('accounthistory') ? 'active' : '' }}">
                 <span class="btn-inner--icon d-block"><i class="fal fa-history fa-2x"></i></span>
                 <span class="pt-2 btn-inner--icon d-block">Profit History</span>
             </a>
@@ -87,25 +87,11 @@
             </span>
             <span class="pt-2 btn-inner--icon d-block">Notifications</span>
         </a>
-        @if ($mod['cryptoswap'])
-            <a href="{{ route('assetbalance') }}"
-                class="text-sm btn btn-square {{ request()->routeIs('assetbalance') ? 'active' : '' }} {{ request()->routeIs('swaphistory') ? 'active' : '' }}">
-                <span class="btn-inner--icon d-block"><i class="fab fa-stack-exchange fa-2x"></i></span>
-                <span class="pt-2 btn-inner--icon d-block">Swap Crypto</span>
-            </a>
-        @endif
         @if ($moresettings->use_transfer)
             <a href="{{ route('transferview') }}"
                 class="text-sm btn btn-square {{ request()->routeIs('transferview') ? 'active' : '' }}">
                 <span class="btn-inner--icon d-block"><i class="fas fa-exchange fa-2x"></i></span>
                 <span class="pt-2 btn-inner--icon d-block">Transfer funds</span>
-            </a>
-        @endif
-        @if ($mod['subscription'])
-            <a href="{{ route('subtrade') }}"
-                class="text-sm btn btn-square {{ request()->routeIs('subtrade') ? 'active' : '' }}">
-                <span class="btn-inner--icon d-block"><i class="far fa-receipt fa-2x"></i></span>
-                <span class="pt-2 btn-inner--icon d-block">Managed Accounts</span>
             </a>
         @endif
         <a href="{{ route('profile') }}"
@@ -131,15 +117,6 @@
                 class="text-sm btn btn-square {{ request()->routeIs('user.mycourses') ? 'active' : '' }} {{ request()->routeIs('user.courses') ? 'active' : '' }} {{ request()->routeIs('user.course.details') ? 'active' : '' }}">
                 <span class="btn-inner--icon d-block"><i class="fas fa-graduation-cap fa-2x"></i></span>
                 <span class="pt-2 btn-inner--icon d-block">Education</span>
-            </a>
-        @endif
-        @if ($mod['signal'])
-            <a href="{{ route('tsignals') }}"
-                class="text-sm btn btn-square {{ request()->routeIs('tsignals') ? 'active' : '' }}">
-                <span class="btn-inner--icon d-block">
-                    <i class="fas fa-wave-square fa-2x"></i>
-                </span>
-                <span class="pt-2 btn-inner--icon d-block">Trade Signals</span>
             </a>
         @endif
         <a href="{{ route('referuser') }}"

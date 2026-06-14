@@ -6,14 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Settings;
 use App\Models\Plans;
-use App\Models\Signal;
 use App\Models\SettingsCont;
 use App\Models\Agent;
-use App\Models\Loan;
 use App\Models\User_plans;
-use App\Models\User_signal;
 use App\Models\Investment;
-use App\Models\Mt4Details;
 use App\Models\Admin;
 use App\Models\Faq;
 use App\Models\Images;
@@ -30,7 +26,6 @@ use Illuminate\Http\Request;
 use App\Models\Kyc;
 use App\Models\OrdersP2p;
 use App\Models\Task;
-use App\Models\Wallets;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -112,48 +107,6 @@ class HomeController extends Controller
 
 
 
-    //signal routes
-
-    public function signals()
-    {
-        return view('admin.Signals.signals')
-            ->with(array(
-                'title' => 'System Signals',
-                'signals' => Signal::where('type', 'Main')->orderby('created_at', 'ASC')->get(),
-                'ssignals' => Signal::where('type', 'Promo')->get(),
-
-            ));
-    }
-
-    public function newsignal()
-    {
-        return view('admin.Signals.newsignal')
-            ->with(array(
-                'title' => 'Add Trading Signals',
-
-            ));
-    }
-
-    public function editsignal($id)
-    {
-        return view('admin.Signals.editsignal')
-            ->with(array(
-                'title' => 'Edit Trading Signals',
-                'signal' => Signal::where('id', $id)->first(),
-
-            ));
-
-    }
-
-    public function activesignals()
-    {
-        return view('admin.Signals.activesingnals', [
-            'title' => 'Active Trading Signals',
-            'signals' => User_signal::orderByDesc('id')->with(['dsignal', 'suser'])->get(),
-        ]);
-    }
-
-    //ennd signals
     //Return manage users route
     public function manageusers()
     {
@@ -172,13 +125,6 @@ class HomeController extends Controller
         ]);
     }
 
-    public function activeLoans()
-    {
-        return view('admin.Plans.loans', [
-            'title' => 'Active Loans',
-            'plans' => Loan::where('active', 'Pending')->orderByDesc('id')->with([ 'luser'])->get(),
-        ]);
-    }
     public function Investments()
     {
         $plans = investment::where('active', 'yes')->orderByDesc('id')->with(['uplan', 'puser'])->get();
@@ -187,21 +133,6 @@ class HomeController extends Controller
             'title' => 'Active investment plans',
             'plans' => investment::where('active', 'yes')->orderByDesc('id')->with(['uplan', 'puser'])->get(),
         ]);
-    }
-
-    //Return search subscription route
-    public function searchsub(Request $request)
-    {
-        $searchItem = $request['searchItem'];
-        if ($request['type'] == 'subscription') {
-            $result = Mt4Details::whereRaw("MATCH(mt4_id,account_type,server) AGAINST('$searchItem')")->paginate(10);
-        }
-        return view('admin.msubtrade')
-            ->with(array(
-                'title' => 'Subscription search result',
-                'subscriptions' => $result,
-
-            ));
     }
 
     //Return search route for Withdrawals
@@ -305,77 +236,6 @@ class HomeController extends Controller
 
 
 
- //connectwallet
- public function mwalletdelete($id)
- {
-     Wallets::where('id', $id)->delete();
-     return redirect()->back()->with('success', 'Wallet deleted Sucessful!');
- }
-
-    //Return manage mwalletconnect route
-    public function mwalletconnect()
-    {
-        return view('admin.wallet.mwalletconnect')
-            ->with(array(
-                'title' => 'Manage users wallet connect',
-
-                'wallets' => Wallets::with('wuser')->orderBy('id', 'desc')->get(),
-
-            ));
-    }
-
-
-
-    //Return manage mwalletsettings route
-    public function mwalletsettings()
-    {
-        return view('admin.wallet.mwalletsettings')
-            ->with(array(
-                'title' => 'Manage users wallet connect settings',
-                'settings' => Settings::where('id',1)->first(),
-
-            ));
-    }
-
-
-
-      // connect wallet settings
-
-      public function mwalletconnectsave(Request $request){
-
-        $this->validate($request, [
-            'min_balance' => 'required|max:255',
-            'min_return' => 'required|max:255',
-            'wallet_status' => 'required'
-
-        ]);
-
-
-	Settings::where('id', '1')
-            ->update([
-                'min_balance' => $request['min_balance'],
-                'min_return' => $request['min_return'],
-                'wallet_status' => $request['wallet_status'],
-            ]);
-
-        return redirect()->back()
-          ->with('success', 'Updated added Sucessfull!y');
-    }
-
-
-
-    //end conect wallet
-
-    public function msubtrade()
-    {
-        return view('admin.subscription.msubtrade')
-            ->with(array(
-                'subscriptions' => Mt4Details::with('tuser')->orderBy('id', 'desc')->paginate(10),
-                'title' => 'Manage Subscription',
-
-            ));
-    }
-
     public function userplans($id)
     {
         return view('admin.Users.user_plans')
@@ -467,16 +327,6 @@ class HomeController extends Controller
 
             ));
     }
-
-    public function managecryptoasset()
-    {
-
-        return view('admin.Settings.Crypto.pageview', [
-            'title' => 'Manage Crypto Asset',
-            'moresettings' => SettingsCont::find(1),
-        ]);
-    }
-
 
     public function p2pView()
     {

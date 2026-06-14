@@ -121,7 +121,7 @@
                 <p class="text-sm text-red-700 leading-relaxed mb-3">
                     You need to purchase the <span class="font-semibold text-red-800">{{ Auth::user()->user_signal }}</span> signal to proceed with trading operations.
                 </p>
-                <a href="{{ route('signal') }}"
+                <a href="{{ '#' }}"
                    class="inline-flex items-center space-x-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-md hover:shadow-lg">
                     <i data-lucide="shopping-cart" class="w-4 h-4"></i>
                     <span>Purchase Signal</span>

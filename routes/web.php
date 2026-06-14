@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Settings;
 use Laravel\Fortify\Http\Controllers\NewPasswordController;
-use App\Http\Controllers\AutoTaskController;
 use App\Http\Controllers\AutoRoiController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LanguageController;
@@ -24,7 +23,6 @@ require __DIR__ . '/admin/web.php';
 require __DIR__ . '/admin/notification.php';
 require __DIR__ . '/user/web.php';
 require __DIR__ . '/user/plan-routes.php';
-require __DIR__ . '/botman.php';
 
 // Language Routes
 Route::post('/change-language', [LanguageController::class, 'changeLanguage'])->name('change.language');
@@ -34,29 +32,6 @@ Route::get('/current-language', [LanguageController::class, 'getCurrentLanguage'
 
 
 
-//cron url
-Route::get('/cron', [AutoTaskController::class, 'autotopup'])->name('cron');
-
-Route::get('/run-crypto-update', function () {
-    if (request('key') !== env('CRON_KEY')) {
-        abort(403, 'Unauthorized');
-    }
-
-    \Artisan::call('update:crypto');
-    return 'Crypto prices updated.';
-});
-
-
-
-Route::get('/run-market-update', function () {
-    if (request('key') !== env('CRON_KEY')) {
-        abort(403, 'Unauthorized');
-    }
-
-    Artisan::call('update:market');
-    return 'Market instruments updated.';
-});
-
 Route::get('/fetchMarket', function () {
     // Optional: protect with a secret token
     if (request('key') !== env('CRON_KEY')) {
@@ -65,9 +40,7 @@ Route::get('/fetchMarket', function () {
 
     \Artisan::call('schedule:run');
     return 'Schedule run executed.';
-});
-// Bulk bot trading - generate 20 trades for each bot
-// Route::get('/cron/bulk-bot-trades/{trades?}', [AutoTaskController::class, 'generateBulkBotTrades'])->name('cron.bulk.bot.trades');
+})->name('schedule.run');
 
 //new plan system cron url
 Route::get('/cron/roi', [AutoRoiController::class, 'processAutomaticRoi'])->name('cron.roi');

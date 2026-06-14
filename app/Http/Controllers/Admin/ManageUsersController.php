@@ -5,27 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Signal;
 use App\Models\Settings;
 use App\Models\Plans;
 use App\Models\Agent;
 use App\Models\User_plans;
-use App\Models\User_signal;
 use App\Models\Deposit;
-use App\Models\Loan;
 use App\Models\Withdrawal;
 use App\Models\Tp_Transaction;
 use App\Models\Activity;
-use App\Models\User_copytradings;
-use App\Models\UserBotInvestment;
-use App\Models\BotTradingHistory;
 use App\Models\Investment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\NewNotification;
 use App\Models\Kyc;
-use App\Models\Mt4Details;
 use App\Traits\PingServer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Mail;
@@ -106,30 +99,10 @@ class ManageUsersController extends Controller
         return redirect()->back()
             ->with('success', "Plan Active state changed to $status");
     }
-    public function markloanas($status, $id)
-    {
-        Loan::where('id', $id)->update([
-            'active' => $status,
-        ]);
-        return redirect()->back()
-            ->with('success', "Loan state changed to $status");
-    }
-
-
-    public function signalmarkas($status, $id)
-    {
-        User_signal::where('id', $id)->update([
-            'status' => $status,
-        ]);
-        return redirect()->back()
-            ->with('success', "Signal Status state changed to $status");
-    }
-
     public function viewuser($id)
     {
         $user = User::where('id', $id)->first();
         $plans = Plans::where('type','main')->get();
-        $signals = Signal::where('type','main')->get();
         include 'currencies.php';
         return view('admin.Users.userdetails', [
             'user' => $user,
@@ -137,7 +110,6 @@ class ManageUsersController extends Controller
             'pl' => Plans::orderByDesc('id')->get(),
             'title' => "Manage $user->name",
             'plans' =>$plans,
-            'signals'=>$signals,
         ]);
     }
     //ban/disable user
@@ -410,53 +382,6 @@ public function addplanhistory(Request $request)
 
 
 
-//Manually Add Signal History to Users Route
-public function addsignalhistory(Request $request)
-{
-
-    $user = User::where('id', $request->user_id)->first();
-    $signal = Signal::where('name', $user->signals)->first();
-
-    $signalid = $signal->id;
-    $amount = $request->amount;
-    $leverage = $request->leverage;
-    $asset = $request->asset;
-    $expire = $request->expire;
-    $order_type = $request->order_type;
-
-     //save trade into user_plans table
-      DB::table('user_signals')->insertGetId([
-        'signals' =>  $signalid,
-        'user' => $user->id,
-        'amount' => $amount,
-        'asset' => $asset,
-        'expiration' => $expire,
-        'status'=>'ongoing',
-        'leverage' =>$leverage,
-        'order_type'=> $order_type,
-        'created_at' => \Carbon\Carbon::now(),
-        'updated_at' => \Carbon\Carbon::now(),
-    ]);
-
-
-
-    // if (isset($request['amount']) > 0) {
-    //     User::where('id', $request->user_id)
-    //         ->update([
-    //             'account_bal' => $user_bal + $request->amount,
-    //         ]);
-    // }
-
-    return redirect()->back()
-        ->with('success', 'Signal Created Sucessful!');
-}
-
-
-public function deleteloan($id)
-    {
-        Loan::where('id', $id)->delete();
-        return redirect()->back()->with('success', 'User Loan deleted successfully!');
-    }
     //Delete user
     public function delsystemuser($id)
     {
@@ -482,42 +407,6 @@ public function deleteloan($id)
             }
         }
 
-        //delete the user loans
-        $userp = Loan::where('user', $id)->get();
-        if (!empty($userp)) {
-            foreach ($userp as $p) {
-                //delete plans that their owner does not exist
-                Loan::where('id', $p->id)->delete();
-            }
-        }
-
-        $usersingal = User_signal::where('user', $id)->get();
-        if (!empty($usersingal)) {
-            foreach ( $usersingal as $p) {
-                //delete plans that their owner does not exist
-                User_signal::where('id', $p->id)->delete();
-            }
-        }
-
-        // delete user copy trading records
-        $usercopytradings = User_copytradings::where('user', $id)->get();
-        if (!empty($usercopytradings)) {
-            foreach ($usercopytradings as $copytrading) {
-                User_copytradings::where('id', $copytrading->id)->delete();
-            }
-        }
-
-        // delete user bot investments and related trading history
-        $userbotinvestments = UserBotInvestment::where('user_id', $id)->get();
-        if (!empty($userbotinvestments)) {
-            foreach ($userbotinvestments as $botinvestment) {
-                // First delete all trading history for this bot investment
-                BotTradingHistory::where('user_bot_investment_id', $botinvestment->id)->delete();
-                // Then delete the bot investment
-                UserBotInvestment::where('id', $botinvestment->id)->delete();
-            }
-        }
-
         // delete user investments
         $userinvestments = Investment::where('user', $id)->get();
         if (!empty($userinvestments)) {
@@ -539,10 +428,6 @@ public function deleteloan($id)
         $agent = Agent::where('agent', $id)->first();
         if (!empty($agent)) {
             Agent::where('id', $agent->id)->delete();
-        }
-
-        if (DB::table('mt4_details')->where('client_id', $id)->exists()) {
-            Mt4Details::where('client_id', $id)->delete();
         }
 
         // delete user from verification list
@@ -848,12 +733,6 @@ public function withdrawalcode(Request $request)
         return redirect()->back()->with('success', 'User Plan deleted successfully!');
     }
 
-
-    public function deletesignal($id)
-    {
-        User_signal::where('id', $id)->delete();
-        return redirect()->back()->with('success', 'User signal deleted successfully!');
-    }
 
     public function saveuser(Request $request)
     {

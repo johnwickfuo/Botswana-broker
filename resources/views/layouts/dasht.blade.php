@@ -238,10 +238,6 @@ window.smartsupp||(function(d) {
                 <i data-lucide="minus-circle" class="w-4 h-4 mr-3 text-red-500"></i>
                 Withdraw
               </a>
-              <a href="{{ route('trade.index') }}" class="flex items-center px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-md">
-                <i data-lucide="trending-up" class="w-4 h-4 mr-3 text-blue-500"></i>
-                Trade Markets
-              </a>
             </div>
           </div>
         </div>
@@ -557,87 +553,10 @@ window.smartsupp||(function(d) {
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('tradinghistory') }}"
-                       class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('tradinghistory') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                    <a href="{{ route('accounthistory') }}"
+                       class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('accounthistory') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
                         <i data-lucide="activity" class="w-5 h-5 mr-3"></i>
                         Performance History
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Trading & Markets Section -->
-        <div class="space-y-2">
-            <div class="flex items-center gap-2 px-2 mt-6 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">
-                <i data-lucide="trending-up" class="w-4 h-4"></i>
-                <span>Trading & Markets</span>
-            </div>
-            <ul class="space-y-1">
-                <li>
-                    <a href="{{ route('trade.index') }}"
-                       class="group relative flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('trade.*') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="candlestick-chart" class="w-5 h-5 mr-3"></i>
-                        Live Markets
-                        <span class="ml-auto flex items-center px-2 py-0.5 text-xs font-medium text-white bg-gradient-to-r from-green-500 to-green-600 rounded-full">
-                            <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse mr-1.5"></div>
-                            Live
-                        </span>
-                        <div class="hidden group-hover:block absolute left-full ml-2 px-2 py-1 bg-gray-900 text-xs text-white rounded whitespace-nowrap">
-                            Real-time market trading
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('copy.dashboard') }}"
-                       class="group relative flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('copy.*') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="users-2" class="w-5 h-5 mr-3"></i>
-                        Copy Trading
-                        <span class="ml-auto px-2 py-0.5 text-xs font-medium text-white bg-gradient-to-r from-purple-500 to-purple-600 rounded-full">Pro</span>
-                        <div class="hidden group-hover:block absolute left-full ml-2 px-2 py-1 bg-gray-900 text-xs text-white rounded whitespace-nowrap">
-                            Follow expert traders
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('user.bots.index') }}"
-                       class="group relative flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('user.bots.*') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
-                        AI Trading Bots
-                        <span class="ml-auto px-2 py-0.5 text-xs font-medium text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-full">AI</span>
-                        <div class="hidden group-hover:block absolute left-full ml-2 px-2 py-1 bg-gray-900 text-xs text-white rounded whitespace-nowrap">
-                            Automated trading algorithms
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Trading Signals Section -->
-        <div class="space-y-2">
-            <div class="flex items-center gap-2 px-2 mt-6 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">
-                <i data-lucide="radio" class="w-4 h-4"></i>
-                <span>Market Intelligence</span>
-            </div>
-            
-            <ul class="space-y-1">
-                <!--@if(Auth::check() && Auth::user()->signals)-->
-                <!--<li>-->
-                <!--    <a href="{{ route('mysingals', 'All') }}"-->
-                <!--       class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('mysingals') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">-->
-                <!--        <i data-lucide="signal" class="w-5 h-5 mr-3"></i>-->
-                <!--        My Signals-->
-                <!--    </a>-->
-                <!--</li>-->
-                <!--@endif-->
-                <li>
-                    <a href="{{ route('signal') }}"
-                       class="group relative flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('signals') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="zap" class="w-5 h-5 mr-3"></i>
-                        Premium Signals
-                        <span class="ml-auto px-2 py-0.5 text-xs font-medium text-white bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full">Premium</span>
-                        <div class="hidden group-hover:block absolute left-full ml-2 px-2 py-1 bg-gray-900 text-xs text-white rounded whitespace-nowrap">
-                            Expert trading insights
-                        </div>
                     </a>
                 </li>
             </ul>
@@ -671,50 +590,9 @@ window.smartsupp||(function(d) {
                         Internal Transfer
                     </a>
                 </li>
-                {{-- <li>
-                    <a href="{{ route('assetbalance') }}"
-                       class="group relative flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('assetbalance') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="repeat" class="w-5 h-5 mr-3"></i>
-                        Currency Exchange
-                        <span class="ml-auto px-2 py-0.5 text-xs font-medium text-white bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full">Swap</span>
-                        <div class="hidden group-hover:block absolute left-full ml-2 px-2 py-1 bg-gray-900 text-xs text-white rounded whitespace-nowrap">
-                            Exchange between cryptocurrencies and fiat
-                        </div>
-                    </a>
-                </li> --}}
             </ul>
         </div>
 
-        <!-- Credit & Financing Section -->
-        <div class="space-y-2">
-            <div class="flex items-center gap-2 px-2 mt-6 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">
-                <i data-lucide="credit-card" class="w-4 h-4"></i>
-                <span>Credit & Financing</span>
-            </div>
-            <ul class="space-y-1">
-                <li>
-                    <a href="{{ route('loan') }}"
-                       class="group relative flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('loan') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="file-plus" class="w-5 h-5 mr-3"></i>
-                        Apply for Credit
-                        <span class="ml-auto px-2 py-0.5 text-xs font-medium text-white bg-gradient-to-r from-green-500 to-green-600 rounded-full">Fast</span>
-                        <div class="hidden group-hover:block absolute left-full ml-2 px-2 py-1 bg-gray-900 text-xs text-white rounded whitespace-nowrap">
-                            Apply for loans and credit facilities
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('veiwloan')}}"
-                       class="group relative flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('veiwloan') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
-                        Credit History
-                        <div class="hidden group-hover:block absolute left-full ml-2 px-2 py-1 bg-gray-900 text-xs text-white rounded whitespace-nowrap">
-                            View your loan applications and status
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
         <!-- Account Management Section -->
         <div class="space-y-2">
             <div class="flex items-center gap-2 px-2 mt-6 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">
@@ -1111,15 +989,6 @@ window.smartsupp||(function(d) {
 
       <!-- Menu Links -->
       <div class="space-y-2">
-        <a href="{{ route('copy.dashboard') }}" class="flex items-center p-3 rounded-lg text-gray-100
-                          hover:bg-gray-800
-                          transition-colors duration-200 group">
-          <i data-lucide="copy" class="w-5 h-5 mr-3 text-blue-400
-                                     group-hover:scale-110 transition-transform duration-300"></i>
-          <span class="font-medium">Copy Trading</span>
-          <!--<span class="ml-auto text-xs font-bold text-green-400">New</span>-->
-        </a>
-
         <a href="{{ route('transferview') }}" class="flex items-center p-3 rounded-lg text-gray-100
                           hover:bg-gray-800
                           transition-colors duration-200 group">
@@ -1127,15 +996,6 @@ window.smartsupp||(function(d) {
                                              group-hover:rotate-180 transition-transform duration-500"></i>
           <span class="font-medium">Transfer Funds</span>
         </a>
-
-        {{-- <a href="{{ route('assetbalance') }}" class="flex items-center p-3 rounded-lg text-gray-100
-                          hover:bg-gray-800
-                          transition-colors duration-200 group">
-          <i data-lucide="repeat" class="w-5 h-5 mr-3 text-indigo-400
-                                        group-hover:scale-110 transition-transform duration-300"></i>
-          <span class="font-medium">Currency Exchange</span>
-          <span class="ml-auto text-xs font-bold text-indigo-400">Swap</span>
-        </a> --}}
 
         <a href="#" class="flex items-center p-3 rounded-lg text-gray-100
                           hover:bg-gray-800
@@ -1152,14 +1012,6 @@ window.smartsupp||(function(d) {
           <i data-lucide="life-buoy" class="w-5 h-5 mr-3 text-cyan-400
                                            group-hover:scale-110 transition-transform duration-300"></i>
           <span class="font-medium">Support</span>
-        </a>
-
-        <a href="{{ route('user.bots.index') }}" class="flex items-center p-3 rounded-lg text-gray-100
-                          hover:bg-gray-800
-                          transition-colors duration-200 group">
-          <i data-lucide="newspaper" class="w-5 h-5 mr-3 text-indigo-400
-                                          group-hover:scale-110 transition-transform duration-300"></i>
-          <span class="font-medium">Bots Trading</span>
         </a>
       </div>
 

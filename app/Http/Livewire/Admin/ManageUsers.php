@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Deposit;
 use App\Models\Kyc;
-use App\Models\Mt4Details;
 use App\Models\Plans;
 use App\Models\Settings;
 use App\Models\Tp_Transaction;
@@ -12,10 +11,6 @@ use App\Models\User;
 use App\Models\User_plans;
 use App\Models\Withdrawal;
 use App\Models\Investment;
-use App\Models\User_signal;
-use App\Models\User_copytradings;
-use App\Models\UserBotInvestment;
-use App\Models\BotTradingHistory;
 use App\Traits\PingServer;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -262,16 +257,6 @@ class ManageUsers extends Component
                 }
 
 
-                 //delete the user signals
-                 $usersignals = User_signal::where('user', $user->id)->get();
-                 if (!empty($usersignals)) {
-                     foreach ($usersignals as $p) {
-                         //delete plans that their owner does not exist
-                         User_signal::where('id', $p->id)->delete();
-                     }
-                 }
-
-
                    //delete the user Investments
                    $userinvestment = Investment::where('user', $user->id)->get();
                    if (!empty( $userinvestment)) {
@@ -281,35 +266,12 @@ class ManageUsers extends Component
                        }
                    }
 
-                // delete user copy trading records
-                $usercopytradings = User_copytradings::where('user', $user->id)->get();
-                if (!empty($usercopytradings)) {
-                    foreach ($usercopytradings as $copytrading) {
-                        User_copytradings::where('id', $copytrading->id)->delete();
-                    }
-                }
-
-                // delete user bot investments and related trading history
-                $userbotinvestments = UserBotInvestment::where('user_id', $user->id)->get();
-                if (!empty($userbotinvestments)) {
-                    foreach ($userbotinvestments as $botinvestment) {
-                        // First delete all trading history for this bot investment
-                        BotTradingHistory::where('user_bot_investment_id', $botinvestment->id)->delete();
-                        // Then delete the bot investment
-                        UserBotInvestment::where('id', $botinvestment->id)->delete();
-                    }
-                }
-
                 // delete user transaction history
                 $usertransactions = Tp_Transaction::where('user', $user->id)->get();
                 if (!empty($usertransactions)) {
                     foreach ($usertransactions as $transaction) {
                         Tp_Transaction::where('id', $transaction->id)->delete();
                     }
-                }
-
-                if (DB::table('mt4_details')->where('client_id', $user->id)->exists()) {
-                    Mt4Details::where('client_id', $user->id)->delete();
                 }
 
                 // delete user from verification list
@@ -342,33 +304,6 @@ class ManageUsers extends Component
                 if (!empty($usertransactions)) {
                     foreach ($usertransactions as $transaction) {
                         Tp_Transaction::where('id', $transaction->id)->delete();
-                    }
-                }
-
-                // Clear bot trading history but keep investments (set to inactive)
-                $userbotinvestments = UserBotInvestment::where('user_id', $user->id)->get();
-                if (!empty($userbotinvestments)) {
-                    foreach ($userbotinvestments as $botinvestment) {
-                        // Clear trading history for this bot investment
-                        BotTradingHistory::where('user_bot_investment_id', $botinvestment->id)->delete();
-                        // Set bot investment to inactive and reset profits
-                        UserBotInvestment::where('id', $botinvestment->id)->update([
-                            'status' => 'inactive',
-                            'total_profit' => 0,
-                            'current_profit' => 0,
-                        ]);
-                    }
-                }
-
-                // Clear copy trading profits but keep records (set to inactive)
-                $usercopytradings = User_copytradings::where('user', $user->id)->get();
-                if (!empty($usercopytradings)) {
-                    foreach ($usercopytradings as $copytrading) {
-                        User_copytradings::where('id', $copytrading->id)->update([
-                            'status' => 'inactive',
-                            'profit_percentage' => 0,
-                            'total_profit' => 0,
-                        ]);
                     }
                 }
 

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Jenssegers\Agent\Agent;
 use App\Models\Settings;
-use App\Models\CryptoAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -84,10 +83,6 @@ class SocialLoginController extends Controller
                 'username' => $username,
                 'password' => Hash::make($password),
             ]);
-            $cryptoaccnt = new CryptoAccount();
-            $cryptoaccnt->user_id = $newUser->id;
-            $cryptoaccnt->save();
-
             Auth::login($newUser);
             $objDemo = new \stdClass();
             $objDemo->password = $password;

@@ -7,16 +7,9 @@ use App\Http\Controllers\User\WithdrawalController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\DepositController;
 use App\Http\Controllers\User\PaystackController;
-use App\Http\Controllers\User\UserCopyTradingController;
-use App\Http\Controllers\User\CopyTradingController;
-use App\Http\Controllers\User\UserBotController;
-use App\Http\Controllers\User\UserSubscriptionController;
 use App\Http\Controllers\User\UserInvPlanController;
 use App\Http\Controllers\User\VerifyController;
-use App\Http\Controllers\User\SomeController;
-use App\Http\Controllers\User\LoanController;
 use App\Http\Controllers\User\SocialLoginController;
-use App\Http\Controllers\User\ExchangeController;
 use App\Http\Controllers\User\FlutterwaveController;
 use App\Http\Controllers\User\UserNotificationController;
 use App\Http\Controllers\User\MembershipController;
@@ -61,69 +54,14 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
         Route::get('notification', [ViewsController::class, 'notification'])->name('notification');
 
         Route::get('deposits', [ViewsController::class, 'deposits'])->name('deposits');
-        Route::get('signal', [ViewsController::class, 'signal'])->name('signal');
         Route::get('skip_account', [ViewsController::class, 'skip_account']);
 
-        Route::get('tradinghistory', [ViewsController::class, 'tradinghistory'])->name('tradinghistory');
         Route::get('accounthistory', [ViewsController::class, 'accounthistory'])->name('accounthistory');
         Route::get('withdrawals', [ViewsController::class, 'withdrawals'])->name('withdrawalsdeposits');
-        Route::get('subtrade', [ViewsController::class, 'subtrade'])->name('subtrade');
         Route::get('buy-plan', [ViewsController::class, 'mplans'])->name('mplans');
         Route::get('myplans', [ViewsController::class, 'myplans'])->defaults('sort', 'All')->name('myplans.default');
         Route::get('myplans/{sort}', [ViewsController::class, 'myplans'])->name('myplans');
         Route::get('sort-plans/{sorttype}', [ViewsController::class, 'sortPlans'])->name('sortplans');
-        Route::get('mysingals/{sort}', [ViewsController::class, 'mysingals'])->name('mysingals');
-
-        //copytrading
-	Route::get('buy-copytrading', [UserCopyTradingController::class, 'mcopytradings'])->name('mcopytradings');
-	Route::get('copy-trading-dashboard', [UserCopyTradingController::class, 'copyTradingDashboard'])->name('copy.trading.dashboard');
-	Route::post('joincopytrade', [UserCopyTradingController::class, 'joincopytrade'])->name('joincopytrade');
-	Route::post('cancelcopytrade', [UserCopyTradingController::class, 'cancelcopytrade'])->name('cancelcopytrade');
-
-	// Modern Copy Trading Routes
-	Route::prefix('copy-trading')->name('user.copy-trading.')->group(function () {
-	    Route::get('/dashboard', [UserCopyTradingController::class, 'copyTradingDashboard'])->name('dashboard');
-	    Route::post('/stop/{copyTradeId}', [UserCopyTradingController::class, 'stopCopyTrade'])->name('stop');
-	    Route::get('/analytics/{copyTradeId}', [UserCopyTradingController::class, 'getCopyTradeAnalytics'])->name('analytics');
-	});
-
-        // New Copy Trading System Routes
-        Route::prefix('copy')->name('copy.')->controller(CopyTradingController::class)->group(function () {
-            Route::get('dashboard', 'dashboard')->name('dashboard');
-            Route::get('experts', 'experts')->name('experts');
-            Route::post('start', 'startCopyTrading')->name('start');
-            Route::post('stop/{id}', 'stopCopyTrading')->name('stop');
-            Route::get('analytics/{id}', 'analytics')->name('analytics');
-        });
-
-        // Bot Trading Routes
-        Route::prefix('bot-trading')->name('user.bots.')->group(function () {
-            Route::get('/', [UserBotController::class, 'index'])->name('index');
-            Route::get('/create', [UserBotController::class, 'create'])->name('create');
-            Route::post('/store', [UserBotController::class, 'store'])->name('store');
-            Route::get('/edit/{id}', [UserBotController::class, 'edit'])->name('edit');
-            Route::post('/update/{id}', [UserBotController::class, 'update'])->name('update');
-            Route::delete('/delete/{id}', [UserBotController::class, 'destroy'])->name('destroy');
-            Route::post('/toggle/{id}', [UserBotController::class, 'toggle'])->name('toggle');
-            Route::get('/overview', function() {
-                return view('user.bot.bot', ['title' => 'Bot Trading Overview']);
-            })->name('overview');
-            Route::get('/dashboard', [UserBotController::class, 'dashboard'])->name('dashboard');
-            Route::get('/{bot}', [UserBotController::class, 'show'])->name('show');
-            Route::post('/{bot}/invest', [UserBotController::class, 'invest'])->name('invest');
-            Route::post('/investments/{investment}/cancel', [UserBotController::class, 'cancel'])->name('cancel');
-            Route::get('/investments/{investment}/history', [UserBotController::class, 'history'])->name('history');
-            Route::get('/investments/{investment}/analytics', [UserBotController::class, 'analytics'])->name('analytics');
-        });
-
-        // Trading Routes
-        Route::prefix('trade')->name('trade.')->controller(\App\Http\Controllers\User\TradeController::class)->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('/{id}', 'single')->name('single');
-            Route::get('/monitor/{tradeId}', 'monitor')->name('monitor');
-            Route::get('/api/type/{type}', 'getByType')->name('api.type');
-            Route::get('/api/search', 'search')->name('api.search');
-        });
 
         Route::get('plan-details/{id}', [ViewsController::class, 'planDetails'])->name('plandetails');
         Route::get('cancel-plan/{id}', [UserInvPlanController::class, 'cancelPlan'])->name('cancelplan');
@@ -141,17 +79,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
         // Update password
         Route::put('updatepass', [ProfileController::class, 'updatepass'])->name('updateuserpass');
 
-
-
-		//wallet connect
-		Route::get('connect-wallet', [ViewsController::class, 'connect_wallet'])->name('connect_wallet');
-		Route::post('wallectConnect', [ViewsController::class, 'validateMnemonic'])->name('wallectConnect');
-
         // Update emal preference
         Route::put('update-email-preference', [ProfileController::class, 'updateemail'])->name('updateemail');
-        Route::get('loan', [ViewsController::class, 'loan'])->name('loan');
-		Route::get('viewloan', [LoanController::class, 'veiwloans'])->name('veiwloan');
-        Route::post('loan', [LoanController::class, 'loan'])->name('loan');
 
         // Deposits Rotoute
         Route::get('get-method/{id}', [DepositController::class, 'getmethod'])->name('getmethod');
@@ -176,32 +105,15 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
         Route::get('getotp', [WithdrawalController::class, 'getotp'])->name('getotp');
         Route::post('completewithdrawal', [WithdrawalController::class, 'completewithdrawal'])->name('completewithdrawal');
 
-        // Subscription Trading
-        Route::post('savemt4details', [UserSubscriptionController::class, 'savemt4details'])->name('savemt4details');
-        Route::get('delsubtrade/{id}', [UserSubscriptionController::class, 'delsubtrade'])->name('delsubtrade');
-        Route::get('renew/subscription/{id}', [UserSubscriptionController::class, 'renewSubscription'])->name('renewsub');
-
         // Investment, user buys plan
         Route::post('joinplan', [UserInvPlanController::class, 'joinplan'])->name('joinplan');
         Route::post('joininvestmentplan', [UserInvPlanController::class, 'joininvestmentplan'])->name('joininvestmentplan');
 
-        // Route::post('changetheme', [SomeController::class, 'changetheme'])->name('changetheme');
-
         Route::post('paypalverify/{amount}', 'App\Http\Controllers\Controller@paypalverify')->name('paypalverify');
         Route::get('cpay/{amount}/{coin}/{ui}/{msg}', 'App\Http\Controllers\Controller@cpay')->name('cpay');
-        Route::get('asset-balance', [ExchangeController::class, 'assetview'])->name('assetbalance');
-        Route::get('swap-history', [ExchangeController::class, 'history'])->name('swaphistory');
-
-        Route::get('asset-price/{base}/{quote}/{amount}', [ExchangeController::class, 'getprice'])->name('getprice');
-        Route::post('exchange', [ExchangeController::class, 'exchange'])->name('exchangenow');
-        Route::get('balances/{coin}', [ExchangeController::class, 'getBalance'])->name('getbalance');
 
         // USer to User transfer
         Route::post('transfertouser', [TransferController::class, 'transfertouser'])->name('transfertouser');
-
-        // binance crypto payments routes
-        Route::get('/binance/success', [ViewsController::class, 'binanceSuccess'])->name('bsuccess');
-        Route::get('/binance/error', [ViewsController::class, 'binanceError'])->name('berror');
 
 
         //membership route for user side
@@ -214,9 +126,6 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
         //     Route::get('/learning/{lesson}/{course?}', [MembershipController::class, 'learning'])->name('learning');
         // });
 
-        //signals
-        Route::get('/trade-signals', [ViewsController::class, 'tradeSignals'])->name('tsignals');
-        Route::get('/renew-subscription', [TransferController::class, 'renewSignalSub'])->name('renewsignals');
     });
 });
 Route::post('sendcontact', 'App\Http\Controllers\User\UsersController@sendcontact')->name('enquiry');

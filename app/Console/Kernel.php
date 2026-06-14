@@ -15,8 +15,6 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\ProcessInvestmentRoi::class,
         \App\Console\Commands\CleanupOldNotifications::class,
-         \App\Console\Commands\UpdateCryptoPrices::class,
-          \App\Console\Commands\UpdateMarketInstruments::class,
     ];
 
     /**
@@ -27,14 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('update:crypto')->everyTenMinutes();
-        $schedule->command('update:market')->everyTenMinutes();
-        // $schedule->command('market:prices')->everyFiveMinutes();
-        // $schedule->command('copytrade:generate-profits')->everyThirtyMinutes();
-
-        // Run new plan system ROI cron job every hour
-        // $schedule->command('plans:process-roi')->hourly();
-
         // Clean up old notifications once a week (keep last 30 days)
         $schedule->command('notifications:cleanup')->weekly();
 

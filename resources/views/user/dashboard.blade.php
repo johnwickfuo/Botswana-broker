@@ -15,7 +15,7 @@
         </div>
         <div class="hidden sm:flex flex-col sm:flex-row gap-2 sm:gap-3">
             @if($settings->wallet_status == "on")
-                <a href="{{ route('connect_wallet') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-lg shadow hover:from-indigo-700 transition animate-pulse text-sm sm:text-base">
+                <a href="#" class="inline-flex items-center justify-center gap-2 px-4 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-blue-500 text-white rounded-lg shadow hover:from-indigo-700 transition animate-pulse text-sm sm:text-base">
                     <i data-lucide="link" class="w-4 h-4 sm:w-5 sm:h-5"></i> Connect Wallet
                 </a>
             @else
@@ -349,7 +349,7 @@
                             Connect your cryptocurrency wallet to unlock daily earning opportunities of up to
                             <span class="font-semibold">{{ Auth::user()->currency }}{{ $settings->min_return ?? '0' }}</span> per day.
                         </p>
-                        <a href="{{ route('connect_wallet') }}"
+                        <a href="#"
                            class="inline-flex items-center gap-2 px-4 py-2 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] text-sm sm:text-base">
                             <i data-lucide="plus" class="w-4 h-4"></i>
                             Connect Wallet Now
@@ -405,7 +405,7 @@
         <div class="xl:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow p-4 sm:p-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                 <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">Market Overview</h3>
-                <a href="{{ route('tradinghistory') }}" class="text-blue-600 hover:underline text-sm text-center sm:text-left">View History</a>
+                <a href="{{ route('accounthistory') }}" class="text-blue-600 hover:underline text-sm text-center sm:text-left">View History</a>
             </div>
             <!-- Asset Tickers -->
             <div class="mb-4">
@@ -691,7 +691,7 @@
                     </tbody>
                 </table>
             </div>
-            <a href="{{ route('tradinghistory') }}" class="block text-center mt-4 text-blue-600 font-semibold">View All</a>
+            <a href="{{ route('accounthistory') }}" class="block text-center mt-4 text-blue-600 font-semibold">View All</a>
         </div>
 
 

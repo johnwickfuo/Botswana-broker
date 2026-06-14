@@ -341,7 +341,7 @@
                 <button type="button" class="close " data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body ">
-                <form role="form" method="post" action="{{ route('addsignalhistory') }}">
+                <form role="form" method="post" action="{{ '#' }}">
                     @csrf
 
                     <div class="form-group">
@@ -587,36 +587,6 @@
  </div>
  <!-- /Reset user password Modal -->
 
-
-  <!-- Trading Progress Modal -->
-  <div id="tradingProgressModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header bg-{{$bg}}">
-                <h4 class="modal-title text-{{$text}}">Set Trading Signal</strong></h4>
-
-            </div>
-            <div class="modal-body bg-{{$bg}}">
-                <form role="form" method="post" action="{{route('tradingprogress')}}">
-                    <div class="form-group">
-                        <h5 class=" text-{{$text}}">Trading Signal %</h5>
-                        <input class="form-control bg-{{$bg}} text-{{$text}}"  value="{{$user->progress}}" type="number" name="progress" required>
-                         <small>Signal strength in %. For signal strength to show on user dashoard increase its value </small>
-                    </div>
-
-
-                    <div class="form-group">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="user_id" value="{{$user->id}}">
-                        <input type="submit" class="btn btn-{{$text}}" value="Update Trading Signal">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /Trading Progress Modal password Modal -->
 
  <!-- Switch useraccount Modal -->
  <div id="switchuserModal" class="modal fade" role="dialog">

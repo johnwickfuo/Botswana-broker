@@ -15,7 +15,6 @@ use App\Models\Testimony;
 use App\Models\Content;
 use App\Models\Asset;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Mt4Details;
 use App\Models\Deposit;
 use App\Models\Wdmethod;
 use App\Models\Withdrawal;
