@@ -50,11 +50,21 @@ class InvestmentController extends Controller
     public function myInvestments()
     {
         $investments = UserPlan::where('user_id', Auth::id())
-            ->with('investmentPlan.asset')
+            ->with(['investmentPlan.asset', 'payouts'])
             ->orderByDesc('id')
             ->paginate(15);
 
-        return view('invest.my-investments', compact('investments'));
+        $mine = UserPlan::where('user_id', Auth::id());
+        $active = (clone $mine)->where('status', 'active');
+
+        $summary = [
+            'invested'     => (float) (clone $active)->sum('invested_amount'),
+            'expected'     => (float) (clone $active)->sum('expected_return'),
+            'earned'       => (float) (clone $mine)->sum('total_profit'),
+            'active_count' => (clone $active)->count(),
+        ];
+
+        return view('invest.my-investments', compact('investments', 'summary'));
     }
 
     /**

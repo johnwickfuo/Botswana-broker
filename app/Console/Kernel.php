@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\ProcessInvestmentRoi::class,
         \App\Console\Commands\CleanupOldNotifications::class,
+        \App\Console\Commands\ProcessInvestmentPayouts::class,
     ];
 
     /**
@@ -27,6 +28,9 @@ class Kernel extends ConsoleKernel
     {
         // Clean up old notifications once a week (keep last 30 days)
         $schedule->command('notifications:cleanup')->weekly();
+
+        // Credit due investment payouts and process maturities (Phase 6)
+        $schedule->command('investments:process-payouts')->daily();
 
 
 

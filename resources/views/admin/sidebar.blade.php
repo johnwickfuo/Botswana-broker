@@ -63,6 +63,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item {{ request()->routeIs('admin.payouts.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.payouts.index') }}">
+                            <i class="fa fa-hand-holding-usd" aria-hidden="true"></i>
+                            <p>Payouts</p>
+                        </a>
+                    </li>
+
                 <li
                     class="nav-item {{ request()->routeIs('plans') ? 'active' : '' }} {{ request()->routeIs('newplan') ? 'active' : '' }} {{ request()->routeIs('editplan') ? 'active' : '' }} {{ request()->routeIs('investments') ? 'active' : '' }} {{ request()->routeIs('admin.plans.*') ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#pln">

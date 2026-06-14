@@ -19,8 +19,10 @@ use InvalidArgumentException;
  */
 class InvestmentService
 {
-    public function __construct(private ReturnCalculator $calculator)
-    {
+    public function __construct(
+        private ReturnCalculator $calculator,
+        private PayoutService $payouts
+    ) {
     }
 
     /**
@@ -98,13 +100,17 @@ class InvestmentService
                 $investment
             );
 
+            // Build the periodic return + maturity payout schedule.
+            $this->payouts->schedule($investment);
+
             return $investment;
         });
     }
 
     /**
-     * Redeem a matured investment — pays principal + expected return back to
-     * the wallet. Early redemption is rejected (locked until maturity).
+     * Redeem a matured investment — credits any outstanding payouts (remaining
+     * return slices + principal) to the wallet via the PayoutService. Early
+     * redemption is rejected (locked until maturity).
      *
      * @throws InvestmentException
      */
@@ -121,32 +127,9 @@ class InvestmentService
             );
         }
 
-        $payout = (float) $investment->invested_amount + (float) $investment->expected_return;
+        $this->payouts->forceMature($investment);
 
-        return DB::transaction(function () use ($investment, $payout) {
-            $user = $investment->investor()->first();
-            $user->account_bal = (float) $user->account_bal + $payout;
-            $user->save();
-
-            $investment->status = 'matured';
-            $investment->locked = false;
-            $investment->current_value = $payout;
-            $investment->total_profit = (float) $investment->expected_return;
-            $investment->last_payout_at = Carbon::now();
-            $investment->save();
-
-            $planName = optional($investment->investmentPlan()->first())->name ?? 'plan';
-
-            $this->recordLedger(
-                $user,
-                WalletTransaction::TYPE_CREDIT,
-                $payout,
-                "Maturity payout for {$planName}",
-                $investment
-            );
-
-            return $investment;
-        });
+        return $investment->fresh();
     }
 
     private function assertKycApproved(User $user): void

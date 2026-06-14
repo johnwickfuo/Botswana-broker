@@ -336,3 +336,13 @@ Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
             Route::get('/document/{document}/download', 'downloadDocument')->name('document.download');
         });
 });
+
+// Payout Management (Republic of Botswana investment platform — Phase 6)
+Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
+    Route::controller(\App\Http\Controllers\Admin\PayoutController::class)
+        ->prefix('payouts')->name('admin.payouts.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/process-due', 'processDue')->name('process-due');
+            Route::post('/{investment}/mature', 'markMatured')->name('mature');
+        });
+});

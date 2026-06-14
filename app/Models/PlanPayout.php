@@ -10,6 +10,11 @@ class PlanPayout extends Model
 {
     use HasFactory;
 
+    public const TYPE_RETURN = 'return';
+    public const TYPE_PRINCIPAL = 'principal';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_PROCESSED = 'processed';
+
     protected $fillable = [
         'user_plan_id',
         'user_id',
@@ -17,6 +22,7 @@ class PlanPayout extends Model
         'roi_percentage',
         'type',
         'status',
+        'due_date',
         'processed_at',
         'remarks',
     ];
@@ -24,6 +30,7 @@ class PlanPayout extends Model
     protected $casts = [
         'amount' => 'decimal:8',
         'roi_percentage' => 'decimal:2',
+        'due_date' => 'datetime',
         'processed_at' => 'datetime',
     ];
 
