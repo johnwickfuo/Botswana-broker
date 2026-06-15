@@ -36,7 +36,7 @@ class PayoutController extends Controller
 
         $dueTotal = (float) $duePayouts->sum('amount');
 
-        return view('admin.payouts.index', compact('duePayouts', 'activeInvestments', 'dueTotal'));
+        return view('admin.payouts.index', compact('duePayouts', 'activeInvestments', 'dueTotal'))->with('title', 'Payouts');
     }
 
     /**

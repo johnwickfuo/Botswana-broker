@@ -25,7 +25,7 @@ class AssetController extends Controller
             ->orderByDesc('id')
             ->paginate(15);
 
-        return view('admin.assets.index', compact('assets'));
+        return view('admin.assets.index', compact('assets'))->with('title','Assets');
     }
 
     /**
@@ -33,7 +33,7 @@ class AssetController extends Controller
      */
     public function create()
     {
-        return view('admin.assets.create');
+        return view('admin.assets.create')->with('title','Add Asset');
     }
 
     /**
@@ -75,7 +75,7 @@ class AssetController extends Controller
     {
         $asset = Asset::with('documents')->findOrFail($asset);
 
-        return view('admin.assets.edit', compact('asset'));
+        return view('admin.assets.edit', compact('asset'))->with('title','Edit Asset');
     }
 
     /**

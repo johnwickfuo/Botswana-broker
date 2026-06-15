@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $settings->site_name }} | {{ $title }}</title>
+    <title>{{ $settings->site_name }} | {{ $title ?? 'Admin' }}</title>
     <link rel="icon" href="{{ asset('storage/app/public/' . $settings->favicon) }}" type="image/png" />
 
     @section('styles')

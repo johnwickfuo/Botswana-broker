@@ -50,6 +50,6 @@ class InvestmentDashboardController extends Controller
         return view('admin.investment-dashboard.index', compact(
             'totalRaised', 'activeCount', 'activeValue', 'maturedCount', 'returnsPaid',
             'payoutsDueCount', 'payoutsDueTotal', 'perPlan', 'plans', 'perAsset'
-        ));
+        ))->with('title', 'Investment Dashboard');
     }
 }

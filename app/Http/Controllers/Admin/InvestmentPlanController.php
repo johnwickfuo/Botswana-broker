@@ -21,17 +21,17 @@ class InvestmentPlanController extends Controller
             ->orderByDesc('id')
             ->paginate(15);
 
-        return view('admin.investment-plans.index', compact('plans'));
+        return view('admin.investment-plans.index', compact('plans'))->with('title','Investment Plans');
     }
 
     public function create()
     {
-        return view('admin.investment-plans.form', ['planId' => null]);
+        return view('admin.investment-plans.form', ['planId' => null, 'title' => 'New Plan']);
     }
 
     public function edit(Plan $plan)
     {
-        return view('admin.investment-plans.form', ['planId' => $plan->id]);
+        return view('admin.investment-plans.form', ['planId' => $plan->id, 'title' => 'Edit Plan']);
     }
 
     public function destroy(Plan $plan)
