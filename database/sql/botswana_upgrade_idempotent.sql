@@ -40,6 +40,9 @@ END $$
 DROP PROCEDURE IF EXISTS bw_addfk $$
 CREATE PROCEDURE bw_addfk(IN fkname VARCHAR(64), IN ddl TEXT)
 BEGIN
+  -- The foreign key is optional; never let it abort the upgrade (e.g. errno 150
+  -- when the legacy assets/plans tables differ in type or storage engine).
+  DECLARE CONTINUE HANDLER FOR SQLEXCEPTION BEGIN END;
   IF (SELECT COUNT(*) FROM information_schema.TABLE_CONSTRAINTS
         WHERE TABLE_SCHEMA = DATABASE() AND CONSTRAINT_NAME = fkname
           AND CONSTRAINT_TYPE = 'FOREIGN KEY') = 0 THEN
