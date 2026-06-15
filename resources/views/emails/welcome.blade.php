@@ -1,100 +1,55 @@
 {{-- blade-formatter-disable --}}
 @component('mail::message')
-# Welcome to {{$settings->site_name}}, {{$user->name}}!
+# Welcome to {{$settings->site_name}}, {{$user->name}}
 
-## Your Gateway to Advanced Investment Opportunities
+## The Republic of Botswana Investment Platform
 
 Dear {{$user->name}},
 
-We are thrilled to welcome you to the **{{$settings->site_name}}** family - where intelligent investing meets cutting-edge technology. Your journey toward financial growth and portfolio diversification begins today.
+We are pleased to confirm that your account on the **{{$settings->site_name}}** has been established. This platform is the official channel of the Republic of Botswana for managing your investment in a secure and transparent manner.
 
-### 🚀 **What Makes Us Different**
+<hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 
-**{{$settings->site_name}}** is more than just a trading platform. We're your strategic partner in building long-term wealth through:
-
-- **Advanced Algorithmic Trading** - Leverage AI-powered strategies
-- **Copy Trading Excellence** - Follow and replicate successful traders
-- **Diversified Investment Plans** - From conservative to aggressive growth options
-- **Real-Time Analytics** - Professional-grade market insights
-- **Risk Management Tools** - Protect and optimize your investments
-
-### 📈 **Your Next Steps to Success**
+### Getting Started
 
 @component('mail::panel')
-**Getting Started is Simple:**
+**To begin, please complete the following steps:**
 
-1. **Complete Your Profile** - Verify your account for enhanced security
-2. **Explore Investment Options** - Review our curated investment plans
-3. **Make Your First Deposit** - Start with an amount you're comfortable with
-4. **Choose Your Strategy** - Select from algorithmic trading or copy trading
-5. **Monitor & Grow** - Track your portfolio performance in real-time
+1. **Verify your profile** — confirm your account details for added security.
+2. **Review the available investment options** — consider the plans suited to your goals.
+3. **Fund your account** — deposit an amount you are comfortable committing.
+4. **Confirm your selection** — choose the investment plan that fits your objectives.
+5. **Monitor your investment** — track your holdings from your account dashboard.
 @endcomponent
 
 @component('mail::button', ['url' => config('app.url').'/dashboard'])
 Access Your Dashboard
 @endcomponent
 
-### 💡 **Investment Opportunities Await**
+### Security and Stewardship
 
-**Beginner-Friendly Options:**
-- Low-risk investment plans with steady returns
-- Educational resources and market analysis
-- Dedicated support for new investors
+Your investment is administered with care. Please note:
 
-**Advanced Trading Features:**
-- Copy successful traders automatically
-- Access to premium market signals
-- Advanced portfolio management tools
+- Your account is protected by standard encryption and access controls.
+- The platform operates in line with applicable regulatory requirements.
+- Account activity is monitored to help safeguard your investment.
 
-### 🛡️ **Your Security is Our Priority**
+### Support
 
-Rest assured that your investments are protected by:
-- Bank-level encryption and security protocols
-- Regulatory compliance and transparent operations
-- 24/7 monitoring and fraud protection
-- Segregated client funds for maximum safety
-
-### 📞 **Expert Support When You Need It**
-
-Our professional team is here to guide you every step of the way:
+Should you require assistance, our support team is available to help you.
 
 @component('mail::button', ['url' => config('app.url').'/support', 'color' => 'success'])
-Contact Our Investment Advisors
+Contact Support
 @endcomponent
 
-**Available Support:**
-- 24/7 Customer Service
-- Personal Investment Consultations
-- Educational Webinars and Resources
-- Market Analysis and Insights
+<hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 
----
+We look forward to supporting your investment with the Republic of Botswana Investment Platform.
 
-### 🎯 **Ready to Begin?**
-
-The global markets never sleep, and neither do the opportunities. Whether you're looking to:
-- Build retirement wealth
-- Generate passive income
-- Diversify your investment portfolio
-- Learn advanced trading strategies
-
-**{{$settings->site_name}}** provides the tools, expertise, and support you need to achieve your financial goals.
-
-@component('mail::panel', ['color' => 'success'])
-**Special Welcome Offer:** As a new member, you'll receive complimentary access to our premium market analysis for your first 30 days. Start making informed investment decisions from day one!
-@endcomponent
-
-Welcome aboard, and here's to your investment success!
-
-**The {{$settings->site_name}} Team**<br>
-*Empowering Intelligent Investors Since Day One*
-
----
+**The {{$settings->site_name}} Team**
 
 @component('mail::subcopy')
-**Disclaimer:** All investments carry risk, and past performance does not guarantee future results. Please ensure you understand the risks involved and consider seeking independent financial advice if needed. {{$settings->site_name}} is committed to responsible investing practices.
-
-Visit our [Risk Disclosure]() page for more information.
+**Disclosure:** All investments carry risk, and past performance does not guarantee future results. Please ensure you understand the terms applicable to your investment before proceeding. {{$settings->site_name}} is committed to responsible and transparent administration of your investment.
 @endcomponent
 
 @endcomponent

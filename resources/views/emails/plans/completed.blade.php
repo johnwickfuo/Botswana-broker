@@ -3,7 +3,7 @@
 
 Dear {{ $name }},
 
-Your investment in the **{{ $planName }}** plan has been completed successfully.
+Your investment in the **{{ $planName }}** plan on the Republic of Botswana Investment Platform has been completed.
 
 ## Investment Details
 - **Investment Amount:** {{ $currency }}{{ number_format($amount, 2) }}
@@ -13,19 +13,22 @@ Your investment in the **{{ $planName }}** plan has been completed successfully.
 - **End Date:** {{ $endDate }}
 
 @if($profit > 0)
-Congratulations on your successful investment! The profits have been credited to your account balance.
+The returns from this plan have been credited to your account balance.
 @else
-Your investment has been completed. Please check your account for the latest balance.
+Your investment has been completed. Please review your account for the latest balance.
 @endif
 
-You can invest in another plan or withdraw your funds from your account dashboard.
+<hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
+
+You may allocate your funds to another investment plan or request a withdrawal from your account dashboard.
 
 @component('mail::button', ['url' => $siteUrl . '/login'])
-Login to Account
+Access Your Account
 @endcomponent
 
-Thank you for choosing {{ $siteName }} for your investment needs.
+Thank you for entrusting {{ $siteName }} with your investment.
 
 Regards,<br>
-{{ $siteName }} Team
+**The {{ $siteName }} Team**<br>
+Republic of Botswana Investment Platform
 @endcomponent

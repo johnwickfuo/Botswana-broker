@@ -1,0 +1,119 @@
+/*
+|--------------------------------------------------------------------------
+| Republic of Botswana Investment Platform — global brand layer (Phase 8)
+|--------------------------------------------------------------------------
+| Static override stylesheet (no build step). Loaded LAST in every layout so
+| it recolours the inherited theme bundles (atlantis / dashly) and the
+| Tailwind public pages into the national palette:
+|   - primary sky blue   #00A3DD
+|   - near-black ink      #111111
+|   - white background
+|   - thin white-bordered black divider (a flag nod)
+| Formal treasury / national-bank look. English now, structured for Setswana.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Public+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bw-blue: #00A3DD;
+    --bw-blue-alt: #75AADB;
+    --bw-blue-dark: #0089BA;
+    --bw-ink: #111111;
+    --bw-white: #FFFFFF;
+    --bw-divider: #111111;
+    --bw-muted: #5b6470;
+    --bw-surface: #ffffff;
+    --bw-surface-2: #f5f7f9;
+}
+
+/* ---- Base typography & surface ------------------------------------------ */
+body {
+    font-family: 'Inter', 'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+    color: var(--bw-ink);
+    -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6,
+.title1, .card-title, .page-title {
+    font-family: 'Inter', 'Public Sans', sans-serif !important;
+    letter-spacing: -0.01em;
+    color: var(--bw-ink);
+}
+h1, .title1 { font-weight: 800; }
+h2, h3 { font-weight: 700; }
+a { color: var(--bw-blue); }
+a:hover { color: var(--bw-blue-dark); }
+
+/* ---- Flag-nod divider --------------------------------------------------- */
+.bw-divider {
+    height: 0;
+    border: 0;
+    border-top: 4px solid var(--bw-ink);
+    box-shadow: 0 -1px 0 0 var(--bw-white) inset, 0 1px 0 0 var(--bw-white);
+    margin: 1.25rem 0;
+}
+hr { border-top-color: rgba(17,17,17,.12); }
+
+/* ---- Primary actions (Bootstrap atlantis / dashly + generic) ------------ */
+.btn-primary,
+.btn-info {
+    background-color: var(--bw-blue) !important;
+    border-color: var(--bw-blue) !important;
+    color: #fff !important;
+}
+.btn-primary:hover, .btn-info:hover,
+.btn-primary:focus, .btn-info:focus {
+    background-color: var(--bw-blue-dark) !important;
+    border-color: var(--bw-blue-dark) !important;
+}
+.btn-outline-primary {
+    color: var(--bw-blue) !important;
+    border-color: var(--bw-blue) !important;
+}
+.btn-outline-primary:hover {
+    background-color: var(--bw-blue) !important;
+    color: #fff !important;
+}
+.bg-primary { background-color: var(--bw-blue) !important; }
+.text-primary { color: var(--bw-blue) !important; }
+.badge-primary, .badge-info { background-color: var(--bw-blue) !important; }
+.btn-dark, .bg-dark { background-color: var(--bw-ink) !important; border-color: var(--bw-ink) !important; }
+
+/* ---- Tailwind utility recolour (public + invest + portfolio pages) ------ */
+.bg-blue-600, .bg-blue-700 { background-color: var(--bw-blue) !important; }
+.hover\:bg-blue-700:hover, .hover\:bg-blue-600:hover { background-color: var(--bw-blue-dark) !important; }
+.text-blue-600, .text-blue-500, .text-blue-700 { color: var(--bw-blue) !important; }
+.border-blue-500, .border-blue-600 { border-color: var(--bw-blue) !important; }
+.focus\:ring-blue-500:focus { --tw-ring-color: var(--bw-blue) !important; }
+.from-gray-900, .to-gray-800, .bg-gray-900 { background-color: var(--bw-ink) !important; }
+.bg-gradient-to-br, .bg-gradient-to-r { background-image: linear-gradient(135deg, var(--bw-ink), #1d2733) !important; }
+
+/* ---- Admin (atlantis) chrome -> national bank look ---------------------- */
+.sidebar, .sidebar[data-background-color], .sidebar .sidebar-wrapper {
+    background: var(--bw-ink) !important;
+}
+.sidebar .nav.nav-primary > .nav-item.active > a,
+.sidebar .nav.nav-primary li.active > a {
+    border-left: 3px solid var(--bw-blue) !important;
+    color: #fff !important;
+}
+.sidebar .nav.nav-primary > .nav-item > a:hover { color: var(--bw-blue-alt) !important; }
+.logo-header, .main-header .logo-header { background: var(--bw-ink) !important; }
+.main-header .navbar-header { background: var(--bw-white) !important; border-bottom: 1px solid rgba(17,17,17,.08); }
+.card { border: 1px solid rgba(17,17,17,.06); border-radius: .65rem; }
+.card-stats .icon-big.icon-primary, .icon-primary { color: var(--bw-blue) !important; }
+
+/* ---- Forms ---- */
+.form-control:focus {
+    border-color: var(--bw-blue) !important;
+    box-shadow: 0 0 0 .15rem rgba(0,163,221,.2) !important;
+}
+
+/* ---- Preloaders / loaders ----------------------------------------------- */
+.preloader, .loader, .page-loader, #preloader, .spinner-border.text-primary {
+    border-color: var(--bw-blue) !important;
+    color: var(--bw-blue) !important;
+}
+.preloader .spinner, .loader .dot { background: var(--bw-blue) !important; }
+
+/* ---- Selection ---- */
+::selection { background: var(--bw-blue); color: #fff; }

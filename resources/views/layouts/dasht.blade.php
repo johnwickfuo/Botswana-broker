@@ -139,6 +139,7 @@ window.smartsupp||(function(d) {
 </script>
 <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 
+    <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
 </head>
 <body x-data="{ darkMode: localStorage.theme === 'dark' || !localStorage.theme, sidebarOpen: false }"
       :class="{ 'dark': darkMode }"

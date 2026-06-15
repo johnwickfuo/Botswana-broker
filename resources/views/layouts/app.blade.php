@@ -54,6 +54,7 @@
         <script src="https://www.paypal.com/sdk/js?client-id={{ $settings->pp_ci }}"></script>
     @show
     @livewireStyles
+    <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
 </head>
 
 <body data-background-color="light">

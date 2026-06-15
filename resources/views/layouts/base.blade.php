@@ -132,16 +132,16 @@
         }
     </style>
 
-    <title>{{$settings->site_name}} | CFD Trading — Trading on Stocks, Gold, Oil, Indices</title>
+    <title>{{$settings->site_name}} | Republic of Botswana Investment Platform</title>
     <link rel="manifest" href="./">
-    <meta name="theme-color" content="#111827">    <meta property="x-session-id" content="ghJjEOrjZ3KUPun1UQksVUbvK88y21dgIhKtb8GT">
+    <meta name="theme-color" content="#111111">    <meta property="x-session-id" content="ghJjEOrjZ3KUPun1UQksVUbvK88y21dgIhKtb8GT">
     <meta property="og:site_name" content="{{$settings->site_name}}">
-    <meta property="og:description" content="CFD Trading with {{$settings->site_name}}. Trading on Stocks, Gold, Oil, Indices with ultra-fast execution &amp; spreads from 0.0 pips. News, articles and training materials for experienced and novice traders.">
-    <meta name="description" content="CFD Trading with {{$settings->site_name}}. Trading on Stocks, Gold, Oil, Indices with ultra-fast execution &amp; spreads from 0.0 pips. News, articles and training materials for experienced and novice traders.">
-    <meta name="keywords" content="forex, CFDs, CFD, Bitcoin trading, crypto trading, online trading, Forex trading, Oil trading, Gold trading, trading indexes, shares trading, commodities trading, trading platform, Cryptocurrencies day trading">
+    <meta property="og:description" content="Official investment platform of the Republic of Botswana. Invest in verified national government assets with transparent, regulated returns.">
+    <meta name="description" content="Official investment platform of the Republic of Botswana. Invest in verified national government assets with transparent, regulated returns.">
+    <meta name="keywords" content="Republic of Botswana, government investment, national assets, Pula, treasury, public investment, sovereign assets, Botswana investment platform">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="CFD Trading — Trading on Stocks, Gold, Oil, Indices | {{$settings->site_name}}">
-    <meta property="og:image" content="img/share.jpg">
+    <meta property="og:title" content="Republic of Botswana Investment Platform | {{$settings->site_name}}">
+    <meta property="og:image" content="{{ asset('storage/app/public/'.$settings->logo) }}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('storage/app/public/'.$settings->favicon)}}" type="image/x-icon">
@@ -216,6 +216,7 @@ window.smartsupp||(function(d) {
 <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
 
 
+    <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
 </head>
 
 <body class="antialiased text-gray-200 bg-gray-900 font-sans min-h-screen flex flex-col">
@@ -249,10 +250,14 @@ window.smartsupp||(function(d) {
     <div x-data="{ mobileMenuOpen: false }" class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="relative">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
+                <!-- Logo + national emblem slot (client-uploaded; never fabricated) -->
                 <div class="flex-shrink-0">
-                    <a href="/" class="flex items-center">
-                        <img class="h-24 w-auto" src="{{ asset('storage/app/public/'.$settings->logo)}}" alt="{{$settings->site_name}}">
+                    <a href="/" class="flex items-center gap-3">
+                        @if (!empty($settings->emblem))
+                            <img class="h-12 w-auto" src="{{ asset('storage/app/public/'.$settings->emblem) }}" alt="Republic of Botswana emblem">
+                            <span class="hidden sm:block h-10 w-px bg-black" aria-hidden="true"></span>
+                        @endif
+                        <img class="h-16 w-auto" src="{{ asset('storage/app/public/'.$settings->logo)}}" alt="{{$settings->site_name}}">
                     </a>
                 </div>
 
@@ -478,8 +483,9 @@ window.smartsupp||(function(d) {
                                 <img class="h-8 w-auto" src="{{ asset('storage/app/public/'.$settings->logo)}}" alt="{{$settings->site_name}}">
                             </a>
                         </div>
+                        <p class="text-sm text-gray-400 mb-2 font-semibold text-white">Republic of Botswana</p>
                         <p class="text-sm text-gray-400 mb-6">
-                            {{$settings->site_name}} offers CFD trading on stocks, forex, indices, commodities, and cryptocurrencies with competitive spreads and advanced trading tools.
+                            {{$settings->site_name}} is the official investment platform of the Republic of Botswana, enabling citizens to invest in verified national government assets with transparent, regulated returns.
                         </p>
                         <div class="flex space-x-4">
                             <a href="#" class="text-gray-400 hover:text-white">
@@ -501,21 +507,20 @@ window.smartsupp||(function(d) {
                     <div>
                         <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Quick Links</h3>
                         <ul class="space-y-3">
-                            <li><a href="about" class="text-sm text-gray-400 hover:text-white transition">About Us</a></li>
-                            <li><a href="why-us" class="text-sm text-gray-400 hover:text-white transition">Why Choose Us</a></li>
-                            <li><a href="for-traders" class="text-sm text-gray-400 hover:text-white transition">Education</a></li>
+                            <li><a href="{{ route('invest.index') }}" class="text-sm text-gray-400 hover:text-white transition">Investment Plans</a></li>
+                            <li><a href="about" class="text-sm text-gray-400 hover:text-white transition">About the Platform</a></li>
                             <li><a href="contacts" class="text-sm text-gray-400 hover:text-white transition">Contact</a></li>
                         </ul>
                     </div>
 
-                    <!-- Trading -->
+                    <!-- Legal & Disclosure -->
                     <div>
-                        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Trading</h3>
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal &amp; Disclosure</h3>
                         <ul class="space-y-3">
-                            <li><a href="cryptocurrencies" class="text-sm text-gray-400 hover:text-white transition">Cryptocurrencies</a></li>
-                            <li><a href="forex" class="text-sm text-gray-400 hover:text-white transition">Forex</a></li>
-                            <li><a href="shares" class="text-sm text-gray-400 hover:text-white transition">Shares</a></li>
-                            <li><a href="indices" class="text-sm text-gray-400 hover:text-white transition">Indices</a></li>
+                            <li><a href="terms" class="text-sm text-gray-400 hover:text-white transition">Terms of Use</a></li>
+                            <li><a href="privacy" class="text-sm text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="licensing" class="text-sm text-gray-400 hover:text-white transition">Licensing &amp; Disclosure</a></li>
+                            <li><a href="faq" class="text-sm text-gray-400 hover:text-white transition">FAQ</a></li>
                         </ul>
                     </div>
 
@@ -525,8 +530,8 @@ window.smartsupp||(function(d) {
                         <ul class="space-y-3">
                             <li><a href="login" class="text-sm text-gray-400 hover:text-white transition">Log In</a></li>
                             <li><a href="register" class="text-sm text-gray-400 hover:text-white transition">Create Account</a></li>
-                            <li><a href="login" class="text-sm text-gray-400 hover:text-white transition">Demo Account</a></li>
-                            <li><a href="contact" class="text-sm text-gray-400 hover:text-white transition">Help Center</a></li>
+                            <li><a href="{{ route('investments.mine') }}" class="text-sm text-gray-400 hover:text-white transition">My Portfolio</a></li>
+                            <li><a href="contact" class="text-sm text-gray-400 hover:text-white transition">Help Centre</a></li>
                         </ul>
                     </div>
                 </div>
@@ -571,14 +576,14 @@ window.smartsupp||(function(d) {
             <div class="py-6">
                 <div class="text-xs text-gray-400">
                     <p class="mb-4 leading-relaxed">
-                        <span class="font-semibold text-gray-300">RISK WARNING:</span> The Financial Products offered by the company include Contracts for Difference ('CFDs') and other complex financial products. Trading CFDs carries a high level of risk since leverage can work both to your advantage and disadvantage. As a result, CFDs may not be suitable for all investors because it is possible to lose all of your invested capital. You should never invest money that you cannot afford to lose. Before trading in the complex financial products offered, please ensure you understand the risks involved.
+                        <span class="font-semibold text-gray-300">DISCLOSURE:</span> {{$settings->site_name}} is the official investment platform of the Republic of Botswana. All investments are in verified national government assets and are subject to the published terms, offer windows and maturity conditions. The value of an investment and the returns realised depend on the terms of the selected plan. Please read the plan terms and disclosure documents carefully before investing.
                     </p>
                     <div class="flex flex-wrap gap-4 mb-4">
-                        <a href="terms" class="text-blue-400 hover:text-blue-300 transition">Terms & Conditions</a>
+                        <a href="terms" class="text-blue-400 hover:text-blue-300 transition">Terms of Use</a>
                         <a href="privacy" class="text-blue-400 hover:text-blue-300 transition">Privacy Policy</a>
-                        <a href="regulation" class="text-blue-400 hover:text-blue-300 transition">Legal Documents</a>
+                        <a href="licensing" class="text-blue-400 hover:text-blue-300 transition">Legal &amp; Disclosure</a>
                     </div>
-                    <p>© <script>document.write(new Date().getFullYear())</script> {{$settings->site_name}}. All Rights Reserved.</p>
+                    <p>© <script>document.write(new Date().getFullYear())</script> {{$settings->site_name}} · Republic of Botswana. All Rights Reserved.</p>
                 </div>
             </div>
         </div>

@@ -454,12 +454,41 @@
                     background-position: center;
                 }
             }
+
+            .bg-purple-light {
+                background-color: #00A3DD;
+            }
+
+            .bw-republic {
+                font-size: .8rem;
+                font-weight: 600;
+                letter-spacing: .14em;
+                text-transform: uppercase;
+                color: #00A3DD;
+                margin-bottom: .5rem;
+            }
+
+            .bw-home-btn {
+                background-color: #00A3DD;
+                color: #fff;
+                border-color: #00A3DD;
+            }
+
+            .bw-home-btn:hover {
+                background-color: #0089BA;
+                border-color: #0089BA;
+                color: #fff;
+            }
         </style>
+
+        <!-- Republic of Botswana brand layer (loaded last to override the theme) -->
+        <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
     </head>
     <body class="antialiased font-sans">
         <div class="md:flex min-h-screen">
             <div class="w-full md:w-1/2 bg-white flex items-center justify-center">
                 <div class="max-w-sm m-8">
+                    <p class="bw-republic">Republic of Botswana</p>
                     <div class="text-black text-5xl md:text-15xl font-black">
                         @yield('code', __('Oh no'))
                     </div>
@@ -471,7 +500,7 @@
                     </p>
 
                     <a href="{{ app('router')->has('home') ? route('home') : url('/') }}">
-                        <button class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">
+                        <button class="bw-home-btn font-bold uppercase tracking-wide py-3 px-6 border-2 rounded-lg">
                             {{ __('Go Home') }}
                         </button>
                     </a>

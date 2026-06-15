@@ -60,7 +60,7 @@
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2">
                     <i data-lucide="{{ $signalIcon }}" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
-                    <h2 class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100">Trading Signal Strength</h2>
+                    <h2 class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100">Portfolio Activity</h2>
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{{ $signalStrength }}%</span>
@@ -92,7 +92,7 @@
                 @elseif($signalStrength < 50)
                     ⚡ Moderate signal detected. Proceed with caution and proper risk management.
                 @else
-                    🚀 Strong signal strength! Optimal conditions for trading opportunities.
+                    🚀 Your investments are active and performing within plan terms.
                 @endif
             </p>
         </div>

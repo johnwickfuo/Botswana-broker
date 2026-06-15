@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $settings->site_name }} - @yield('title', 'Secure Trading Platform')</title>
+    <title>{{ $settings->site_name }} - @yield('title', 'Republic of Botswana Investment Platform')</title>
 
     <!-- Favicon -->
     <link href="{{ asset('storage/app/public/'.$settings->favicon)}}" rel="icon" type="image/x-icon" />
@@ -177,6 +177,7 @@ EXPERTISE.???">
 
 <!-- <link href="404" rel="stylesheet" /> -->
 
+    <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
 </head>
 
 

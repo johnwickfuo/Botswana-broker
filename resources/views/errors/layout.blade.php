@@ -14,9 +14,8 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 100;
+                color: #111111;
+                font-weight: 400;
                 height: 100vh;
                 margin: 0;
             }
@@ -39,15 +38,28 @@
                 text-align: center;
             }
 
+            .republic {
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .14em;
+                text-transform: uppercase;
+                color: #00A3DD;
+            }
+
             .title {
                 font-size: 36px;
                 padding: 20px;
+                color: #111111;
             }
         </style>
+
+        <!-- Republic of Botswana brand layer (loaded last to override the theme) -->
+        <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
+                <p class="republic">Republic of Botswana</p>
                 <div class="title">
                     @yield('message')
                 </div>

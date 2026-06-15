@@ -2,7 +2,8 @@
 {{-- Header --}}
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
-<img src="{{ asset('storage/app/public/'. $settings->logo) }}" alt="{{ config('app.name') }}" style="width: 90px">
+<img src="{{ asset('storage/app/public/'. $settings->logo) }}" alt="{{ $settings->site_name }}" style="height: 72px; width: auto;">
+<div style="color:#FFFFFF; font-size:12px; font-weight:600; letter-spacing:1px; margin-top:8px; text-transform:uppercase;">Republic of Botswana</div>
 @endcomponent
 @endslot
 
@@ -21,7 +22,13 @@
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
-© {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.')
+**{{ $settings->site_name }}**<br>
+Republic of Botswana Investment Platform<br>
+@isset($settings->contact_email)
+{{ $settings->contact_email }}<br>
+@endisset
+© {{ date('Y') }} {{ $settings->site_name }}. @lang('All rights reserved.')<br>
+This is an official, automated message. Investments are subject to applicable terms and conditions.
 @endcomponent
 @endslot
 @endcomponent

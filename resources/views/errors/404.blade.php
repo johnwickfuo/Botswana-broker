@@ -2,4 +2,4 @@
 
 @section('title', __('Not Found'))
 @section('code', '404')
-@section('message', __('We could not find the page you were looking for.'))
+@section('message', __('The page you requested could not be found on this platform.'))

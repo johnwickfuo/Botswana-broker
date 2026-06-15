@@ -126,6 +126,7 @@
     <!-- Page Title -->
     <title>@yield('title') | {{ $settings->site_name }}</title>
     <script src="{{ asset('themes/dashly/assets/ext/dist/alpine.min.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
 </head>
 
 <body>

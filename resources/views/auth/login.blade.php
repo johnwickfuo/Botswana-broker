@@ -45,7 +45,7 @@
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{{ $settings->site_name }}</span>
                         </h2>
                         <p class="text-gray-300 text-sm sm:text-base">
-                            Access your trading dashboard
+                            Access your investment dashboard
                         </p>
 
                         <!-- Trading Stats -->
@@ -55,7 +55,7 @@
                                     <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                                     <span class="font-medium">Live</span>
                                 </div>
-                                <div class="text-gray-400">24/7 Markets</div>
+                                <div class="text-gray-400">Verified Assets</div>
                             </div>
                             <div class="w-px h-10 bg-white/20"></div>
                             <div class="text-center">
@@ -194,7 +194,7 @@
                     <div class="mt-10 text-center space-y-6">
                         <!-- Register Link -->
                         <div class="text-sm">
-                            <span class="text-gray-300">New to trading? </span>
+                            <span class="text-gray-300">New to the platform? </span>
                             <a href="{{ route('register') }}"
                                class="font-semibold text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2">
                                 Create your account

@@ -63,7 +63,7 @@
                 <!--        value="{{ $settings->merchant_key }}">-->
                 <!--</div>-->
                  <div class="form-group col-md-6">
-                   <h5 class="">Trading Win Rate %</h5>
+                   <h5 class="">Legacy Win Rate % (unused on investment platform)</h5>
                     <input type="number" class="form-control " name="trading_winrate"
                         placeholder="eg 75%" value="{{ $settings->trading_winrate }}">
                     <small>If you want to set a default trading winrate for users, please enter the percentage here.(Trading win rate determines the

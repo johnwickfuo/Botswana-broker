@@ -27,7 +27,7 @@
                         Join <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{{ $settings->site_name }}</span>
                     </h1>
                     <p class="text-gray-300 text-sm sm:text-base lg:text-lg mb-6">
-                        Start your professional trading journey
+                        Open your Republic of Botswana investment account
                     </p>
 
                     <!-- Trading Stats - Mobile Responsive -->
@@ -111,7 +111,7 @@
                                 </div>
                                 <div>
                                     <h3 class="text-lg sm:text-xl font-bold text-white">Personal Information</h3>
-                                    <p class="text-gray-400 text-sm">Create your trading profile</p>
+                                    <p class="text-gray-400 text-sm">Create your investor profile</p>
                                 </div>
                             </div>
                         </div>
@@ -246,9 +246,9 @@
                 </div>
                 <select id="experience" class="block w-full rounded-xl border border-gray-600 bg-gray-900 pl-12 pr-8 py-4 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 focus:bg-gray-800 transition-all duration-200 text-sm font-bold appearance-none">
                     <option selected disabled class="text-gray-400">Select your experience level</option>
-                    <option>Yes, I have experience with stock trading</option>
-                    <option>No, I have little experience with stock trading</option>
-                    <option>Complete novice in stock trading</option>
+                    <option>Yes, I have experience with investing</option>
+                    <option>No, I have little experience with investing</option>
+                    <option>Complete novice in investing</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                     <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
@@ -307,7 +307,7 @@
             <i data-lucide="info" class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0"></i>
             <div class="text-sm">
                 <p class="text-blue-300 font-bold mb-1">Regional & Preference Information</p>
-                <p class="text-gray-300">Your location and preferences help us tailor features, ensure compliance, and provide optimal trading conditions.</p>
+                <p class="text-gray-300">Your location and preferences help us tailor features, ensure compliance, and provide a secure investment experience.</p>
             </div>
         </div>
     </div>
@@ -327,7 +327,7 @@
                             </div>
                             <div>
                                 <h3 class="text-lg sm:text-xl font-bold text-white">Account Security</h3>
-                                <p class="text-gray-400 text-sm">Secure your trading account</p>
+                                <p class="text-gray-400 text-sm">Secure your account</p>
                             </div>
                         </div>
                     </div>
@@ -464,7 +464,7 @@
                                     </a>
                                 </label>
                                 <p class="text-xs text-gray-400 mt-2">
-                                    By creating an account, you confirm that you are at least 18 years old and agree to receive trading updates and market insights.
+                                    By creating an account, you confirm that you are at least 18 years old and agree to receive platform updates and official notices.
                                 </p>
                             </div>
                         </div>
@@ -533,7 +533,7 @@
 
                     <p class="text-xs text-gray-500">
                         © {{ date('Y') }} {{ $settings->site_name }}. All rights reserved. |
-                        Licensed and regulated trading platform.
+                        Official investment platform of the Republic of Botswana.
                     </p>
                 </div>
             </form>
