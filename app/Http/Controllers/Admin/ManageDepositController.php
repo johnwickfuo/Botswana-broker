@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuditLog;
 use App\Models\User;
 use App\Models\Settings;
 use App\Models\Deposit;
@@ -108,6 +109,7 @@ class ManageDepositController extends Controller
 
         }
 
+        AuditLog::record('deposit.processed', $deposit, "Confirmed deposit #{$deposit->id} for user #{$user->id}", ['amount' => $deposit->amount, 'user_id' => $user->id]);
 
         return redirect()->back()->with('success', 'Action Sucessful!');
     }

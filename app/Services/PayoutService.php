@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\AuditLog;
 use App\Models\PlanPayout;
 use App\Models\Plan;
 use App\Models\User;
@@ -179,6 +180,15 @@ class PayoutService
 
             $investment->current_value = (float) $investment->invested_amount + (float) $investment->total_profit;
             $investment->save();
+
+            if ($matured) {
+                AuditLog::record(
+                    'investment.matured',
+                    $investment,
+                    "Investment #{$investment->id} matured; principal repaid",
+                    ['credited' => round($credited, 2)]
+                );
+            }
 
             return ['payouts' => $payouts->count(), 'credited' => round($credited, 2), 'matured' => $matured];
         });

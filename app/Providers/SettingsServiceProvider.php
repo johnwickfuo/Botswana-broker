@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Settings;
 use App\Models\Paystack;
 use App\Models\SettingsCont;
@@ -26,9 +27,22 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $settings = Settings::where('id', '1')->first();
-        $paystack = Paystack::where('id', '1')->first();
-        $settings2 = SettingsCont::find(1);
+        // Guarded so the app still boots on a fresh install / during testing
+        // before the settings tables exist.
+        try {
+            if (!Schema::hasTable('settings')) {
+                return;
+            }
+            $settings = Settings::where('id', '1')->first();
+            $paystack = Paystack::where('id', '1')->first();
+            $settings2 = SettingsCont::find(1);
+        } catch (\Throwable $e) {
+            return;
+        }
+
+        if (!$settings || !$paystack || !$settings2) {
+            return;
+        }
 
 
         if ($settings->install_type == 'Sub-Folder') {

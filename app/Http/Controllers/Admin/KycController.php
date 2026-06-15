@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\AuditLog;
 use App\Models\User;
 use App\Mail\NewNotification;
 use App\Models\Kyc;
@@ -15,6 +16,13 @@ class KycController extends Controller
 
     public function processKyc(Request $request)
     {
+        $request->validate([
+            'kyc_id'  => 'required|integer|exists:kycs,id',
+            'action'  => 'required|in:Accept,Reject',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:5000',
+        ]);
+
         $application = Kyc::find($request->kyc_id);
         $user = User::where('id', $application->user_id)->first();
 
@@ -26,6 +34,8 @@ class KycController extends Controller
                 ]);
             $application->status = "Verified";
             $application->save();
+
+            AuditLog::record('kyc.verified', $application, "Approved KYC for user #{$user->id} ({$user->email})", ['user_id' => $user->id]);
         } else {
             if (Storage::disk('public')->exists($application->frontimg) and Storage::disk('public')->exists($application->backimg)) {
                 Storage::disk('public')->delete($application->frontimg);
@@ -35,6 +45,9 @@ class KycController extends Controller
             // Update the user verification status
             $user->account_verify = 'Rejected';
             $user->save();
+
+            AuditLog::record('kyc.rejected', $application, "Rejected KYC for user #{$user->id} ({$user->email})", ['user_id' => $user->id]);
+
             // delete the application form database so user can resubmit application
             $application->delete();
         }

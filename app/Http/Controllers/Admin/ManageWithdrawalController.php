@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\AuditLog;
 use App\Models\User;
 use App\Models\Settings;
 use App\Models\Wdmethod;
@@ -120,6 +121,13 @@ class ManageWithdrawalController extends Controller
               }
 
         }
+
+        AuditLog::record(
+            $request->action == 'Paid' ? 'withdrawal.approved' : 'withdrawal.rejected',
+            $withdrawal,
+            ($request->action == 'Paid' ? 'Approved' : 'Rejected') . " withdrawal #{$withdrawal->id} for user #{$user->id}",
+            ['amount' => $withdrawal->amount, 'user_id' => $user->id]
+        );
 
         return redirect()->route('mwithdrawals')->with('success', 'Action Sucessful!');
 

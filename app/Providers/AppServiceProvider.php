@@ -11,6 +11,7 @@ use App\Models\TermsPrivacy;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -43,14 +44,21 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo \\App\\Support\\Money::pula($expression); ?>";
         });
 
-        // Sharing settings with all view
-        $settings = Settings::where('id', '1')->first();
-        $terms =  TermsPrivacy::find(1);
-        $moreset =  SettingsCont::find(1);
+        // Sharing settings with all views. Guarded so the app still boots on a
+        // fresh install / during testing before the settings tables exist.
+        try {
+            if (Schema::hasTable('settings')) {
+                $settings = Settings::where('id', '1')->first();
+                $terms = Schema::hasTable('terms_privacies') ? TermsPrivacy::find(1) : null;
+                $moreset = Schema::hasTable('settings_conts') ? SettingsCont::find(1) : null;
 
-        View::share('settings', $settings);
-        View::share('terms', $terms);
-        View::share('moresettings', $moreset);
-        View::share('mod', $settings->modules);
+                View::share('settings', $settings);
+                View::share('terms', $terms);
+                View::share('moresettings', $moreset);
+                View::share('mod', optional($settings)->modules);
+            }
+        } catch (\Throwable $e) {
+            \Log::warning('Settings view-share skipped: ' . $e->getMessage());
+        }
     }
 }

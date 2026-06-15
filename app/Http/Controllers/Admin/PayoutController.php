@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AuditLog;
 use App\Models\PlanPayout;
 use App\Models\UserPlan;
 use App\Services\PayoutService;
@@ -46,6 +47,8 @@ class PayoutController extends Controller
     {
         $summary = $this->payouts->processDue();
 
+        AuditLog::record('payouts.processed_due', null, 'Processed all due payouts', $summary);
+
         return redirect()->route('admin.payouts.index')->with(
             'success',
             sprintf(
@@ -67,6 +70,8 @@ class PayoutController extends Controller
         }
 
         $summary = $this->payouts->forceMature($investment);
+
+        AuditLog::record('investment.force_matured', $investment, "Admin force-matured investment #{$investment->id}", $summary);
 
         return redirect()->back()->with(
             'success',

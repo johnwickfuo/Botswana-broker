@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Asset;
 use App\Models\AssetDocument;
+use App\Models\AuditLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -61,6 +62,8 @@ class AssetController extends Controller
         $this->storeUploads($asset, $request->file('certificates', []), AssetDocument::TYPE_CERTIFICATE);
         $this->storeUploads($asset, $request->file('documents', []), AssetDocument::TYPE_SUPPORTING);
 
+        AuditLog::record('asset.created', $asset, "Created asset \"{$asset->name}\"", ['category' => $asset->category, 'status' => $asset->status]);
+
         return redirect()->route('admin.assets.index')
             ->with('success', 'Asset created successfully.');
     }
@@ -103,6 +106,8 @@ class AssetController extends Controller
         $this->storeUploads($asset, $request->file('certificates', []), AssetDocument::TYPE_CERTIFICATE);
         $this->storeUploads($asset, $request->file('documents', []), AssetDocument::TYPE_SUPPORTING);
 
+        AuditLog::record('asset.updated', $asset, "Updated asset \"{$asset->name}\"", ['status' => $asset->status]);
+
         return redirect()->route('admin.assets.edit', $asset->id)
             ->with('success', 'Asset updated successfully.');
     }
@@ -117,6 +122,8 @@ class AssetController extends Controller
             ? Asset::STATUS_INACTIVE
             : Asset::STATUS_ACTIVE;
         $asset->save();
+
+        AuditLog::record('asset.status_changed', $asset, "Asset \"{$asset->name}\" marked {$asset->status}", ['status' => $asset->status]);
 
         return redirect()->back()
             ->with('success', "Asset marked as {$asset->status}.");
@@ -133,8 +140,11 @@ class AssetController extends Controller
             $this->deleteFile($document->path);
         }
 
+        $assetName = $asset->name;
         // asset_documents rows are removed via the FK cascade.
         $asset->delete();
+
+        AuditLog::record('asset.deleted', $asset, "Deleted asset \"{$assetName}\"");
 
         return redirect()->route('admin.assets.index')
             ->with('success', 'Asset deleted successfully.');
@@ -148,6 +158,8 @@ class AssetController extends Controller
         $document = AssetDocument::findOrFail($document);
         $this->deleteFile($document->path);
         $document->delete();
+
+        AuditLog::record('asset.document_deleted', $document, "Deleted asset document #{$document->id}", ['type' => $document->type]);
 
         return redirect()->back()
             ->with('success', 'Document removed successfully.');

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\InvestmentException;
+use App\Models\AuditLog;
 use App\Models\Plan;
 use App\Models\Settings;
 use App\Models\User;
@@ -103,6 +104,13 @@ class InvestmentService
             // Build the periodic return + maturity payout schedule.
             $this->payouts->schedule($investment);
 
+            AuditLog::record(
+                'investment.invested',
+                $investment,
+                "Invested {$principal} in plan \"{$plan->name}\"",
+                ['amount' => $principal, 'expected_return' => $expectedReturn, 'plan_id' => $plan->id]
+            );
+
             return $investment;
         });
     }
@@ -128,6 +136,13 @@ class InvestmentService
         }
 
         $this->payouts->forceMature($investment);
+
+        AuditLog::record(
+            'investment.redeemed',
+            $investment,
+            "Redeemed investment #{$investment->id}",
+            ['investment_id' => $investment->id]
+        );
 
         return $investment->fresh();
     }

@@ -140,6 +140,13 @@ class PlanBuilder extends Component
 
         $plan->save();
 
+        \App\Models\AuditLog::record(
+            $this->planId ? 'plan.updated' : 'plan.created',
+            $plan,
+            ($this->planId ? 'Updated' : 'Created') . " investment plan \"{$plan->name}\"",
+            ['amount_type' => $plan->amount_type, 'return_type' => $plan->return_type, 'asset_id' => $plan->asset_id]
+        );
+
         session()->flash('success', $this->planId ? 'Investment plan updated.' : 'Investment plan created.');
 
         return redirect()->route('admin.investment-plans.index');
