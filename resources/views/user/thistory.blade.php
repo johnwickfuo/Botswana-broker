@@ -7,8 +7,8 @@
     <div class="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-6 py-8">
             <div class="text-center">
-                <h1 class="text-2xl font-medium text-gray-900 dark:text-white">Trading History</h1>
-                <p class="mt-2 text-gray-600 dark:text-gray-400">Track your trading activities</p>
+                <h1 class="text-2xl font-medium text-gray-900 dark:text-white">Transaction History</h1>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">Track your investment activity</p>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-6 py-8">
-        <!-- Trading History Card -->
+        <!-- Investment Activity Card -->
         <div class="bg-white dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
             <!-- Header -->
             <div class="p-6 border-b border-gray-100 dark:border-gray-800" x-data="{
@@ -33,8 +33,8 @@
             }" x-init="$store.tradeFilter = { value: 'all' }" x-cloak>
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                     <div>
-                        <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Trading Overview</h2>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Monitor your trading performance</p>
+                        <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Investment Activity</h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">A record of your transactions on the platform</p>
                     </div>
 
                     <!-- Quick Stats -->
@@ -45,14 +45,14 @@
                         </div>
                         <div class="text-center">
                             <div class="text-xl font-medium text-green-600 dark:text-green-400" x-text="stats.wins"></div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400">Wins</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">Credited</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-xl font-medium text-red-600 dark:text-red-400" x-text="stats.losses"></div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400">Losses</div>
+                            <div class="text-xl font-medium text-gray-600 dark:text-gray-400" x-text="stats.losses"></div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">Closed</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-xl font-medium text-blue-600 dark:text-blue-400" x-text="stats.trades"></div>
+                            <div class="text-xl font-medium text-primary" x-text="stats.trades"></div>
                             <div class="text-xs text-gray-500 dark:text-gray-400">Active</div>
                         </div>
                     </div>

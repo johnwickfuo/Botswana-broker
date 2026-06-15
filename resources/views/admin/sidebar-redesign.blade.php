@@ -104,13 +104,13 @@
                     </ul>
                 </li>
 
-                <!-- Trading Section -->
+                <!-- Investment Operations Section -->
                 <li class="nav-section" @click="activeSection = activeSection === 'trading' ? null : 'trading'">
                     <div class="nav-section-header">
                         <div class="nav-icon">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-coins"></i>
                         </div>
-                        <span class="nav-text">Trading</span>
+                        <span class="nav-text">Investment Operations</span>
                         <div class="nav-arrow" :class="{ 'rotated': activeSection === 'trading' }">
                             <i class="fas fa-chevron-right"></i>
                         </div>
@@ -118,22 +118,22 @@
                     <ul class="nav-section-items" x-show="activeSection === 'trading'" x-collapse>
                         <li class="nav-item {{ request()->routeIs('admin.bots.index') ? 'active' : '' }}">
                             <a href="{{ route('admin.bots.index') }}" class="nav-link">
-                                <span class="nav-text">Trading Bots</span>
+                                <span class="nav-text">Investment Strategies</span>
                             </a>
                         </li>
                         <li class="nav-item {{ request()->routeIs('admin.bots.create') ? 'active' : '' }}">
                             <a href="{{ route('admin.bots.create') }}" class="nav-link">
-                                <span class="nav-text">Add New Bot</span>
+                                <span class="nav-text">Add New Strategy</span>
                             </a>
                         </li>
                         <li class="nav-item {{ request()->routeIs('admin.bots.dashboard') ? 'active' : '' }}">
                             <a href="{{ route('admin.bots.dashboard') }}" class="nav-link">
-                                <span class="nav-text">Bot Analytics</span>
+                                <span class="nav-text">Strategy Analytics</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/admin/dashboard/trading-history') }}" class="nav-link">
-                                <span class="nav-text">Trading History</span>
+                                <span class="nav-text">Activity History</span>
                             </a>
                         </li>
                     </ul>
@@ -249,7 +249,7 @@
                         </li>
                         <li class="nav-item {{ request()->routeIs('managecryptoasset') ? 'active' : '' }}">
                             <a href="{{ url('/admin/dashboard/managecryptoasset') }}" class="nav-link">
-                                <span class="nav-text">Crypto Assets</span>
+                                <span class="nav-text">Payment Assets</span>
                             </a>
                         </li>
                         <li class="nav-item {{ request()->routeIs('adminprofile') ? 'active' : '' }}">

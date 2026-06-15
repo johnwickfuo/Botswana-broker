@@ -23,8 +23,8 @@
                     <i data-lucide="check-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i> Wallet Connected
                 </div>
             @endif
-            <a href="{{ route('mplans') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 sm:py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition text-sm sm:text-base">
-                <i data-lucide="trending-up" class="w-4 h-4 sm:w-5 sm:h-5"></i> Invest Now
+            <a href="{{ route('invest.index') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 sm:py-3 bg-primary text-white rounded-lg shadow hover:opacity-90 transition text-sm sm:text-base">
+                <i class="fa-solid fa-building-columns"></i> Browse Plans
             </a>
         </div>
     </div>
