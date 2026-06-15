@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\Plan;
+use App\Models\Asset;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -66,6 +66,19 @@ abstract class InvestmentTestCase extends TestCase
             $t->text('description')->nullable();
             $t->string('status')->default('active');
             $t->string('symbol')->nullable();
+            $t->string('amount_type')->nullable();
+            $t->decimal('fixed_amount', 20, 2)->nullable();
+            $t->decimal('min_amount', 20, 2)->nullable();
+            $t->decimal('max_amount', 20, 2)->nullable();
+            $t->string('return_type')->nullable();
+            $t->decimal('fixed_return', 20, 2)->nullable();
+            $t->decimal('return_percentage', 8, 2)->nullable();
+            $t->integer('duration')->nullable();
+            $t->string('duration_type')->nullable();
+            $t->string('payout_interval')->nullable();
+            $t->decimal('capacity_amount', 20, 2)->nullable();
+            $t->dateTime('offer_starts_at')->nullable();
+            $t->dateTime('offer_ends_at')->nullable();
             $t->timestamps();
         });
 
@@ -99,6 +112,7 @@ abstract class InvestmentTestCase extends TestCase
             $t->integer('plan')->nullable();
             $t->integer('user')->nullable();
             $t->unsignedBigInteger('plan_id')->nullable();
+            $t->unsignedBigInteger('asset_id')->nullable();
             $t->unsignedBigInteger('user_id')->nullable();
             $t->decimal('invested_amount', 20, 2)->nullable();
             $t->decimal('current_value', 20, 2)->nullable();
@@ -175,10 +189,10 @@ abstract class InvestmentTestCase extends TestCase
         return User::find($id);
     }
 
-    protected function makePlan(array $attributes = []): Plan
+    protected function makeAsset(array $attributes = []): Asset
     {
-        return Plan::create(array_merge([
-            'name' => 'Test Plan', 'active' => true,
+        return Asset::create(array_merge([
+            'name' => 'Test Asset', 'category' => 'Mining', 'status' => 'active',
             'amount_type' => 'ranged', 'min_amount' => 500, 'max_amount' => 5000,
             'return_type' => 'percentage', 'return_percentage' => 10,
             'duration' => 30, 'duration_type' => 'days', 'payout_interval' => 'monthly',

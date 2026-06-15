@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Models\Plan;
+use App\Models\Asset;
 use App\Services\ReturnCalculator;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -22,15 +22,15 @@ class ReturnCalculatorTest extends TestCase
         $this->calc = new ReturnCalculator();
     }
 
-    private function plan(array $attributes): Plan
+    private function asset(array $attributes): Asset
     {
-        return new Plan($attributes);
+        return new Asset($attributes);
     }
 
     /** Combination 1: fixed amount + fixed return. */
     public function test_fixed_amount_with_fixed_return(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'  => 'fixed',
             'fixed_amount' => 1000,
             'return_type'  => 'fixed',
@@ -47,7 +47,7 @@ class ReturnCalculatorTest extends TestCase
     /** Combination 2: fixed amount + percentage return. */
     public function test_fixed_amount_with_percentage_return(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'       => 'fixed',
             'fixed_amount'      => 1000,
             'return_type'       => 'percentage',
@@ -64,7 +64,7 @@ class ReturnCalculatorTest extends TestCase
     /** Combination 3: ranged amount + fixed return (flat, independent of amount). */
     public function test_ranged_amount_with_fixed_return(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'  => 'ranged',
             'min_amount'   => 500,
             'max_amount'   => 5000,
@@ -82,7 +82,7 @@ class ReturnCalculatorTest extends TestCase
     /** Combination 4: ranged amount + percentage return. */
     public function test_ranged_amount_with_percentage_return(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'       => 'ranged',
             'min_amount'        => 500,
             'max_amount'        => 5000,
@@ -100,7 +100,7 @@ class ReturnCalculatorTest extends TestCase
     /** Legacy "fixed_amount" return_type alias is treated as a fixed return. */
     public function test_legacy_fixed_amount_return_type_alias(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'  => 'fixed',
             'fixed_amount' => 800,
             'return_type'  => 'fixed_amount',
@@ -112,7 +112,7 @@ class ReturnCalculatorTest extends TestCase
 
     public function test_ranged_requires_an_amount(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'       => 'ranged',
             'min_amount'        => 500,
             'max_amount'        => 5000,
@@ -126,7 +126,7 @@ class ReturnCalculatorTest extends TestCase
 
     public function test_ranged_amount_below_minimum_is_rejected(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'       => 'ranged',
             'min_amount'        => 500,
             'max_amount'        => 5000,
@@ -140,7 +140,7 @@ class ReturnCalculatorTest extends TestCase
 
     public function test_ranged_amount_above_maximum_is_rejected(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'       => 'ranged',
             'min_amount'        => 500,
             'max_amount'        => 5000,
@@ -154,7 +154,7 @@ class ReturnCalculatorTest extends TestCase
 
     public function test_fixed_plan_rejects_mismatched_amount(): void
     {
-        $plan = $this->plan([
+        $plan = $this->asset([
             'amount_type'  => 'fixed',
             'fixed_amount' => 1000,
             'return_type'  => 'fixed',

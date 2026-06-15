@@ -23,7 +23,7 @@ class InvestFlowTest extends InvestmentTestCase
     public function test_kyc_citizen_can_invest_and_everything_is_recorded(): void
     {
         $user = $this->makeUser(10000);
-        $plan = $this->makePlan(['name' => 'Diamond Growth', 'return_percentage' => 10]);
+        $plan = $this->makeAsset(['name' => 'Diamond Growth', 'return_percentage' => 10]);
 
         $investment = $this->service()->invest($user, $plan, 2000, true);
         $user->refresh();
@@ -45,9 +45,9 @@ class InvestFlowTest extends InvestmentTestCase
 
     public function test_guards_reject_invalid_investments(): void
     {
-        $plan = $this->makePlan();
+        $plan = $this->makeAsset();
 
-        $this->assertRejected(fn () => $this->service()->invest($this->makeUser(100), $this->makePlan(['amount_type' => 'fixed', 'fixed_amount' => 50000, 'return_type' => 'fixed', 'fixed_return' => 100]), null, true));
+        $this->assertRejected(fn () => $this->service()->invest($this->makeUser(100), $this->makeAsset(['amount_type' => 'fixed', 'fixed_amount' => 50000, 'return_type' => 'fixed', 'fixed_return' => 100]), null, true));
         $this->assertRejected(fn () => $this->service()->invest($this->makeUser(10000), $plan, 100, true));     // below min
         $this->assertRejected(fn () => $this->service()->invest($this->makeUser(10000), $plan, 99999, true));   // above max
         $this->assertRejected(fn () => $this->service()->invest($this->makeUser(10000), $plan, 2000, false));   // terms
@@ -56,11 +56,11 @@ class InvestFlowTest extends InvestmentTestCase
 
     public function test_offer_window_and_capacity_are_enforced(): void
     {
-        $this->assertRejected(fn () => $this->service()->invest($this->makeUser(10000), $this->makePlan(['offer_starts_at' => Carbon::now()->addDay()]), 2000, true));
-        $this->assertRejected(fn () => $this->service()->invest($this->makeUser(10000), $this->makePlan(['offer_ends_at' => Carbon::now()->subDay()]), 2000, true));
+        $this->assertRejected(fn () => $this->service()->invest($this->makeUser(10000), $this->makeAsset(['offer_starts_at' => Carbon::now()->addDay()]), 2000, true));
+        $this->assertRejected(fn () => $this->service()->invest($this->makeUser(10000), $this->makeAsset(['offer_ends_at' => Carbon::now()->subDay()]), 2000, true));
 
         $capUser = $this->makeUser(100000);
-        $capPlan = $this->makePlan(['capacity_amount' => 3000]);
+        $capPlan = $this->makeAsset(['capacity_amount' => 3000]);
         $this->service()->invest($capUser, $capPlan, 2000, true);
         $this->assertSame(1000.0, $capPlan->fresh()->remainingCapacity());
         $this->assertRejected(fn () => $this->service()->invest($capUser, $capPlan->fresh(), 2000, true));
@@ -69,7 +69,7 @@ class InvestFlowTest extends InvestmentTestCase
     public function test_no_early_redemption_then_payout_at_maturity(): void
     {
         $user = $this->makeUser(10000);
-        $plan = $this->makePlan(['return_percentage' => 10]);
+        $plan = $this->makeAsset(['return_percentage' => 10]);
         $investment = $this->service()->invest($user, $plan, 2000, true);
 
         $this->assertRejected(fn () => $this->service()->redeem($investment));

@@ -63,13 +63,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item {{ request()->routeIs('admin.investment-plans.*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.investment-plans.index') }}">
-                            <i class="fa fa-chart-line" aria-hidden="true"></i>
-                            <p>Investment Plans</p>
-                        </a>
-                    </li>
-
                     <li class="nav-item {{ request()->routeIs('admin.payouts.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.payouts.index') }}">
                             <i class="fa fa-hand-holding-usd" aria-hidden="true"></i>

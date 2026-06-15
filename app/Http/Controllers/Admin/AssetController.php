@@ -41,23 +41,9 @@ class AssetController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name'           => 'required|string|max:255',
-            'category'       => 'required|string|max:255',
-            'description'    => 'nullable|string',
-            'status'         => 'required|in:active,inactive',
-            'certificates'   => 'nullable|array',
-            'certificates.*' => self::FILE_RULES,
-            'documents'      => 'nullable|array',
-            'documents.*'    => self::FILE_RULES,
-        ]);
+        $data = $request->validate($this->rules());
 
-        $asset = Asset::create([
-            'name'        => $data['name'],
-            'category'    => $data['category'],
-            'description' => $data['description'] ?? null,
-            'status'      => $data['status'],
-        ]);
+        $asset = Asset::create($this->assetAttributes($data));
 
         $this->storeUploads($asset, $request->file('certificates', []), AssetDocument::TYPE_CERTIFICATE);
         $this->storeUploads($asset, $request->file('documents', []), AssetDocument::TYPE_SUPPORTING);
@@ -85,23 +71,9 @@ class AssetController extends Controller
     {
         $asset = Asset::findOrFail($asset);
 
-        $data = $request->validate([
-            'name'           => 'required|string|max:255',
-            'category'       => 'required|string|max:255',
-            'description'    => 'nullable|string',
-            'status'         => 'required|in:active,inactive',
-            'certificates'   => 'nullable|array',
-            'certificates.*' => self::FILE_RULES,
-            'documents'      => 'nullable|array',
-            'documents.*'    => self::FILE_RULES,
-        ]);
+        $data = $request->validate($this->rules());
 
-        $asset->update([
-            'name'        => $data['name'],
-            'category'    => $data['category'],
-            'description' => $data['description'] ?? null,
-            'status'      => $data['status'],
-        ]);
+        $asset->update($this->assetAttributes($data));
 
         $this->storeUploads($asset, $request->file('certificates', []), AssetDocument::TYPE_CERTIFICATE);
         $this->storeUploads($asset, $request->file('documents', []), AssetDocument::TYPE_SUPPORTING);
@@ -178,6 +150,63 @@ class AssetController extends Controller
             $document->path,
             $document->original_name
         );
+    }
+
+    /**
+     * Validation rules for an asset incl. its investment terms.
+     */
+    private function rules(): array
+    {
+        return [
+            'name'              => 'required|string|max:255',
+            'category'          => 'required|string|max:255',
+            'description'       => 'nullable|string',
+            'status'            => 'required|in:active,inactive',
+            'amount_type'       => 'required|in:fixed,ranged',
+            'fixed_amount'      => 'nullable|required_if:amount_type,fixed|numeric|min:0',
+            'min_amount'        => 'nullable|required_if:amount_type,ranged|numeric|min:0',
+            'max_amount'        => 'nullable|required_if:amount_type,ranged|numeric|gte:min_amount',
+            'return_type'       => 'required|in:percentage,fixed',
+            'return_percentage' => 'nullable|required_if:return_type,percentage|numeric|min:0',
+            'fixed_return'      => 'nullable|required_if:return_type,fixed|numeric|min:0',
+            'duration'          => 'required|numeric|min:1',
+            'duration_type'     => 'required|in:days,weeks,months,years',
+            'payout_interval'   => 'required|in:daily,weekly,monthly',
+            'capacity_amount'   => 'nullable|numeric|min:0',
+            'offer_starts_at'   => 'nullable|date',
+            'offer_ends_at'     => 'nullable|date|after_or_equal:offer_starts_at',
+            'certificates'      => 'nullable|array',
+            'certificates.*'    => self::FILE_RULES,
+            'documents'         => 'nullable|array',
+            'documents.*'       => self::FILE_RULES,
+        ];
+    }
+
+    /**
+     * Build the asset attributes from validated data, nulling the fields that
+     * don't apply to the chosen amount_type / return_type.
+     */
+    private function assetAttributes(array $data): array
+    {
+        return [
+            'name'              => $data['name'],
+            'category'          => $data['category'],
+            'description'       => $data['description'] ?? null,
+            'status'            => $data['status'],
+            'amount_type'       => $data['amount_type'],
+            'fixed_amount'      => $data['amount_type'] === 'fixed' ? $data['fixed_amount'] : null,
+            'min_amount'        => $data['amount_type'] === 'ranged' ? $data['min_amount'] : null,
+            'max_amount'        => $data['amount_type'] === 'ranged' ? $data['max_amount'] : null,
+            'return_type'       => $data['return_type'],
+            'return_percentage' => $data['return_type'] === 'percentage' ? $data['return_percentage'] : null,
+            'fixed_return'      => $data['return_type'] === 'fixed' ? $data['fixed_return'] : null,
+            'duration'          => $data['duration'],
+            'duration_type'     => $data['duration_type'],
+            'payout_interval'   => $data['payout_interval'],
+            'capacity_amount'   => $data['capacity_amount'] ?? null,
+            'offer_starts_at'   => $data['offer_starts_at'] ?? null,
+            'offer_ends_at'     => $data['offer_ends_at'] ?? null,
+        ];
     }
 
     /**

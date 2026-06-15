@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\InvestmentException;
-use App\Models\Plan;
+use App\Models\Asset;
 use App\Models\UserPlan;
 use App\Services\InvestmentService;
 use Illuminate\Http\Request;
@@ -20,9 +20,9 @@ class InvestmentController extends Controller
     }
 
     /**
-     * Invest in a plan from the wallet balance.
+     * Invest in an asset from the wallet balance.
      */
-    public function store(Request $request, Plan $plan)
+    public function store(Request $request, Asset $asset)
     {
         $data = $request->validate([
             'amount'        => 'nullable|numeric|min:0',
@@ -30,9 +30,9 @@ class InvestmentController extends Controller
         ]);
 
         try {
-            $investment = $this->service->invest(
+            $this->service->invest(
                 Auth::user(),
-                $plan,
+                $asset,
                 $request->filled('amount') ? (float) $data['amount'] : null,
                 $request->boolean('accept_terms')
             );
@@ -41,7 +41,7 @@ class InvestmentController extends Controller
         }
 
         return redirect()->route('investments.mine')
-            ->with('success', 'Investment confirmed. ' . $plan->name . ' is now active until maturity.');
+            ->with('success', 'Investment confirmed. ' . $asset->name . ' is now active until maturity.');
     }
 
     /**
@@ -50,7 +50,7 @@ class InvestmentController extends Controller
     public function myInvestments()
     {
         $investments = UserPlan::where('user_id', Auth::id())
-            ->with(['investmentPlan.asset', 'payouts'])
+            ->with(['investmentAsset', 'payouts'])
             ->orderByDesc('id')
             ->paginate(15);
 

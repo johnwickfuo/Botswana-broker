@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Asset;
 use App\Models\AuditLog;
 use App\Models\PlanPayout;
-use App\Models\Plan;
 use App\Models\User;
 use App\Models\UserPlan;
 use App\Models\WalletTransaction;
@@ -32,8 +32,8 @@ class PayoutService
      */
     public function schedule(UserPlan $investment): void
     {
-        $plan = $investment->investmentPlan()->first();
-        if (!$plan) {
+        $asset = $investment->investmentAsset()->first();
+        if (!$asset) {
             return;
         }
 
@@ -41,8 +41,8 @@ class PayoutService
         $maturity = $investment->maturity_date ? Carbon::parse($investment->maturity_date) : $start;
 
         $expectedReturn = (float) $investment->expected_return;
-        $periods = $this->periods($plan);
-        $intervalDays = $this->intervalDays($plan);
+        $periods = $this->periods($asset);
+        $intervalDays = $this->intervalDays($asset);
 
         // Return slices, one per interval (rounding remainder lands on the last).
         $sliceBase = round($expectedReturn / $periods, 2);
@@ -161,7 +161,7 @@ class PayoutService
                     'amount'         => $amount,
                     'balance_after'  => (float) $user->account_bal,
                     'description'    => ($isPrincipal ? 'Principal repayment' : 'Return payout')
-                        . ' — ' . optional($investment->investmentPlan()->first())->name,
+                        . ' — ' . optional($investment->investmentAsset()->first())->name,
                     'reference_type' => PlanPayout::class,
                     'reference_id'   => $payout->id,
                 ]);
@@ -194,18 +194,18 @@ class PayoutService
         });
     }
 
-    private function intervalDays(Plan $plan): int
+    private function intervalDays(Asset $asset): int
     {
-        return self::INTERVAL_DAYS[$plan->payout_interval] ?? max(1, $this->durationDays($plan));
+        return self::INTERVAL_DAYS[$asset->payout_interval] ?? max(1, $this->durationDays($asset));
     }
 
-    private function durationDays(Plan $plan): int
+    private function durationDays(Asset $asset): int
     {
-        return max(1, (int) $plan->getDurationInDays());
+        return max(1, (int) $asset->getDurationInDays());
     }
 
-    private function periods(Plan $plan): int
+    private function periods(Asset $asset): int
     {
-        return max(1, intdiv($this->durationDays($plan), $this->intervalDays($plan)));
+        return max(1, intdiv($this->durationDays($asset), $this->intervalDays($asset)));
     }
 }

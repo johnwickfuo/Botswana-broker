@@ -14,12 +14,12 @@ class InvestmentsExport implements FromCollection, WithHeadings, WithMapping
 {
     public function collection()
     {
-        return UserPlan::with(['investmentPlan.asset', 'investor'])->orderByDesc('id')->get();
+        return UserPlan::with(['investmentAsset', 'investor'])->orderByDesc('id')->get();
     }
 
     public function headings(): array
     {
-        return ['ID', 'Investor', 'Email', 'Plan', 'Asset', 'Principal', 'Expected Return', 'Earned', 'Status', 'Start', 'Maturity'];
+        return ['ID', 'Investor', 'Email', 'Asset', 'Category', 'Principal', 'Expected Return', 'Earned', 'Status', 'Start', 'Maturity'];
     }
 
     public function map($investment): array
@@ -28,8 +28,8 @@ class InvestmentsExport implements FromCollection, WithHeadings, WithMapping
             $investment->id,
             optional($investment->investor)->name,
             optional($investment->investor)->email,
-            optional($investment->investmentPlan)->name,
-            optional(optional($investment->investmentPlan)->asset)->name,
+            optional($investment->investmentAsset)->name,
+            optional($investment->investmentAsset)->category,
             number_format((float) $investment->invested_amount, 2, '.', ''),
             number_format((float) $investment->expected_return, 2, '.', ''),
             number_format((float) $investment->total_profit, 2, '.', ''),

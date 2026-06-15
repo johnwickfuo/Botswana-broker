@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Exceptions\InvestmentException;
+use App\Models\Asset;
 use App\Models\AuditLog;
-use App\Models\Plan;
 use App\Models\Settings;
 use App\Models\User;
 use App\Models\UserPlan;
@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 /**
- * Phase 5 — the invest/redeem domain logic for the Republic of Botswana
- * investment platform. Kept free of HTTP concerns so it can be driven
- * end-to-end in tests.
+ * Invest / redeem domain logic. Citizens invest directly into ASSETS, each of
+ * which carries its own terms (amount limits, return, duration, payout
+ * frequency). Kept free of HTTP concerns so it can be driven in tests.
  */
 class InvestmentService
 {
@@ -27,14 +27,14 @@ class InvestmentService
     }
 
     /**
-     * Invest a citizen's wallet balance into a plan.
+     * Invest a citizen's wallet balance into an asset.
      *
      * @throws InvestmentException  on any business-rule violation
      */
-    public function invest(User $user, Plan $plan, ?float $amount, bool $acceptTerms): UserPlan
+    public function invest(User $user, Asset $asset, ?float $amount, bool $acceptTerms): UserPlan
     {
-        if (!$plan->amount_type || !$plan->active) {
-            throw new InvestmentException('This plan is not available for investment.');
+        if ($asset->status !== Asset::STATUS_ACTIVE || !$asset->amount_type) {
+            throw new InvestmentException('This asset is not available for investment.');
         }
 
         $this->assertKycApproved($user);
@@ -43,33 +43,31 @@ class InvestmentService
             throw new InvestmentException('You must accept the investment terms to proceed.');
         }
 
-        if (!$plan->isOfferOpen()) {
-            throw new InvestmentException('This plan is not currently open for investment.');
+        if (!$asset->isOfferOpen()) {
+            throw new InvestmentException('This asset is not currently open for investment.');
         }
 
         // Resolve principal + expected return (also validates fixed/ranged limits).
         try {
-            $breakdown = $this->calculator->calculate($plan, $amount);
+            $breakdown = $this->calculator->calculate($asset, $amount);
         } catch (InvalidArgumentException $e) {
             throw new InvestmentException($e->getMessage());
         }
         $principal = $breakdown['principal'];
         $expectedReturn = $breakdown['return'];
 
-        $remaining = $plan->remainingCapacity();
+        $remaining = $asset->remainingCapacity();
         if ($remaining !== null && $principal > $remaining) {
-            throw new InvestmentException(
-                'This plan does not have enough remaining capacity for that amount.'
-            );
+            throw new InvestmentException('This asset does not have enough remaining capacity for that amount.');
         }
 
         if ((float) $user->account_bal < $principal) {
             throw new InvestmentException('Insufficient wallet balance for this investment.');
         }
 
-        return DB::transaction(function () use ($user, $plan, $principal, $expectedReturn) {
+        return DB::transaction(function () use ($user, $asset, $principal, $expectedReturn) {
             $start = Carbon::now();
-            $maturity = $this->maturityDate($plan, $start);
+            $maturity = $this->maturityDate($asset, $start);
 
             // Deduct from the wallet.
             $user->account_bal = (float) $user->account_bal - $principal;
@@ -77,11 +75,11 @@ class InvestmentService
 
             $investment = UserPlan::create([
                 'user_id'           => $user->id,
-                'plan_id'           => $plan->id,
+                'asset_id'          => $asset->id,
                 'invested_amount'   => $principal,
                 'current_value'     => $principal,
                 'expected_return'   => $expectedReturn,
-                'roi_percentage'    => $plan->return_type === 'percentage' ? $plan->return_percentage : null,
+                'roi_percentage'    => $asset->return_type === 'percentage' ? $asset->return_percentage : null,
                 'total_profit'      => 0,
                 'status'            => 'active',
                 'start_date'        => $start,
@@ -97,7 +95,7 @@ class InvestmentService
                 $user,
                 WalletTransaction::TYPE_DEBIT,
                 $principal,
-                "Investment in {$plan->name}",
+                "Investment in {$asset->name}",
                 $investment
             );
 
@@ -107,8 +105,8 @@ class InvestmentService
             AuditLog::record(
                 'investment.invested',
                 $investment,
-                "Invested {$principal} in plan \"{$plan->name}\"",
-                ['amount' => $principal, 'expected_return' => $expectedReturn, 'plan_id' => $plan->id]
+                "Invested {$principal} in asset \"{$asset->name}\"",
+                ['amount' => $principal, 'expected_return' => $expectedReturn, 'asset_id' => $asset->id]
             );
 
             return $investment;
@@ -117,8 +115,7 @@ class InvestmentService
 
     /**
      * Redeem a matured investment — credits any outstanding payouts (remaining
-     * return slices + principal) to the wallet via the PayoutService. Early
-     * redemption is rejected (locked until maturity).
+     * return slices + principal) to the wallet. Early redemption is rejected.
      *
      * @throws InvestmentException
      */
@@ -157,11 +154,11 @@ class InvestmentService
         }
     }
 
-    private function maturityDate(Plan $plan, Carbon $start): Carbon
+    private function maturityDate(Asset $asset, Carbon $start): Carbon
     {
-        $units = (int) ($plan->duration ?? 0);
+        $units = (int) ($asset->duration ?? 0);
 
-        return match ($plan->duration_type) {
+        return match ($asset->duration_type) {
             'weeks'  => $start->copy()->addWeeks($units),
             'months' => $start->copy()->addMonths($units),
             'years'  => $start->copy()->addYears($units),

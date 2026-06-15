@@ -23,13 +23,13 @@ class PayoutController extends Controller
     {
         $now = Carbon::now();
 
-        $duePayouts = PlanPayout::with(['userPlan.investmentPlan', 'user'])
+        $duePayouts = PlanPayout::with(['userPlan.investmentAsset', 'user'])
             ->where('status', PlanPayout::STATUS_PENDING)
             ->where('due_date', '<=', $now)
             ->orderBy('due_date')
             ->get();
 
-        $activeInvestments = UserPlan::with(['investmentPlan', 'investor'])
+        $activeInvestments = UserPlan::with(['investmentAsset', 'investor'])
             ->where('status', 'active')
             ->orderBy('maturity_date')
             ->paginate(20);

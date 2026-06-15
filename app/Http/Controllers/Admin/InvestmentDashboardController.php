@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Plan;
+use App\Models\Asset;
 use App\Models\PlanPayout;
 use App\Models\UserPlan;
 use Illuminate\Support\Carbon;
 
 /**
- * Phase 7 — investment back-office dashboard: total raised (overall / per
- * asset / per plan), active investment count & value, and payouts due.
+ * Investment back-office dashboard: total raised (overall / per asset), active
+ * investment count & value, and payouts due. Citizens invest into assets.
  */
 class InvestmentDashboardController extends Controller
 {
@@ -18,7 +18,6 @@ class InvestmentDashboardController extends Controller
     {
         $now = Carbon::now();
 
-        // Headline figures.
         $totalRaised   = (float) UserPlan::whereIn('status', ['active', 'matured'])->sum('invested_amount');
         $activeCount   = UserPlan::where('status', 'active')->count();
         $activeValue   = (float) UserPlan::where('status', 'active')->sum('invested_amount');
@@ -26,30 +25,22 @@ class InvestmentDashboardController extends Controller
         $returnsPaid   = (float) PlanPayout::where('type', PlanPayout::TYPE_RETURN)
             ->where('status', PlanPayout::STATUS_PROCESSED)->sum('amount');
 
-        $duePayouts    = PlanPayout::where('status', PlanPayout::STATUS_PENDING)->where('due_date', '<=', $now);
+        $duePayouts      = PlanPayout::where('status', PlanPayout::STATUS_PENDING)->where('due_date', '<=', $now);
         $payoutsDueCount = (clone $duePayouts)->count();
         $payoutsDueTotal = (float) (clone $duePayouts)->sum('amount');
 
-        // Raised per plan (active + matured).
-        $perPlan = UserPlan::whereIn('status', ['active', 'matured'])
-            ->selectRaw('plan_id, COUNT(*) as investors, SUM(invested_amount) as raised')
-            ->groupBy('plan_id')
+        // Raised per asset (active + matured).
+        $assetRows = UserPlan::whereIn('status', ['active', 'matured'])
+            ->whereNotNull('asset_id')
+            ->selectRaw('asset_id, COUNT(*) as investors, SUM(invested_amount) as raised')
+            ->groupBy('asset_id')
             ->get();
 
-        $plans = Plan::with('asset')->whereIn('id', $perPlan->pluck('plan_id'))->get()->keyBy('id');
-
-        // Raised per asset (aggregated from per-plan).
-        $perAsset = [];
-        foreach ($perPlan as $row) {
-            $plan = $plans->get($row->plan_id);
-            $assetName = optional(optional($plan)->asset)->name ?? 'Unlinked';
-            $perAsset[$assetName] = ($perAsset[$assetName] ?? 0) + (float) $row->raised;
-        }
-        arsort($perAsset);
+        $assets = Asset::whereIn('id', $assetRows->pluck('asset_id'))->get()->keyBy('id');
 
         return view('admin.investment-dashboard.index', compact(
             'totalRaised', 'activeCount', 'activeValue', 'maturedCount', 'returnsPaid',
-            'payoutsDueCount', 'payoutsDueTotal', 'perPlan', 'plans', 'perAsset'
+            'payoutsDueCount', 'payoutsDueTotal', 'assetRows', 'assets'
         ))->with('title', 'Investment Dashboard');
     }
 }

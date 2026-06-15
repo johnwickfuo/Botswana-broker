@@ -18,7 +18,7 @@ class PayoutMaturityTest extends InvestmentTestCase
     {
         $user = $this->makeUser($balance);
         // 90 days, monthly payouts, 12% => 3 return slices of 40 + principal.
-        $plan = $this->makePlan(['duration' => 90, 'payout_interval' => 'monthly', 'return_percentage' => 12, 'min_amount' => 100]);
+        $plan = $this->makeAsset(['duration' => 90, 'payout_interval' => 'monthly', 'return_percentage' => 12, 'min_amount' => 100]);
         $investment = app(InvestmentService::class)->invest($user, $plan, $amount, true);
 
         return [$user, $investment];

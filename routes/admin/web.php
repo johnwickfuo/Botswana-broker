@@ -310,16 +310,7 @@ Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
     });
 });
 
-// Investment Plans (Republic of Botswana investment platform — Phase 3)
-Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
-    Route::controller(\App\Http\Controllers\Admin\InvestmentPlanController::class)
-        ->prefix('investment-plans')->name('admin.investment-plans.')->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::get('/{plan}/edit', 'edit')->name('edit');
-            Route::delete('/{plan}', 'destroy')->name('destroy');
-        });
-});
+// (Investment Plans module retired — citizens invest directly in assets.)
 
 // Asset Management (Republic of Botswana investment platform — Phase 2)
 Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {

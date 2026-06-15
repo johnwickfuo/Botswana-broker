@@ -33,7 +33,7 @@ $text = Auth('admin')->User()->dashboard_style == 'light' ? 'dark' : 'light';
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Plan</th>
+                                        <th>Asset</th>
                                         <th>Citizen</th>
                                         <th>Type</th>
                                         <th>Amount</th>
@@ -43,7 +43,7 @@ $text = Auth('admin')->User()->dashboard_style == 'light' ? 'dark' : 'light';
                                 <tbody>
                                     @forelse ($duePayouts as $payout)
                                         <tr>
-                                            <td>{{ optional(optional($payout->userPlan)->investmentPlan)->name ?? '—' }}</td>
+                                            <td>{{ optional(optional($payout->userPlan)->investmentAsset)->name ?? '—' }}</td>
                                             <td>{{ optional($payout->user)->name ?? 'User #' . $payout->user_id }}</td>
                                             <td>
                                                 @if ($payout->type === 'principal')
@@ -74,7 +74,7 @@ $text = Auth('admin')->User()->dashboard_style == 'light' ? 'dark' : 'light';
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Plan</th>
+                                        <th>Asset</th>
                                         <th>Citizen</th>
                                         <th>Principal</th>
                                         <th>Earned</th>
@@ -85,7 +85,7 @@ $text = Auth('admin')->User()->dashboard_style == 'light' ? 'dark' : 'light';
                                 <tbody>
                                     @forelse ($activeInvestments as $investment)
                                         <tr>
-                                            <td>{{ optional($investment->investmentPlan)->name ?? '—' }}</td>
+                                            <td>{{ optional($investment->investmentAsset)->name ?? '—' }}</td>
                                             <td>{{ optional($investment->investor)->name ?? 'User #' . $investment->user_id }}</td>
                                             <td>{{ number_format($investment->invested_amount, 2) }}</td>
                                             <td>{{ number_format($investment->total_profit, 2) }}</td>

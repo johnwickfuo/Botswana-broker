@@ -14,12 +14,12 @@ class PayoutsExport implements FromCollection, WithHeadings, WithMapping
 {
     public function collection()
     {
-        return PlanPayout::with(['userPlan.investmentPlan', 'user'])->orderByDesc('id')->get();
+        return PlanPayout::with(['userPlan.investmentAsset', 'user'])->orderByDesc('id')->get();
     }
 
     public function headings(): array
     {
-        return ['ID', 'Investor', 'Plan', 'Type', 'Amount', 'Status', 'Due Date', 'Processed At'];
+        return ['ID', 'Investor', 'Asset', 'Type', 'Amount', 'Status', 'Due Date', 'Processed At'];
     }
 
     public function map($payout): array
@@ -27,7 +27,7 @@ class PayoutsExport implements FromCollection, WithHeadings, WithMapping
         return [
             $payout->id,
             optional($payout->user)->name,
-            optional(optional($payout->userPlan)->investmentPlan)->name,
+            optional(optional($payout->userPlan)->investmentAsset)->name,
             $payout->type,
             number_format((float) $payout->amount, 2, '.', ''),
             $payout->status,

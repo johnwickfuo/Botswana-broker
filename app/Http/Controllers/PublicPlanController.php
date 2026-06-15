@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asset;
 use App\Models\AssetDocument;
-use App\Models\Plan;
 use App\Services\ReturnCalculator;
 use App\Support\Money;
 use Illuminate\Http\Request;
@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Storage;
 use InvalidArgumentException;
 
 /**
- * Phase 4 — public, guest-accessible investor pages for the Republic of
- * Botswana investment platform. Lists active investment plans, shows full
- * plan + asset detail with viewable government certificates, and serves the
- * live return quote (which IS the backend ReturnCalculator, so the on-page
- * figure always matches the server).
+ * Public, guest-accessible investor pages. Citizens invest directly into
+ * ASSETS, each carrying its own terms. Lists active assets, shows asset detail
+ * with viewable government certificates, and serves the live return quote
+ * (which IS the backend ReturnCalculator, so the on-page figure always matches
+ * the server).
  */
 class PublicPlanController extends Controller
 {
@@ -24,51 +24,47 @@ class PublicPlanController extends Controller
     }
 
     /**
-     * Public listing of all active investment plans + their asset summary.
+     * Public listing of all active, investable assets.
      */
     public function index()
     {
-        $plans = Plan::where('active', true)
+        $assets = Asset::where('status', Asset::STATUS_ACTIVE)
             ->whereNotNull('amount_type')
-            ->with('asset')
-            ->orderBy('sort_order')
+            ->withCount('certificates')
             ->orderByDesc('id')
             ->get();
 
-        return view('invest.index', compact('plans'));
+        return view('invest.index', compact('assets'));
     }
 
     /**
-     * Public plan detail: full terms, linked asset details + certificates,
-     * and the live calculator.
+     * Public asset detail: terms, certificates and the live calculator.
      */
-    public function show(Plan $plan)
+    public function show(Asset $asset)
     {
-        abort_unless($plan->amount_type && $plan->active, 404);
+        abort_unless($asset->amount_type && $asset->status === Asset::STATUS_ACTIVE, 404);
 
-        $plan->load(['asset.certificates']);
+        $asset->load(['certificates']);
 
-        // Server-computed seed so the page is correct before any JS runs.
         $initial = $this->safeCalculate(
-            $plan,
-            $plan->amount_type === Plan::AMOUNT_RANGED ? (float) $plan->min_amount : null
+            $asset,
+            $asset->amount_type === Asset::AMOUNT_RANGED ? (float) $asset->min_amount : null
         );
 
-        return view('invest.show', compact('plan', 'initial'));
+        return view('invest.show', compact('asset', 'initial'));
     }
 
     /**
      * Live return quote — the single source of truth for the on-page figure.
-     * Returns the ReturnCalculator result plus Pula-formatted strings.
      */
-    public function quote(Plan $plan, Request $request)
+    public function quote(Asset $asset, Request $request)
     {
-        abort_unless($plan->amount_type && $plan->active, 404);
+        abort_unless($asset->amount_type && $asset->status === Asset::STATUS_ACTIVE, 404);
 
         $amount = $request->filled('amount') ? (float) $request->input('amount') : null;
 
         try {
-            $result = $this->calculator->calculate($plan, $amount);
+            $result = $this->calculator->calculate($asset, $amount);
         } catch (InvalidArgumentException $e) {
             return response()->json(['ok' => false, 'message' => $e->getMessage()], 422);
         }
@@ -100,10 +96,10 @@ class PublicPlanController extends Controller
         );
     }
 
-    private function safeCalculate(Plan $plan, ?float $amount): ?array
+    private function safeCalculate(Asset $asset, ?float $amount): ?array
     {
         try {
-            return $this->calculator->calculate($plan, $amount);
+            return $this->calculator->calculate($asset, $amount);
         } catch (\Throwable $e) {
             return null;
         }

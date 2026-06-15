@@ -16,6 +16,7 @@ class UserPlan extends Model
     protected $fillable = [
         'user_id',
         'plan_id',
+        'asset_id',
         'invested_amount',
         'current_value',
         'roi_percentage',
@@ -105,6 +106,15 @@ class UserPlan extends Model
     public function investmentPlan(): BelongsTo
     {
         return $this->belongsTo(Plan::class, 'plan_id');
+    }
+
+    /**
+     * The asset this investment was made into (assets are the investable
+     * entity).
+     */
+    public function investmentAsset(): BelongsTo
+    {
+        return $this->belongsTo(Asset::class, 'asset_id');
     }
 
     /**

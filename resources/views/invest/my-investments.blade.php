@@ -37,7 +37,7 @@
 
         @if ($investments->isEmpty())
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-10 text-center text-gray-500 dark:text-gray-400">
-                You have no investments yet. <a href="{{ route('invest.index') }}" class="text-blue-600 hover:underline">Browse plans</a>.
+                You have no investments yet. <a href="{{ route('invest.index') }}" class="text-blue-600 hover:underline">Browse assets</a>.
             </div>
         @else
             <div class="space-y-4">
@@ -46,9 +46,9 @@
                     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                         <div class="flex flex-wrap items-start justify-between gap-4">
                             <div>
-                                <h2 class="font-semibold text-gray-900 dark:text-white">{{ optional($investment->investmentPlan)->name ?? 'Plan' }}</h2>
-                                @if (optional($investment->investmentPlan)->asset)
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ $investment->investmentPlan->asset->name }}</p>
+                                <h2 class="font-semibold text-gray-900 dark:text-white">{{ optional($investment->investmentAsset)->name ?? 'Asset' }}</h2>
+                                @if (optional($investment->investmentAsset)->category)
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ $investment->investmentAsset->category }}</p>
                                 @endif
                             </div>
                             <div>

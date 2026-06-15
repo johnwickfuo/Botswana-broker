@@ -47,37 +47,18 @@ $cur = optional($settings)->currency ?? 'P';
 
                 <div class="row">
                     {{-- Raised per asset --}}
-                    <div class="col-md-5">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header"><h4 class="card-title mb-0">Total Raised per Asset</h4></div>
                             <div class="card-body">
                                 <table class="table">
-                                    <thead><tr><th>Asset</th><th class="text-right">Raised</th></tr></thead>
+                                    <thead><tr><th>Asset</th><th>Category</th><th class="text-right">Investors</th><th class="text-right">Raised</th></tr></thead>
                                     <tbody>
-                                        @forelse ($perAsset as $assetName => $raised)
-                                            <tr><td>{{ $assetName }}</td><td class="text-right">{{ $cur }}{{ number_format($raised, 2) }}</td></tr>
-                                        @empty
-                                            <tr><td colspan="2" class="text-center text-muted py-3">No investments yet.</td></tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Raised per plan --}}
-                    <div class="col-md-7">
-                        <div class="card">
-                            <div class="card-header"><h4 class="card-title mb-0">Total Raised per Plan</h4></div>
-                            <div class="card-body">
-                                <table class="table">
-                                    <thead><tr><th>Plan</th><th>Asset</th><th class="text-right">Investors</th><th class="text-right">Raised</th></tr></thead>
-                                    <tbody>
-                                        @forelse ($perPlan as $row)
-                                            @php($plan = $plans->get($row->plan_id))
+                                        @forelse ($assetRows as $row)
+                                            @php($asset = $assets->get($row->asset_id))
                                             <tr>
-                                                <td>{{ optional($plan)->name ?? 'Plan #' . $row->plan_id }}</td>
-                                                <td>{{ optional(optional($plan)->asset)->name ?? '—' }}</td>
+                                                <td>{{ optional($asset)->name ?? 'Asset #' . $row->asset_id }}</td>
+                                                <td>{{ optional($asset)->category ?? '—' }}</td>
                                                 <td class="text-right">{{ number_format($row->investors) }}</td>
                                                 <td class="text-right">{{ $cur }}{{ number_format($row->raised, 2) }}</td>
                                             </tr>
