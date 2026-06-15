@@ -5,11 +5,11 @@
 @section('title', 'Create Account')
 @section('content')
 
-<!-- Fintech Trading Platform Registration -->
+<!-- Investment Platform Registration -->
 <div class="min-h-screen bg-gray-900 relative overflow-hidden py-8 sm:py-12">
     <div class="relative z-10 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-2xl">
-            <!-- Professional Trading Registration Card -->
+            <!-- Investment Account Registration Card -->
             <div class="bg-gray-900 border border-gray-700 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl"
                  x-data="registrationForm()" x-cloak>
 
@@ -30,7 +30,7 @@
                         Open your Republic of Botswana investment account
                     </p>
 
-                    <!-- Trading Stats - Mobile Responsive -->
+                    <!-- Platform Stats - Mobile Responsive -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-xs sm:text-sm">
                         <!--<div class="text-center p-3 bg-gray-800/50 rounded-xl border border-gray-700/50">-->
                         <!--    <div class="flex items-center justify-center gap-1 text-green-400 mb-1">-->
@@ -49,7 +49,7 @@
                         <div class="text-center p-3 bg-gray-800/50 rounded-xl border border-gray-700/50">
                             <div class="flex items-center justify-center gap-1 text-cyan-400 mb-1">
                                 <i data-lucide="users" class="w-3 h-3"></i>
-                                <span class="font-semibold">1M+ Traders</span>
+                                <span class="font-semibold">1M+ Investors</span>
                             </div>
                             <div class="text-gray-400">Community</div>
                         </div>
@@ -120,7 +120,7 @@
                             <!-- Username Field -->
                             <div class="space-y-2">
                                 <label for="username" class="block text-sm font-bold text-gray-200">
-                                    Trading Username <span class="text-red-400">*</span>
+                                    Username <span class="text-red-400">*</span>
                                 </label>
                                 <div class="relative group">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-4">
@@ -208,7 +208,7 @@
             </div>
             <div>
                 <h3 class="text-lg sm:text-xl font-bold text-white">Location & Preferences</h3>
-                <p class="text-gray-400 text-sm">Set your regional and trading preferences</p>
+                <p class="text-gray-400 text-sm">Set your regional and account preferences</p>
             </div>
         </div>
     </div>
@@ -301,7 +301,7 @@
         </div>
     </div>
 
-    <!-- Trading Preferences Info - Slightly updated wording -->
+    <!-- Account Preferences Info - Slightly updated wording -->
     <div class="mt-6 p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
         <div class="flex items-start gap-3">
             <i data-lucide="info" class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0"></i>
@@ -498,7 +498,7 @@
                     <button type="submit" x-show="currentStep === steps.length - 1"
                             class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group">
                         <i data-lucide="user-plus" class="w-5 h-5"></i>
-                        <span>Create Trading Account</span>
+                        <span>Create Account</span>
                         <i data-lucide="sparkles" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
                     </button>
                 </div>

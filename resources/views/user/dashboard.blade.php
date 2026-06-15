@@ -88,11 +88,11 @@
 
             <p class="text-xs text-gray-600 dark:text-gray-400 mt-3 text-center">
                 @if($signalStrength < 25)
-                    ⚠️ Signal strength is low. Consider waiting for better market conditions.
+                    Your portfolio is getting started. Explore available investment plans to grow your holdings.
                 @elseif($signalStrength < 50)
-                    ⚡ Moderate signal detected. Proceed with caution and proper risk management.
+                    Your portfolio is developing. Review your investment plans to track progress.
                 @else
-                    🚀 Your investments are active and performing within plan terms.
+                    Your investments are active and performing within plan terms.
                 @endif
             </p>
         </div>
@@ -400,253 +400,77 @@
 
 
 
-    <!-- Trading Chart & Quick Actions -->
+    <!-- Investments Overview & Quick Links -->
     <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <div class="xl:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow p-4 sm:p-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">Market Overview</h3>
-                <a href="{{ route('accounthistory') }}" class="text-blue-600 hover:underline text-sm text-center sm:text-left">View History</a>
+                <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-primary"></i>
+                    Your investments at a glance
+                </h3>
+                <a href="{{ route('investments.mine') }}" class="text-primary hover:underline text-sm text-center sm:text-left">My Portfolio</a>
             </div>
-            <!-- Asset Tickers -->
-            <div class="mb-4">
-                <div class="flex flex-wrap gap-2">
-                    <!-- Crypto Assets -->
-                    <div class="flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
-                        <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" class="w-3 h-3 sm:w-4 sm:h-4 rounded-full" alt="BTC">
-                        <span class="text-xs text-gray-700 dark:text-gray-200 font-semibold">BTC/USDT</span>
-                        <span id="btc-price" class="text-xs text-green-600 dark:text-green-400 font-bold">$--</span>
-                    </div>
-                    <div class="flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
-                        <img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" class="w-3 h-3 sm:w-4 sm:h-4 rounded-full" alt="ETH">
-                        <span class="text-xs text-gray-700 dark:text-gray-200 font-semibold">ETH/USDT</span>
-                        <span id="eth-price" class="text-xs text-green-600 dark:text-green-400 font-bold">$--</span>
-                    </div>
-                    <!-- Forex Assets -->
-                    <div class="flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
-                        <span class="text-xs text-gray-700 dark:text-gray-200 font-semibold">EUR/USD</span>
-                        <span id="eurusd-price" class="text-xs text-blue-600 dark:text-blue-400 font-bold">--</span>
-                    </div>
-                    <div class="flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
-                        <span class="text-xs text-gray-700 dark:text-gray-200 font-semibold">GBP/USD</span>
-                        <span id="gbpusd-price" class="text-xs text-blue-600 dark:text-blue-400 font-bold">--</span>
-                    </div>
-                    <!-- Stock Assets -->
-                    <div class="flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
-                        <span class="text-xs text-gray-700 dark:text-gray-200 font-semibold">AAPL</span>
-                        <span id="aapl-price" class="text-xs text-yellow-600 dark:text-yellow-400 font-bold">--</span>
-                    </div>
-                    <div class="flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
-                        <span class="text-xs text-gray-700 dark:text-gray-200 font-semibold">TSLA</span>
-                        <span id="tsla-price" class="text-xs text-yellow-600 dark:text-yellow-400 font-bold">--</span>
-                    </div>
-                </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                Welcome to {{ $settings->site_name }}, the official investment platform of the Republic of Botswana.
+                Review your holdings and explore the government-backed plans available to you.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <a href="{{ route('investments.mine') }}"
+                   class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition p-4">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </span>
+                    <span>
+                        <span class="block text-sm font-semibold text-gray-900 dark:text-white">My Portfolio</span>
+                        <span class="block text-xs text-gray-500 dark:text-gray-400">View your active investments</span>
+                    </span>
+                </a>
+                <a href="{{ route('invest.index') }}"
+                   class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition p-4">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </span>
+                    <span>
+                        <span class="block text-sm font-semibold text-gray-900 dark:text-white">Browse Investment Plans</span>
+                        <span class="block text-xs text-gray-500 dark:text-gray-400">Explore government-backed plans</span>
+                    </span>
+                </a>
             </div>
-            <!-- Advanced TradingView Chart Widget -->
-            <div id="tradingview_advanced" class="w-full" style="height: 300px; min-height: 300px;"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-                new TradingView.widget({
-                    autosize: true,
-                    symbol: "BINANCE:BTCUSDT",
-                    interval: "30",
-                    timezone: "Etc/UTC",
-                    theme: document.documentElement.classList.contains('dark') ? "dark" : "light",
-                    style: "1",
-                    locale: "en",
-                    toolbar_bg: "#f1f3f6",
-                    enable_publishing: false,
-                    allow_symbol_change: true,
-                    hide_side_toolbar: false,
-                    container_id: "tradingview_advanced"
-                });
-                // Fetch live prices for tickers (using CoinGecko and public APIs)
-                async function fetchCryptoPrices() {
-                    try {
-                        const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
-                        const data = await res.json();
-                        document.getElementById('btc-price').textContent = '$' + data.bitcoin.usd.toLocaleString();
-                        document.getElementById('eth-price').textContent = '$' + data.ethereum.usd.toLocaleString();
-                    } catch {}
-                }
-                async function fetchForexPrices() {
-                    try {
-                        const res = await fetch('https://api.exchangerate.host/latest?base=EUR&symbols=USD,GBP');
-                        const data = await res.json();
-                        document.getElementById('eurusd-price').textContent = data.rates.USD.toFixed(4);
-                        document.getElementById('gbpusd-price').textContent = (data.rates.USD / data.rates.GBP).toFixed(4);
-                    } catch {}
-                }
-                async function fetchStockPrices() {
-                    // Free stock APIs are limited; demo with static values or integrate with a paid API for production
-                    document.getElementById('aapl-price').textContent = '195.10';
-                    document.getElementById('tsla-price').textContent = '850.20';
-                }
-                fetchCryptoPrices();
-                fetchForexPrices();
-                fetchStockPrices();
-                setInterval(fetchCryptoPrices, 60000);
-                setInterval(fetchForexPrices, 60000);
-                setInterval(fetchStockPrices, 60000);
-            </script>
         </div>
         <div class="xl:col-span-1 flex flex-col gap-4 sm:gap-6">
-            <div class="bg-gradient-to-br from-indigo-600 to-blue-500 text-white rounded-xl shadow p-4 sm:p-6 text-center flex flex-col items-center justify-center min-h-[120px]">
-                <i data-lucide="zap" class="w-8 h-8 sm:w-10 sm:h-10 mb-2"></i>
-                <h3 class="text-base sm:text-lg font-semibold mb-1">Quick Trade</h3>
-                <p class="text-xs sm:text-sm mb-3">Start a new trade instantly or explore investment plans.</p>
-                {{-- <a href="{{ route('mplans') }}" class="inline-block bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-300 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 dark:hover:bg-gray-800 transition">Start Trading</a> --}}
+            <div class="bg-primary text-white rounded-xl shadow p-4 sm:p-6 text-center flex flex-col items-center justify-center min-h-[120px]">
+                <i class="fa-solid fa-landmark text-3xl sm:text-4xl mb-2"></i>
+                <h3 class="text-base sm:text-lg font-semibold mb-1">Invest with confidence</h3>
+                <p class="text-xs sm:text-sm mb-3">Choose from secure, government-backed investment plans.</p>
+                <a href="{{ route('invest.index') }}" class="inline-block bg-white text-primary font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition">View Plans</a>
             </div>
-<form method="POST" action="{{ route('joinplan') }}" id="createTrade"
-    class="bg-white dark:bg-gray-900 rounded-2xl shadow ring-1 ring-gray-200 dark:ring-gray-700 p-4 sm:p-6 space-y-4 sm:space-y-6">
-    @csrf
-    <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-        <i data-lucide="bar-chart-3" class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400"></i>
-        Place a Trade
-    </h4>
-    <div id="notifiAlert"></div>
-    <!-- Asset Select -->
-    <div>
-        <label for="select_assetss" class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Asset</label>
-        <select id="select_assetss" name="asset" required
-            class="block w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500">
-            @if(isset($instruments) && $instruments->count() > 0)
-                @php
-                    $typeLabels = [
-                        'forex' => 'Currency',
-                        'crypto' => 'Crypto-Currency',
-                        'stock' => 'Stocks',
-                        'commodity' => 'Commodities',
-                        'index' => 'Indices'
-                    ];
-                @endphp
-                @foreach($instruments as $type => $typeInstruments)
-                    <optgroup label="{{ $typeLabels[$type] ?? ucfirst($type) }}">
-                        @foreach($typeInstruments as $instrument)
-                            <option value="{{ $instrument->symbol }}"
-                                    data-logo="{{ $instrument->logo }}"
-                                    data-name="{{ $instrument->name }}"
-                                    @if($loop->parent->first && $loop->first) selected @endif>
-                                {{ $instrument->symbol }}
-                            </option>
-                        @endforeach
-                    </optgroup>
-                @endforeach
-            @else
-                <!-- Fallback to hardcoded options if no instruments found -->
-                <optgroup label="Currency">
-                    <option selected>EURUSD</option>
-                    <option>EURJPY</option>
-                    <option>USDJPY</option>
-                    <option>USDCAD</option>
-                    <option>AUDUSD</option>
-                    <option>AUDJPY</option>
-                    <option>NZDUSD</option>
-                    <option>GBPUSD</option>
-                    <option>GBPJPY</option>
-                    <option>USDCHF</option>
-                </optgroup>
-                <optgroup label="Crypto-Currency">
-                    <option>BTCUSD</option>
-                    <option>ETHUSD</option>
-                    <option>BCHUSD</option>
-                    <option>XRPUSD</option>
-                    <option>LTCUSD</option>
-                    <option>ETHBTC</option>
-                </optgroup>
-                <optgroup label="Stocks">
-                    <option>CITI</option>
-                    <option>SNAP</option>
-                    <option>EA</option>
-                    <option>MSFT</option>
-                    <option>CSCO</option>
-                    <option>GOOG</option>
-                    <option>FB</option>
-                    <option>SBUX</option>
-                    <option>INTC</option>
-                </optgroup>
-                <optgroup label="Indices">
-                    <option>SPX500USD</option>
-                    <option>MXX</option>
-                    <option>XAX</option>
-                    <option>INDEX:STI</option>
-                </optgroup>
-                <optgroup label="Commodities">
-                    <option>GOLD</option>
-                    <option>RB1!</option>
-                    <option>USOIL</option>
-                    <option>SILVER</option>
-                </optgroup>
-            @endif
-        </select>
-    </div>
-    <!-- Amount -->
-    <div>
-        <label for="IAmount" class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Amount</label>
-        <div class="flex rounded-lg shadow-sm overflow-hidden ring-1 ring-gray-300 dark:ring-gray-600 bg-gray-50 dark:bg-gray-800">
-            <span class="px-3 sm:px-4 inline-flex items-center text-xs sm:text-sm text-gray-600 dark:text-gray-300 bg-gray-200 dark:bg-gray-700">
-                {{ $settings->s_currency }}
-            </span>
-            <input type="number" name="amount" id="IAmount" placeholder="Invest Amount (0.00)" min="50" max="500000"
-                class="w-full bg-transparent focus:outline-none px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-900 dark:text-white"
-                required>
-        </div>
-        <span class="text-xs text-gray-400 mt-1 block">Min: 50, Max: 500,000</span>
-    </div>
-    <!-- Leverage & Expiration -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-        <div>
-            <label for="leverage" class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Leverage</label>
-            <select name="leverage" id="leverage" required
-                class="block w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500">
-                <option disabled selected value="">Leverage</option>
-                <option value="10">1:10</option>
-                <option value="20">1:20</option>
-                <option value="30">1:30</option>
-                <option value="40">1:40</option>
-                <option value="50">1:50</option>
-                <option value="60">1:60</option>
-                <option value="70">1:70</option>
-                <option value="80">1:80</option>
-                <option value="90">1:90</option>
-                <option value="100">1:100</option>
-            </select>
-        </div>
-        <div>
-            <label for="expire" class="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Expiration</label>
-            <select name="expire" id="expire" required
-                class="block w-full px-3 py-2 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500">
-                <option disabled selected value="">Expiration</option>
-                <option value="1 Minutes">1 Minute</option>
-                <option value="5 Minutes">5 Minutes</option>
-                <option value="15 Minutes">15 Minutes</option>
-                <option value="30 Minutes">30 Minutes</option>
-                <option value="60 Minutes">1 Hour</option>
-                <option value="4 Hours">4 Hours</option>
-                <option value="1 Days">1 Day</option>
-                <option value="2 Days">2 Days</option>
-                <option value="7 Days">7 Days</option>
-            </select>
-        </div>
-    </div>
-    <!-- Buy/Sell Buttons -->
-    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4">
-        <button type="submit" name="order_type" value="Buy"
-            class="flex-1 bg-gradient-to-br from-green-500 to-emerald-600 text-white py-2 sm:py-3 rounded-xl shadow hover:opacity-90 transition-all flex items-center justify-center gap-2 text-sm sm:text-base font-semibold">
-            <i data-lucide="arrow-up-right" class="w-4 h-4"></i> BUY
-        </button>
-        <button type="submit" name="order_type" value="Sell"
-            class="flex-1 bg-gradient-to-br from-red-500 to-pink-600 text-white py-2 sm:py-3 rounded-xl shadow hover:opacity-90 transition-all flex items-center justify-center gap-2 text-sm sm:text-base font-semibold">
-            <i data-lucide="arrow-down-right" class="w-4 h-4"></i> SELL
-        </button>
-    </div>
-</form>
+            <div class="bg-white dark:bg-gray-900 rounded-2xl shadow ring-1 ring-gray-200 dark:ring-gray-700 p-4 sm:p-6">
+                <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-coins text-primary"></i>
+                    Account summary
+                </h4>
+                <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                    <li class="flex items-center justify-between">
+                        <span>Available balance</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">{{ Auth::user()->currency }}{{ number_format(Auth::user()->account_bal, 2, '.', ',') }}</span>
+                    </li>
+                    <li class="flex items-center justify-between">
+                        <span>Total returns</span>
+                        <span class="font-semibold text-gray-900 dark:text-white">{{ Auth::user()->currency }}{{ number_format(Auth::user()->roi, 2, '.', ',') }}</span>
+                    </li>
+                </ul>
+                <a href="{{ route('investments.mine') }}" class="mt-4 block text-center text-sm text-primary font-semibold hover:underline">Go to My Portfolio</a>
+            </div>
         </div>
     </div>
 
-    <!-- Latest Trades & Referrals -->
+    <!-- Recent Activity & Referrals -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-4 sm:p-6">
-            <h4 class="font-semibold text-base sm:text-lg mb-3 text-gray-900 dark:text-white">Latest Trades</h4>
+            <h4 class="font-semibold text-base sm:text-lg mb-3 text-gray-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-file-contract text-primary"></i>
+                Recent Activity
+            </h4>
             <div class="overflow-x-auto">
                 <table class="min-w-full text-xs sm:text-sm">
                     <thead class="text-gray-700 dark:text-gray-200">
@@ -659,30 +483,28 @@
                     <tbody>
                         @foreach($t_history as $history)
                         <tr class="group hover:bg-gray-50 dark:hover:bg-gray-900 transition">
-                            <!-- Trade Details -->
+                            <!-- Activity Details -->
                             <td class="py-3 px-2 sm:px-4 align-top">
                                 <div class="flex items-center gap-2">
-                                    <span class="inline-flex items-center px-2 py-1 rounded text-xs font-semibold
-                                        {{ $history->type == 'LOSE' ? 'bg-red-50 text-red-600 dark:bg-red-900/20' : 'bg-green-50 text-green-600 dark:bg-green-900/20' }}">
-                                        <i data-lucide="{{ $history->type == 'LOSE' ? 'arrow-down' : 'arrow-up' }}" class="w-3 h-3 sm:w-4 sm:h-4 mr-1"></i>
+                                    <span class="inline-flex items-center px-2 py-1 rounded text-xs font-semibold bg-gray-50 text-gray-700 dark:bg-gray-900/20 dark:text-gray-300">
+                                        <i class="fa-solid fa-file-contract mr-1"></i>
                                         {{ $history->plan }}
                                     </span>
                                 </div>
                                 <div class="text-xs text-gray-400 mt-1">{{ $history->created_at->toDayDateTimeString() }}</div>
                             </td>
                             <!-- Amount -->
-                            <td class="py-3 px-2 sm:px-4 align-top font-semibold {{ $history->type == 'LOSE' ? 'text-red-600' : 'text-green-600' }}">
+                            <td class="py-3 px-2 sm:px-4 align-top font-semibold text-gray-900 dark:text-white">
                                 {{ Auth::user()->currency }} {{ number_format($history->amount, 2, '.', ',') }}
                             </td>
-                            <!-- Status/Leverage -->
+                            <!-- Status -->
                             <td class="py-3 px-2 sm:px-4 align-top">
                                 @if($history->type == 'WIN')
-                                    <span class="inline-flex items-center px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-xs font-medium">WIN +{{ $history->leverage }}%</span>
+                                    <span class="inline-flex items-center px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-xs font-medium">Credited</span>
                                 @elseif($history->type == 'LOSE')
-                                    <span class="inline-flex items-center px-2 py-1 rounded bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400 text-xs font-medium">LOSE -{{ $history->leverage }}%</span>
+                                    <span class="inline-flex items-center px-2 py-1 rounded bg-gray-100 text-gray-700 dark:bg-gray-900/20 dark:text-gray-400 text-xs font-medium">Closed</span>
                                 @else
-                                    <span class="inline-flex items-center px-2 py-1 rounded bg-blue-100 text-red-700 dark:bg-blue-900/20 dark:text-red-400 text-xs font-medium">{{ $history->type }}</span>
-                                    <span class="text-xs ml-1 hidden sm:inline">Leverage: 1:{{ $history->leverage }}</span>
+                                    <span class="inline-flex items-center px-2 py-1 rounded bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400 text-xs font-medium">{{ $history->type }}</span>
                                 @endif
                                 <div class="text-xs text-gray-400 mt-1 hidden sm:block">{{ $history->created_at->toDayDateTimeString() }}</div>
                             </td>
@@ -713,235 +535,27 @@
 
         </div>
     </div>
-  <!-- Asset Overview Cards -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-6 sm:mb-8">
-        <!-- BTC Widget -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4 min-h-[120px] sm:min-h-[150px]">
-            <div class="tradingview-widget-container h-full">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {
-                    "symbol": "BINANCE:BTCUSDT",
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "1D",
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                }
-                </script>
+  <!-- Investment Plans Call to Action -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-4 sm:p-6 mb-4 sm:mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="flex items-start gap-3">
+                <span class="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary text-xl">
+                    <i class="fa-solid fa-building-columns"></i>
+                </span>
+                <div>
+                    <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">Government-backed investment plans</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-2xl">
+                        {{ $settings->site_name }} offers a range of secure, government-backed investment plans designed
+                        to help citizens grow their savings. Review the available options and choose the plan that suits you.
+                    </p>
+                </div>
             </div>
-        </div>
-
-        <!-- ETH Widget -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4 min-h-[120px] sm:min-h-[150px]">
-            <div class="tradingview-widget-container h-full">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {
-                    "symbol": "BINANCE:ETHUSDT",
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "1D",
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                }
-                </script>
-            </div>
-        </div>
-
-        <!-- EUR/USD Widget -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4 min-h-[120px] sm:min-h-[150px]">
-            <div class="tradingview-widget-container h-full">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {
-                    "symbol": "FX:EURUSD",
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "1D",
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                }
-                </script>
-            </div>
-        </div>
-
-        <!-- GBP/USD Widget -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4 min-h-[120px] sm:min-h-[150px]">
-            <div class="tradingview-widget-container h-full">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {
-                    "symbol": "FX:GBPUSD",
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "1D",
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                }
-                </script>
-            </div>
-        </div>
-
-        <!-- AAPL Widget -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4 min-h-[120px] sm:min-h-[150px]">
-            <div class="tradingview-widget-container h-full">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {
-                    "symbol": "NASDAQ:AAPL",
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "1D",
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                }
-                </script>
-            </div>
-        </div>
-
-        <!-- Gold Widget -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4 min-h-[120px] sm:min-h-[150px]">
-            <div class="tradingview-widget-container h-full">
-                <div class="tradingview-widget-container__widget h-full"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {
-                    "symbol": "TVC:GOLD",
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "1D",
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                }
-                </script>
-            </div>
+            <a href="{{ route('invest.index') }}"
+               class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary text-white rounded-lg font-medium hover:opacity-90 transition whitespace-nowrap">
+                <i class="fa-solid fa-file-contract"></i>
+                Browse Investment Plans
+            </a>
         </div>
     </div>
-
-<!-- Live Market Watch Widget -->
-<div class="bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4 mb-4 sm:mb-6">
-    <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-        {
-            "width": "100%",
-            "height": 400,
-            "symbolsGroups": [
-                {
-                    "name": "Crypto",
-                    "symbols": [
-                        {"name": "BINANCE:BTCUSDT", "displayName": "Bitcoin"},
-                        {"name": "BINANCE:ETHUSDT", "displayName": "Ethereum"},
-                        {"name": "BINANCE:BNBUSDT", "displayName": "BNB"}
-                    ]
-                },
-                {
-                    "name": "Forex",
-                    "symbols": [
-                        {"name": "FX:EURUSD", "displayName": "EUR/USD"},
-                        {"name": "FX:GBPUSD", "displayName": "GBP/USD"},
-                        {"name": "FX:USDJPY", "displayName": "USD/JPY"}
-                    ]
-                }
-            ],
-            "showSymbolLogo": true,
-            "colorTheme": "dark",
-            "isTransparent": true,
-            "locale": "en"
-        }
-        </script>
-    </div>
 </div>
-
-
-<!-- News Feed Widget -->
-<div class="mt-4 sm:mt-6">
-    <div class="tradingview-widget-container bg-white dark:bg-gray-800 rounded-xl shadow p-3 sm:p-4">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-        {
-            "feedMode": "all_symbols",
-            "colorTheme": "dark",
-            "isTransparent": true,
-            "displayMode": "compact",
-            "width": "100%",
-            "height": "350",
-            "locale": "en"
-        }
-        </script>
-    </div>
-</div>
-</div>
-
-<script>
-    function changeTimeframe(interval) {
-        if (widget) {
-            widget.chart().setResolution(interval);
-        }
-    }
-
-    // Asset selection enhancement with logo display
-    document.addEventListener('DOMContentLoaded', function() {
-        const assetSelect = document.getElementById('select_assetss');
-
-        if (assetSelect) {
-            // Create logo display element if it doesn't exist
-            let logoDisplay = document.getElementById('asset-logo-display');
-            if (!logoDisplay) {
-                logoDisplay = document.createElement('div');
-                logoDisplay.id = 'asset-logo-display';
-                logoDisplay.className = 'flex items-center gap-2 mt-2';
-                logoDisplay.innerHTML = '<img id="asset-logo" class="w-6 h-6 rounded-full hidden" alt="Asset Logo"><span id="asset-name" class="text-sm text-gray-600 dark:text-gray-400"></span>';
-                assetSelect.parentNode.appendChild(logoDisplay);
-            }
-
-            // Function to update logo display
-            function updateAssetLogo() {
-                const selectedOption = assetSelect.options[assetSelect.selectedIndex];
-                const logoImg = document.getElementById('asset-logo');
-                const assetName = document.getElementById('asset-name');
-
-                if (selectedOption && selectedOption.dataset.logo && selectedOption.dataset.logo !== 'null' && selectedOption.dataset.logo !== '') {
-                    logoImg.src = selectedOption.dataset.logo;
-                    logoImg.classList.remove('hidden');
-                    logoImg.onerror = function() {
-                        this.classList.add('hidden');
-                    };
-                } else {
-                    logoImg.classList.add('hidden');
-                }
-
-                if (assetName) {
-                    // Use instrument name if available, otherwise use symbol
-                    const displayName = selectedOption.dataset.name || selectedOption.text;
-                    assetName.textContent = displayName;
-                }
-            }
-
-            // Update logo on selection change
-            assetSelect.addEventListener('change', updateAssetLogo);
-
-            // Initialize logo display
-            updateAssetLogo();
-        }
-    });
-</script>
 @endsection

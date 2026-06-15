@@ -15,7 +15,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
         <div class="content ">
             <div class="page-inner">
                 <div class="mt-2 mb-4">
-                    <h1 class="title1 ">Crypto Assets/Exchnage Settings</h1>
+                    <h1 class="title1 ">Payment Asset Settings</h1>
                 </div>
                 <x-danger-alert />
                 <x-success-alert />
@@ -56,7 +56,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                     <form action="{{ route('exchangefee') }}" method="post">
                                         @csrf
                                         <div class=" form-group">
-                                            <h5 class="">Exchange Fee</h5>
+                                            <h5 class="">Processing Fee</h5>
                                             <input type="text" name="fee" value="{{ $moresettings->fee }}"
                                                 class=" form-control " id="">
                                         </div>
@@ -66,8 +66,8 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                                 <input type="number" name="rate"
                                                     value="{{ $moresettings->currency_rate }}" step=".0"
                                                     class=" form-control " placeholder="450">
-                                                <small class="">This rate will be used to calculate your users crypto
-                                                    equivilent in your chosen currency.</small>
+                                                <small class="">This rate will be used to calculate your users asset
+                                                    equivalent in your chosen currency.</small>
                                             </div>
                                         @endif
 
