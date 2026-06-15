@@ -540,15 +540,15 @@ window.smartsupp||(function(d) {
             </div>
             <ul class="space-y-1">
                 <li>
-                    <a href="{{ route('mplans') }}"
-                       class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('user.plans.*') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                        <i data-lucide="target" class="w-5 h-5 mr-3"></i>
-                        Investment Plans
+                    <a href="{{ route('invest.index') }}"
+                       class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('invest.*') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                        <i data-lucide="landmark" class="w-5 h-5 mr-3"></i>
+                        Invest in National Assets
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('myplans', 'All') }}"
-                       class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('myplans') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                    <a href="{{ route('investments.mine') }}"
+                       class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/50 transition-colors duration-150 {{ request()->routeIs('investments.mine') ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
                         <i data-lucide="pie-chart" class="w-5 h-5 mr-3"></i>
                         My Portfolio
                     </a>
@@ -967,12 +967,12 @@ window.smartsupp||(function(d) {
 
       <!-- Quick Actions Grid -->
       <div class="grid grid-cols-2 gap-4 mb-6">
-        <a href="{{ route('mplans') }}"
+        <a href="{{ route('invest.index') }}"
            class="flex flex-col items-center p-4 rounded-xl
                   bg-gray-800 border border-gray-700
                   hover:bg-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300
                   group">
-          <i data-lucide="trending-up" class="w-6 h-6 mb-2 text-blue-400
+          <i data-lucide="landmark" class="w-6 h-6 mb-2 text-blue-400
                                               group-hover:scale-110 transition-transform duration-300"></i>
           <span class="text-sm font-medium text-gray-200">Invest</span>
         </a>

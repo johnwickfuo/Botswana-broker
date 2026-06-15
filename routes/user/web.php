@@ -58,10 +58,11 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('dashboard')->group(func
 
         Route::get('accounthistory', [ViewsController::class, 'accounthistory'])->name('accounthistory');
         Route::get('withdrawals', [ViewsController::class, 'withdrawals'])->name('withdrawalsdeposits');
-        Route::get('buy-plan', [ViewsController::class, 'mplans'])->name('mplans');
-        Route::get('myplans', [ViewsController::class, 'myplans'])->defaults('sort', 'All')->name('myplans.default');
-        Route::get('myplans/{sort}', [ViewsController::class, 'myplans'])->name('myplans');
-        Route::get('sort-plans/{sorttype}', [ViewsController::class, 'sortPlans'])->name('sortplans');
+        // Legacy investment-plan pages retired — citizens invest in assets.
+        Route::get('buy-plan', fn () => redirect()->route('invest.index'))->name('mplans');
+        Route::get('myplans', fn () => redirect()->route('investments.mine'))->name('myplans.default');
+        Route::get('myplans/{sort}', fn () => redirect()->route('investments.mine'))->name('myplans');
+        Route::get('sort-plans/{sorttype}', fn () => redirect()->route('invest.index'))->name('sortplans');
 
         Route::get('plan-details/{id}', [ViewsController::class, 'planDetails'])->name('plandetails');
         Route::get('cancel-plan/{id}', [UserInvPlanController::class, 'cancelPlan'])->name('cancelplan');

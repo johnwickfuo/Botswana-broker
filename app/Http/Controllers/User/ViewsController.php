@@ -72,6 +72,9 @@ class ViewsController extends Controller
             'settings' => $settings,
             'deposited' => $total_deposited,
             'total_withdrawal' => $total_withdrawal,
+            'assets' => \App\Models\Asset::where('status', 'active')
+                ->whereNotNull('amount_type')
+                ->orderByDesc('id')->take(6)->get(),
             'plans' => User_plans::where('user', Auth::user()->id)->where('active', 'yes')->orderByDesc('id')->skip(0)->take(2)->get(),
             't_history' => Tp_Transaction::where('user', Auth::user()->id)
                 ->whereIn('type',  ['Sell','Buy','WIN','LOSE'])
