@@ -74,6 +74,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
+    /**
+     * Botswana-only platform: the wallet currency is always Pula (P),
+     * regardless of any legacy stored value (e.g. "$").
+     */
+    public function getCurrencyAttribute($value)
+    {
+        return 'P';
+    }
+
 
     public function dp()
     {

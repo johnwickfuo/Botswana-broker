@@ -19,4 +19,13 @@ class Settings extends Model
     // {
     //     return ucfirst($value);
     // }
+
+    /**
+     * Botswana-only platform: the platform currency is always Pula (P),
+     * regardless of any legacy stored value (e.g. "$").
+     */
+    public function getCurrencyAttribute($value)
+    {
+        return 'P';
+    }
 }
