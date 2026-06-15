@@ -346,3 +346,17 @@ Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
             Route::post('/{investment}/mature', 'markMatured')->name('mature');
         });
 });
+
+// Investment back-office: dashboard + reports (Republic of Botswana — Phase 7)
+Route::middleware(['isadmin', '2fa'])->prefix('admin')->group(function () {
+    Route::get('investment-dashboard', [\App\Http\Controllers\Admin\InvestmentDashboardController::class, 'index'])
+        ->name('admin.investment-dashboard');
+
+    Route::controller(\App\Http\Controllers\Admin\ReportController::class)
+        ->prefix('reports')->name('admin.reports.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/investments', 'investments')->name('investments');
+            Route::get('/payouts', 'payouts')->name('payouts');
+            Route::get('/investors', 'investors')->name('investors');
+        });
+});

@@ -34,6 +34,7 @@ class KycApplicationRequest extends FormRequest
             'state' => 'required',
             'country' => 'required',
             'document_type' => 'required',
+            'id_number' => 'required|string|max:50',
             'frontimg' => 'required',
             'backimg' => 'required',
         ];

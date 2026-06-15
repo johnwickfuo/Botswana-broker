@@ -46,6 +46,7 @@ class VerifyController extends Controller
         $kyc->state = $request->state;
         $kyc->country = $request->country;
         $kyc->document_type = $request->document_type;
+        $kyc->id_number = $request->id_number;
         $kyc->frontimg = $frontimgPath;
         $kyc->backimg = $backimgPath;
         $kyc->status = 'Under review';

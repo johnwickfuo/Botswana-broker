@@ -49,6 +49,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item {{ request()->routeIs('admin.investment-dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('admin.investment-dashboard') }}">
+                            <i class="fa fa-tachometer-alt" aria-hidden="true"></i>
+                            <p>Investment Dashboard</p>
+                        </a>
+                    </li>
+
                     <li class="nav-item {{ request()->routeIs('admin.assets.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.assets.index') }}">
                             <i class="fa fa-certificate" aria-hidden="true"></i>
@@ -67,6 +74,13 @@
                         <a href="{{ route('admin.payouts.index') }}">
                             <i class="fa fa-hand-holding-usd" aria-hidden="true"></i>
                             <p>Payouts</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.reports.index') }}">
+                            <i class="fa fa-file-export" aria-hidden="true"></i>
+                            <p>Reports &amp; Exports</p>
                         </a>
                     </li>
 

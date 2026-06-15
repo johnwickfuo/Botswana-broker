@@ -186,6 +186,15 @@
                                placeholder="@username"
                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all">
                     </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-300">
+                            Omang / National ID Number <span class="text-red-400">*</span>
+                        </label>
+                        <input type="text" name="id_number" required value="{{ old('id_number') }}"
+                               placeholder="e.g. 000000000"
+                               class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all">
+                    </div>
                 </div>
 
                 <div class="flex justify-end mt-8">

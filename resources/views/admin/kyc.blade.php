@@ -26,6 +26,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                 <thead>
                                     <tr>
                                         <th>User</th>
+                                        <th>Omang / National ID</th>
                                         <th>KYC Status</th>
                                         <th></th>
                                     </tr>
@@ -34,6 +35,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                     @foreach ($kycs as $list)
                                         <tr>
                                             <td>{{ $list->user->name }}</td>
+                                            <td>{{ $list->id_number ?? '—' }}</td>
 
                                             <td>
                                                 @if ($list->status == 'Verified')
