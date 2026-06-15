@@ -238,7 +238,7 @@
         <!-- Field 1: Investment Experience -->
         <div class="space-y-2">
             <label for="experience" class="block text-sm font-bold text-gray-200">
-                Have you invested in stock exchanges and cryptocurrency before? <span class="text-red-400">*</span>
+                Have you invested before? <span class="text-red-400">*</span>
             </label>
             <div class="relative group">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-4 z-10">

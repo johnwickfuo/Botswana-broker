@@ -336,27 +336,26 @@
     @endif
 
  @if($settings->wallet_status == 'on')
-        <!-- Wallet Connection Prompt -->
+        <!-- Get started prompt -->
         <div class="mb-6 sm:mb-8">
-            <div class="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-2xl p-4 sm:p-6 border border-indigo-200 dark:border-indigo-700">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
                 <div class="flex flex-col sm:flex-row items-start gap-4">
-                    <div class="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl mx-auto sm:mx-0">
-                        <i data-lucide="wallet" class="w-6 h-6 sm:w-8 sm:h-8 text-indigo-600 dark:text-indigo-400"></i>
+                    <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl mx-auto sm:mx-0">
+                        <i data-lucide="landmark" class="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400"></i>
                     </div>
                     <div class="flex-1 text-center sm:text-left">
-                        <h3 class="text-base sm:text-lg font-semibold text-indigo-900 dark:text-indigo-100 mb-2">Connect Your Wallet to Start Earning</h3>
-                        <p class="text-indigo-700 dark:text-indigo-300 text-sm mb-4">
-                            Connect your cryptocurrency wallet to unlock daily earning opportunities of up to
-                            <span class="font-semibold">{{ Auth::user()->currency }}{{ $settings->min_return ?? '0' }}</span> per day.
+                        <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">Invest in the Republic of Botswana</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                            Browse verified national government assets and start earning transparent, regulated returns in Pula.
                         </p>
-                        <a href="#"
-                           class="inline-flex items-center gap-2 px-4 py-2 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-[1.02] text-sm sm:text-base">
+                        <a href="{{ route('invest.index') }}"
+                           class="inline-flex items-center gap-2 px-4 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-200 text-sm sm:text-base">
                             <i data-lucide="plus" class="w-4 h-4"></i>
-                            Connect Wallet Now
+                            View Investment Plans
                         </a>
                     </div>
                     <button onclick="this.parentElement.parentElement.parentElement.style.display='none'"
-                            class="text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 absolute top-2 right-2 sm:relative sm:top-auto sm:right-auto">
+                            class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 absolute top-2 right-2 sm:relative sm:top-auto sm:right-auto">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
