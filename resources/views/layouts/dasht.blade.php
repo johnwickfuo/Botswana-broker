@@ -181,26 +181,7 @@ window.smartsupp||(function(d) {
           </div>
         </a>
 
-        <!-- Live Market Ticker (Hidden on small screens) -->
-        <div class="hidden lg:flex items-center space-x-4 ml-8 pl-8 border-l border-gray-200 dark:border-gray-700"
-             x-data="cryptoPrices()" x-init="fetchPrices()">
-          <div class="flex items-center space-x-2">
-            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span class="text-xs font-medium text-gray-600 dark:text-gray-300">LIVE</span>
-          </div>
-          <div class="text-sm">
-            <span class="text-gray-500 dark:text-gray-400">BTC:</span>
-            <span class="font-mono ml-1"
-                  :class="btcChange >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'"
-                  x-text="'$' + (btcPrice ? btcPrice.toLocaleString() : '...')"></span>
-          </div>
-          <div class="text-sm">
-            <span class="text-gray-500 dark:text-gray-400">ETH:</span>
-            <span class="font-mono ml-1"
-                  :class="ethChange >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'"
-                  x-text="'$' + (ethPrice ? ethPrice.toLocaleString() : '...')"></span>
-          </div>
-        </div>
+        <!-- (crypto market ticker removed) -->
       </div>
 
       <!-- Center Section: Account Balance (Desktop) -->
@@ -423,34 +404,13 @@ window.smartsupp||(function(d) {
     </div>
   </div>
 
-  <!-- Mobile Market Ticker -->
-  <div class="lg:hidden bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 px-4 py-2"
-       x-data="cryptoPrices()" x-init="fetchPrices()">
+  <!-- Mobile balance bar (crypto ticker removed) -->
+  <div class="lg:hidden md:hidden bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 px-4 py-2">
     <div class="flex items-center justify-between text-xs">
-      <div class="flex items-center space-x-4">
-        <div class="flex items-center space-x-1">
-          <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-          <span class="text-gray-600 dark:text-gray-400">LIVE</span>
-        </div>
-        <div>
-          <span class="text-gray-500 dark:text-gray-400">BTC:</span>
-          <span class="font-mono ml-1"
-                :class="btcChange >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'"
-                x-text="'$' + (btcPrice ? btcPrice.toLocaleString() : '...')"></span>
-        </div>
-        <div>
-          <span class="text-gray-500 dark:text-gray-400">ETH:</span>
-          <span class="font-mono ml-1"
-                :class="ethChange >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'"
-                x-text="'$' + (ethPrice ? ethPrice.toLocaleString() : '...')"></span>
-        </div>
-      </div>
-      <div class="md:hidden">
-        <div class="text-gray-500 dark:text-gray-400">Balance:</div>
-        <div class="font-semibold text-gray-900 dark:text-white">
-          {{ Auth::user()->currency }}{{ number_format(auth()->user()->account_bal, 2) }}
-        </div>
-      </div>
+      <span class="text-gray-500 dark:text-gray-400">Balance</span>
+      <span class="font-semibold text-gray-900 dark:text-white">
+        {{ Auth::user()->currency }}{{ number_format(auth()->user()->account_bal, 2) }}
+      </span>
     </div>
   </div>
 </nav>
@@ -486,25 +446,7 @@ window.smartsupp||(function(d) {
         </div>
     </div>
 
-    <!-- Live Market Prices -->
-    <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20" x-cloak>
-        <div class="flex items-center justify-between mb-3">
-            <h3 class="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase">Live Market</h3>
-            <span class="flex items-center text-xs text-green-600 dark:text-green-400">
-                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
-                <span class="font-medium">LIVE</span>
-            </span>
-        </div>
-        <div class="space-y-2">
-            <coingecko-coin-price-marquee-widget
-                coin-ids="bitcoin,ethereum,eos,ripple,litecoin"
-                currency="usd"
-                background-color="transparent"
-                locale="en"
-                font-color="#333">
-            </coingecko-coin-price-marquee-widget>
-        </div>
-    </div>
+    <!-- (live crypto market widget removed) -->
 
     <!-- Navigation Menu -->
     <nav class="p-4 space-y-6 text-sm pb-20" x-cloak>
@@ -1067,55 +1009,7 @@ window.smartsupp||(function(d) {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-<!-- Live Crypto Prices Script -->
-<script>
-// Alpine.js component for live crypto prices
-function cryptoPrices() {
-  return {
-    btcPrice: null,
-    ethPrice: null,
-    btcChange: 0,
-    ethChange: 0,
-    lastUpdate: null,
-
-    async fetchPrices() {
-      try {
-        // Using CoinGecko API (free, no API key required)
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
-        const data = await response.json();
-
-        if (data.bitcoin && data.ethereum) {
-          this.btcPrice = Math.round(data.bitcoin.usd);
-          this.ethPrice = Math.round(data.ethereum.usd);
-          this.btcChange = data.bitcoin.usd_24h_change || 0;
-          this.ethChange = data.ethereum.usd_24h_change || 0;
-          this.lastUpdate = new Date();
-
-          console.log('Crypto prices updated:', {
-            BTC: this.btcPrice,
-            ETH: this.ethPrice,
-            time: this.lastUpdate
-          });
-        }
-      } catch (error) {
-        console.error('Error fetching crypto prices:', error);
-        // Fallback to static values on error
-        this.btcPrice = this.btcPrice || 45320;
-        this.ethPrice = this.ethPrice || 2850;
-      }
-
-      // Update prices every 30 seconds
-      setTimeout(() => this.fetchPrices(), 30000);
-    }
-  }
-}
-
-// Initialize when Alpine is ready
-document.addEventListener('alpine:init', () => {
-  // Register the component globally
-  Alpine.data('cryptoPrices', cryptoPrices);
-});
-</script>
+<!-- (live crypto prices script removed) -->
 
 @yield('scripts')
 @include('layouts.lang')
