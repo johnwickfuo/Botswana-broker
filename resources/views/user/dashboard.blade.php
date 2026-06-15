@@ -67,66 +67,6 @@
 
 
     <!-- ============================================================= -->
-    <!-- Invest in National Assets                                     -->
-    <!-- ============================================================= -->
-    <div class="mb-6 sm:mb-8">
-        <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#75AADB]/15 text-[#00A3DD]">
-                    <i data-lucide="landmark" class="w-4 h-4"></i>
-                </span>
-                <h2 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100">Invest in National Assets</h2>
-            </div>
-            <a href="{{ route('invest.index') }}" class="text-sm font-medium text-[#00A3DD] hover:underline">View all</a>
-        </div>
-
-        @if(isset($assets) && $assets->count())
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                @foreach($assets as $asset)
-                    <div class="bg-white dark:bg-gray-900 rounded-xl ring-1 ring-gray-200 dark:ring-gray-800 overflow-hidden flex flex-col">
-                        <div class="bw-flag-stripe" style="height:5px;background:#111111;border-top:2px solid #fff;border-bottom:2px solid #fff;"></div>
-                        <div class="p-4 flex-1">
-                            <div class="flex items-start justify-between">
-                                <h3 class="font-semibold text-gray-900 dark:text-white">{{ $asset->name }}</h3>
-                                <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Active</span>
-                            </div>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ $asset->category }}</p>
-                            <dl class="mt-3 space-y-1.5 text-sm">
-                                <div class="flex justify-between">
-                                    <dt class="text-gray-500 dark:text-gray-400">Amount</dt>
-                                    <dd class="font-medium text-gray-900 dark:text-white">
-                                        @if($asset->amount_type === 'fixed') @pula($asset->fixed_amount)
-                                        @else @pula($asset->min_amount) – @pula($asset->max_amount) @endif
-                                    </dd>
-                                </div>
-                                <div class="flex justify-between">
-                                    <dt class="text-gray-500 dark:text-gray-400">Return</dt>
-                                    <dd class="font-medium text-green-600 dark:text-green-400">
-                                        @if($asset->return_type === 'percentage')
-                                            {{ rtrim(rtrim(number_format($asset->return_percentage, 2), '0'), '.') }}%
-                                        @else @pula($asset->fixed_return) @endif
-                                    </dd>
-                                </div>
-                            </dl>
-                        </div>
-                        <div class="px-4 pb-4">
-                            <a href="{{ route('invest.show', $asset->id) }}"
-                               class="block text-center text-white text-sm font-semibold py-2 rounded-lg transition" style="background:#00A3DD;">
-                                Invest
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="bg-white dark:bg-gray-900 rounded-xl ring-1 ring-gray-200 dark:ring-gray-800 p-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                No assets are available for investment yet. Please check back soon.
-            </div>
-        @endif
-    </div>
-
-
-    <!-- ============================================================= -->
     <!-- Portfolio activity (signal strength)                          -->
     <!-- ============================================================= -->
     @if(Auth::user()->progress > 2)
@@ -296,6 +236,66 @@
                 </div>
             @endforeach
         </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    <!-- Invest in National Assets                                     -->
+    <!-- ============================================================= -->
+    <div class="mb-6 sm:mb-8">
+        <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#75AADB]/15 text-[#00A3DD]">
+                    <i data-lucide="landmark" class="w-4 h-4"></i>
+                </span>
+                <h2 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100">Invest in National Assets</h2>
+            </div>
+            <a href="{{ route('invest.index') }}" class="text-sm font-medium text-[#00A3DD] hover:underline">View all</a>
+        </div>
+
+        @if(isset($assets) && $assets->count())
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach($assets as $asset)
+                    <div class="bg-white dark:bg-gray-900 rounded-xl ring-1 ring-gray-200 dark:ring-gray-800 overflow-hidden flex flex-col">
+                        <div class="bw-flag-stripe" style="height:5px;background:#111111;border-top:2px solid #fff;border-bottom:2px solid #fff;"></div>
+                        <div class="p-4 flex-1">
+                            <div class="flex items-start justify-between">
+                                <h3 class="font-semibold text-gray-900 dark:text-white">{{ $asset->name }}</h3>
+                                <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Active</span>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">{{ $asset->category }}</p>
+                            <dl class="mt-3 space-y-1.5 text-sm">
+                                <div class="flex justify-between">
+                                    <dt class="text-gray-500 dark:text-gray-400">Amount</dt>
+                                    <dd class="font-medium text-gray-900 dark:text-white">
+                                        @if($asset->amount_type === 'fixed') @pula($asset->fixed_amount)
+                                        @else @pula($asset->min_amount) – @pula($asset->max_amount) @endif
+                                    </dd>
+                                </div>
+                                <div class="flex justify-between">
+                                    <dt class="text-gray-500 dark:text-gray-400">Return</dt>
+                                    <dd class="font-medium text-green-600 dark:text-green-400">
+                                        @if($asset->return_type === 'percentage')
+                                            {{ rtrim(rtrim(number_format($asset->return_percentage, 2), '0'), '.') }}%
+                                        @else @pula($asset->fixed_return) @endif
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div class="px-4 pb-4">
+                            <a href="{{ route('invest.show', $asset->id) }}"
+                               class="block text-center text-white text-sm font-semibold py-2 rounded-lg transition" style="background:#00A3DD;">
+                                Invest
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="bg-white dark:bg-gray-900 rounded-xl ring-1 ring-gray-200 dark:ring-gray-800 p-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                No assets are available for investment yet. Please check back soon.
+            </div>
+        @endif
     </div>
 
 
