@@ -215,25 +215,8 @@
 
     <!-- All fields in a single responsive grid (1 column on mobile, 2 columns on sm+ for better spacing) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        <!-- Country Field (unchanged) -->
-        <div class="space-y-2">
-            <label for="country" class="block text-sm font-bold text-gray-200">
-                Country <span class="text-red-400">*</span>
-            </label>
-            <div class="relative group">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-4 z-10">
-                    <i data-lucide="flag" class="h-5 w-5 text-gray-400 group-focus-within:text-blue-400 transition-colors"></i>
-                </div>
-                <select name="country" id="country" required
-                        class="block w-full rounded-xl border border-gray-600 bg-gray-900 pl-12 pr-8 py-4 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 focus:bg-gray-800 transition-all duration-200 text-sm font-bold appearance-none">
-                    <option selected disabled class="text-gray-400">Select your country</option>
-                    @include('auth.countries')
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                    <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
-                </div>
-            </div>
-        </div>
+        {{-- Botswana-only platform: country is fixed, no selector --}}
+        <input type="hidden" name="country" value="Botswana">
 
         <!-- Field 1: Investment Experience -->
         <div class="space-y-2">
@@ -638,13 +621,7 @@
                         }
 
                     } else if (step === 1) {
-                        // Validate location
-                        const country = document.getElementById('country').value;
-
-                        if (!country || country === 'Select your country') {
-                            missingFields.push('Country');
-                            isValid = false;
-                        }
+                        // Botswana-only platform: country is fixed, nothing to validate here.
 
                     } else if (step === 2) {
                         // Validate security

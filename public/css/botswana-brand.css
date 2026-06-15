@@ -117,3 +117,44 @@ hr { border-top-color: rgba(17,17,17,.12); }
 
 /* ---- Selection ---- */
 ::selection { background: var(--bw-blue); color: #fff; }
+
+/* ---- National flag motif (Phase 10) --------------------------------------
+   Botswana flag: light sky-blue field with a central black band bordered by
+   white. Reusable as section accents and dividers. */
+:root {
+    --bw-flag-blue: #75AADB;   /* flag field */
+    --bw-flag-blue-deep: #6DA9D2;
+}
+
+/* Thin flag stripe: black bar bordered top & bottom by white (the "pipa"). */
+.bw-flag-stripe {
+    height: 14px;
+    background: var(--bw-ink);
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    width: 100%;
+}
+
+/* Decorative full flag band (sky blue with central black/white stripe). */
+.bw-flag-band {
+    background: var(--bw-flag-blue);
+    position: relative;
+}
+.bw-flag-band::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 50%;
+    transform: translateY(-50%);
+    height: 28%;
+    background: var(--bw-ink);
+    border-top: 0.35rem solid #fff;
+    border-bottom: 0.35rem solid #fff;
+}
+
+/* Flag-blue helpers for heroes / accents. */
+.bg-flag-blue { background-color: var(--bw-flag-blue) !important; }
+.text-flag-blue { color: var(--bw-flag-blue) !important; }
+.border-flag-blue { border-color: var(--bw-flag-blue) !important; }
+
+/* Inter weight for big civic headlines. */
+.bw-display { font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }

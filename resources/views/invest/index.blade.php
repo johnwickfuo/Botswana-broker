@@ -3,15 +3,23 @@
 @section('title', 'Investment Plans')
 
 @section('content')
+
+<!-- Hero band -->
+<section class="relative text-white">
+    <div class="absolute inset-0 bg-center bg-cover" style="background-image: linear-gradient(rgba(17,17,17,.74), rgba(17,17,17,.8)), url('{{ asset('images/botswana/landscape.jpg') }}');"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <div class="inline-flex items-center gap-3 mb-4">
+            <img src="{{ asset('images/botswana/flag.svg') }}" alt="Flag of Botswana" class="h-6 w-auto rounded-sm shadow">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color:#75AADB">Republic of Botswana</span>
+        </div>
+        <h1 class="bw-display text-3xl sm:text-4xl">Government Investment Plans</h1>
+        <p class="mt-3 text-gray-200 max-w-2xl mx-auto">Invest in verified national assets of the Republic of Botswana. All amounts in Pula (P).</p>
+    </div>
+    <div class="bw-flag-stripe"></div>
+</section>
+
 <section class="bg-gray-50 dark:bg-gray-900 min-h-screen py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="text-center mb-10">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Government Investment Plans</h1>
-            <p class="mt-2 text-gray-600 dark:text-gray-300">
-                Invest in verified national assets of the Republic of Botswana. All amounts in Pula (P).
-            </p>
-        </div>
 
         @if ($plans->isEmpty())
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-10 text-center text-gray-500 dark:text-gray-400">
