@@ -11,7 +11,7 @@
                 Dashboard
             </a>
             <i class="fa-solid fa-chevron-right mx-2 text-xs"></i>
-            <span class="text-gray-900 dark:text-gray-100 font-medium">Investment Plans</span>
+            <span class="text-gray-900 dark:text-gray-100 font-medium">Assets</span>
         </nav>
 
         <!-- Civic Notice -->
@@ -21,19 +21,19 @@
             </div>
 
             <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-                Government-backed investment plans
+                Government-backed national assets
             </h1>
 
             <p class="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-xl mx-auto mb-8">
                 {{ $settings->site_name }} is the official investment platform of the Republic of Botswana.
                 Rather than speculative trading, the platform offers a selection of secure, government-backed
-                investment plans designed to help citizens grow their savings with confidence.
+                assets designed to help citizens grow their savings with confidence.
             </p>
 
             <a href="{{ route('invest.index') }}"
                class="inline-flex items-center gap-2 bg-primary hover:opacity-90 text-white font-semibold py-3 px-6 rounded-xl transition-colors">
                 <i class="fa-solid fa-building-columns"></i>
-                Browse Investment Plans
+                Browse Assets
             </a>
         </div>
     </div>

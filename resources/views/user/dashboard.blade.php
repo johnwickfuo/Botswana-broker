@@ -55,7 +55,7 @@
                         </div>
                     @endif
                     <a href="{{ route('invest.index') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-black/20 hover:opacity-90 transition text-sm" style="background:#00A3DD;">
-                        <i data-lucide="landmark" class="w-4 h-4"></i> Browse Plans
+                        <i data-lucide="landmark" class="w-4 h-4"></i> Browse Assets
                     </a>
                     <a href="{{ route('investments.mine') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#0b1f2a] font-semibold shadow-lg shadow-black/20 hover:bg-gray-100 transition text-sm">
                         <i data-lucide="file-text" class="w-4 h-4"></i> My Portfolio
@@ -126,11 +126,11 @@
 
             <p class="text-xs text-gray-600 dark:text-gray-400 mt-3 text-center">
                 @if($signalStrength < 25)
-                    Your portfolio is getting started. Explore available investment plans to grow your holdings.
+                    Your portfolio is getting started. Explore available assets to grow your holdings.
                 @elseif($signalStrength < 50)
-                    Your portfolio is developing. Review your investment plans to track progress.
+                    Your portfolio is developing. Review your investments to track progress.
                 @else
-                    Your investments are active and performing within plan terms.
+                    Your investments are active and performing within their terms.
                 @endif
             </p>
         </div>
@@ -458,7 +458,7 @@
                            class="inline-flex items-center gap-2 px-4 py-2.5 text-white rounded-xl font-medium transition-all duration-200 text-sm hover:opacity-90"
                            style="background:#00A3DD;">
                             <i data-lucide="plus" class="w-4 h-4"></i>
-                            View Investment Plans
+                            View Assets
                         </a>
                     </div>
                     <button onclick="this.parentElement.parentElement.parentElement.style.display='none'"
@@ -486,7 +486,7 @@
             </div>
             <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
                 Welcome to {{ $settings->site_name }}, the official investment platform of the Republic of Botswana.
-                Review your holdings and explore the government-backed plans available to you.
+                Review your holdings and explore the government-backed assets available to you.
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <a href="{{ route('investments.mine') }}"
@@ -505,8 +505,8 @@
                         <i data-lucide="landmark" class="w-5 h-5"></i>
                     </span>
                     <span>
-                        <span class="block text-sm font-semibold text-gray-900 dark:text-white">Browse Investment Plans</span>
-                        <span class="block text-xs text-gray-500 dark:text-gray-400">Explore government-backed plans</span>
+                        <span class="block text-sm font-semibold text-gray-900 dark:text-white">Browse Assets</span>
+                        <span class="block text-xs text-gray-500 dark:text-gray-400">Explore government-backed assets</span>
                     </span>
                 </a>
             </div>
@@ -520,8 +520,8 @@
                 <div class="relative">
                     <i data-lucide="landmark" class="w-9 h-9 sm:w-10 sm:h-10 mb-2 mx-auto"></i>
                     <h3 class="text-base sm:text-lg font-semibold mb-1">Invest with confidence</h3>
-                    <p class="text-xs sm:text-sm text-white/80 mb-3">Choose from secure, government-backed investment plans.</p>
-                    <a href="{{ route('invest.index') }}" class="inline-block bg-white text-[#0b1f2a] font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition">View Plans</a>
+                    <p class="text-xs sm:text-sm text-white/80 mb-3">Choose from secure, government-backed national assets.</p>
+                    <a href="{{ route('invest.index') }}" class="inline-block bg-white text-[#0b1f2a] font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition">View Assets</a>
                 </div>
             </div>
             <!-- Account summary -->
@@ -630,7 +630,7 @@
     </div>
 
     <!-- ============================================================= -->
-    <!-- Investment plans call to action                              -->
+    <!-- Assets call to action                              -->
     <!-- ============================================================= -->
     <div class="relative bg-white dark:bg-gray-800 rounded-xl shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 p-4 sm:p-6 mb-4 sm:mb-6 overflow-hidden">
         <div class="bw-flag-stripe absolute top-0 inset-x-0" style="height:6px;background:#111111;border-bottom:2px solid #fff;"></div>
@@ -640,10 +640,10 @@
                     <i data-lucide="landmark" class="w-6 h-6"></i>
                 </span>
                 <div>
-                    <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">Government-backed investment plans</h3>
+                    <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">Government-backed national assets</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-2xl">
-                        {{ $settings->site_name }} offers a range of secure, government-backed investment plans designed
-                        to help citizens grow their savings. Review the available options and choose the plan that suits you.
+                        {{ $settings->site_name }} offers a range of secure, government-backed national assets designed
+                        to help citizens grow their savings. Review the available options and choose the asset that suits you.
                     </p>
                 </div>
             </div>
@@ -651,7 +651,7 @@
                class="inline-flex items-center justify-center gap-2 px-5 py-3 text-white rounded-xl font-medium hover:opacity-90 transition whitespace-nowrap"
                style="background:#00A3DD;">
                 <i data-lucide="file-text" class="w-4 h-4"></i>
-                Browse Investment Plans
+                Browse Assets
             </a>
         </div>
     </div>

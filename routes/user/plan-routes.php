@@ -3,35 +3,20 @@
 use App\Http\Controllers\User\UserPlanController;
 use Illuminate\Support\Facades\Route;
 
-// Investment Plan Routes
+// Legacy investment-plan pages retired — citizens invest in assets. Route
+// names are kept (as redirects) so any lingering route() references resolve.
 Route::middleware(['auth:sanctum', 'verified', 'complete.kyc'])->prefix('plans')->name('user.plans.')->group(function () {
-    // Browse plans
-    Route::get('/', [UserPlanController::class, 'index'])->name('index');
+    Route::get('/', fn () => redirect()->route('invest.index'))->name('index');
+    Route::get('/my-plans', fn () => redirect()->route('investments.mine'))->name('my-plans');
+    Route::get('/details/{userPlan}', fn () => redirect()->route('investments.mine'))->name('details');
+    Route::get('/payment/{userPlan}', fn () => redirect()->route('investments.mine'))->name('payment');
+    Route::get('/contract/{userPlan}', fn () => redirect()->route('investments.mine'))->name('contract');
+    Route::get('/{plan}/invest', fn () => redirect()->route('invest.index'))->name('invest');
+    Route::get('/{plan}', fn () => redirect()->route('invest.index'))->name('show');
 
-    // Show plan details
-    Route::get('/{plan}', [UserPlanController::class, 'show'])->name('show');
-
-    // My active plans
-    Route::get('/my-plans', [UserPlanController::class, 'myPlans'])->name('my-plans');
-
-    // Plan details page for user's own plan
-    Route::get('/details/{userPlan}', [UserPlanController::class, 'details'])->name('details');
-
-    // Investment page
-    Route::get('/{plan}/invest', [UserPlanController::class, 'invest'])->name('invest');
-
-    // Process investment request
-    Route::post('/{plan}/invest', [UserPlanController::class, 'processInvestment'])->name('process-investment');
-
-    // Payment page
-    Route::get('/payment/{userPlan}', [UserPlanController::class, 'payment'])->name('payment');
-
-    // Process payment
-    Route::post('/payment/{userPlan}', [UserPlanController::class, 'processPayment'])->name('process-payment');
-
-    // View contract
-    Route::get('/contract/{userPlan}', [UserPlanController::class, 'contract'])->name('contract');
-
-    // Cancel pending plan
-    Route::post('/cancel/{userPlan}', [UserPlanController::class, 'cancelPlan'])->name('cancel');
+    // Legacy POST endpoints (no UI links to them) — redirect harmlessly.
+    Route::post('/{plan}/invest', fn () => redirect()->route('invest.index'))->name('process-investment');
+    Route::post('/payment/{userPlan}', fn () => redirect()->route('investments.mine'))->name('process-payment');
+    Route::post('/cancel/{userPlan}', fn () => redirect()->route('investments.mine'))->name('cancel');
 });
+
