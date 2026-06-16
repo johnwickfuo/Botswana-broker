@@ -35,8 +35,8 @@ We confirm that your deposit of **{{$user->currency}}{{number_format($deposit->a
 
 **Next Steps:**
 - Your funds are now available within your account
-- Review the available investment plans suited to your goals
-- Allocate your funds to a plan from your dashboard
+- Review the available assets suited to your goals
+- Invest your funds in an asset from your dashboard
 
 @component('mail::button', ['url' => config('app.url').'/dashboard'])
 Access Your Dashboard
@@ -45,7 +45,7 @@ Access Your Dashboard
 <hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 
 **Managing Your Investment:**
-- Review the investment plans available on the platform
+- Review the assets available on the platform
 - Monitor your holdings and account activity
 - Track returns credited to your account over time
 

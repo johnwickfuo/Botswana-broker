@@ -16,9 +16,9 @@ We are pleased to confirm that your account on the **{{$settings->site_name}}** 
 **To begin, please complete the following steps:**
 
 1. **Verify your profile** — confirm your account details for added security.
-2. **Review the available investment options** — consider the plans suited to your goals.
+2. **Review the available investment options** — consider the assets suited to your goals.
 3. **Fund your account** — deposit an amount you are comfortable committing.
-4. **Confirm your selection** — choose the investment plan that fits your objectives.
+4. **Confirm your selection** — choose the asset that fits your objectives.
 5. **Monitor your investment** — track your holdings from your account dashboard.
 @endcomponent
 

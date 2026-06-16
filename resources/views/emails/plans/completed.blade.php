@@ -1,5 +1,5 @@
 @component('mail::message')
-# Investment Plan Completed
+# Investment Matured
 
 Dear {{ $name }},
 
@@ -13,14 +13,14 @@ Your investment in the **{{ $planName }}** plan on the Republic of Botswana Inve
 - **End Date:** {{ $endDate }}
 
 @if($profit > 0)
-The returns from this plan have been credited to your account balance.
+The returns from this investment have been credited to your account balance.
 @else
 Your investment has been completed. Please review your account for the latest balance.
 @endif
 
 <hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 
-You may allocate your funds to another investment plan or request a withdrawal from your account dashboard.
+You may invest your funds in another asset or request a withdrawal from your account dashboard.
 
 @component('mail::button', ['url' => $siteUrl . '/login'])
 Access Your Account

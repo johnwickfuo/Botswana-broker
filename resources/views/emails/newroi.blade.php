@@ -28,7 +28,7 @@ View Your Investment
 ### Managing Your Investment
 
 - Monitor your holdings and returns from your account dashboard
-- Review the investment plans available on the platform
+- Review the assets available on the platform
 - Keep your account details up to date for security
 
 @component('mail::button', ['url' => config('app.url').'/login', 'color' => 'success'])
@@ -50,7 +50,7 @@ Republic of Botswana Investment Platform
 <hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 
 @component('mail::subcopy')
-**Disclosure:** All investments carry risk, and past performance does not guarantee future results. This notification is provided for information only and should not be considered financial advice. Returns are calculated based on the performance of your selected investment plan. {{$settings->site_name}} is committed to responsible and transparent administration of your investment.
+**Disclosure:** All investments carry risk, and past performance does not guarantee future results. This notification is provided for information only and should not be considered financial advice. Returns are calculated based on the performance of your selected asset. {{$settings->site_name}} is committed to responsible and transparent administration of your investment.
 @endcomponent
 
 @endcomponent
