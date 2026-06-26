@@ -47,7 +47,7 @@ Manage Notifications
 
 **Regards,**<br>
 **The {{$settings->site_name}} Team**<br>
-Republic of Botswana Investment Platform
+United Arab Emirates Investment Platform
 
 @component('mail::subcopy')
 This notification was sent as part of your {{$settings->site_name}} account communications. If you believe you received this email in error or have concerns about your account security, please contact us immediately.

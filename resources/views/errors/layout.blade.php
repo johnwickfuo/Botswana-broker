@@ -43,7 +43,7 @@
                 font-weight: 600;
                 letter-spacing: .14em;
                 text-transform: uppercase;
-                color: #00A3DD;
+                color: #009639;
             }
 
             .title {

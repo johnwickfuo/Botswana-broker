@@ -2,7 +2,7 @@
 <div class="form-group">
     <label>Asset Name <span class="text-danger">*</span></label>
     <input type="text" name="name" class="form-control" required
-        value="{{ old('name', $asset->name ?? '') }}" placeholder="e.g. Morupule Coal Mine">
+        value="{{ old('name', $asset->name ?? '') }}" placeholder="e.g. Hatta Solar Project">
 </div>
 
 <div class="form-group">
@@ -27,7 +27,7 @@
 
 <hr>
 <h4 class="mb-3">Investment Terms</h4>
-<p class="text-muted">Set how citizens invest in this asset and the returns they earn.</p>
+<p class="text-muted">Set how investors invest in this asset and the returns they earn.</p>
 
 <div class="form-row">
     <div class="form-group col-md-4">
@@ -38,18 +38,18 @@
         </select>
     </div>
     <div class="form-group col-md-4">
-        <label>Minimum Investment (P)</label>
+        <label>Minimum Investment</label>
         <input type="number" step="0.01" name="min_amount" class="form-control"
             value="{{ old('min_amount', $asset->min_amount ?? '') }}" placeholder="e.g. 500">
         <small class="form-text text-muted">Required when amount type is "ranged".</small>
     </div>
     <div class="form-group col-md-4">
-        <label>Maximum Investment (P)</label>
+        <label>Maximum Investment</label>
         <input type="number" step="0.01" name="max_amount" class="form-control"
             value="{{ old('max_amount', $asset->max_amount ?? '') }}" placeholder="e.g. 50000">
     </div>
     <div class="form-group col-md-4">
-        <label>Fixed Amount (P)</label>
+        <label>Fixed Amount</label>
         <input type="number" step="0.01" name="fixed_amount" class="form-control"
             value="{{ old('fixed_amount', $asset->fixed_amount ?? '') }}" placeholder="only for fixed type">
         <small class="form-text text-muted">Required when amount type is "fixed".</small>
@@ -71,7 +71,7 @@
         <small class="form-text text-muted">Required when return type is "percentage".</small>
     </div>
     <div class="form-group col-md-4">
-        <label>Fixed Return (P)</label>
+        <label>Fixed Return</label>
         <input type="number" step="0.01" name="fixed_return" class="form-control"
             value="{{ old('fixed_return', $asset->fixed_return ?? '') }}" placeholder="only for fixed return">
     </div>
@@ -100,7 +100,7 @@
         </select>
     </div>
     <div class="form-group col-md-3">
-        <label>Capacity Cap (P)</label>
+        <label>Capacity Cap</label>
         <input type="number" step="0.01" name="capacity_amount" class="form-control"
             value="{{ old('capacity_amount', $asset->capacity_amount ?? '') }}" placeholder="optional total cap">
     </div>

@@ -7,7 +7,7 @@
             <div class="page-inner">
                 <div class="mt-2 mb-4">
                     <h3 class="fw-bold mb-3">About {{ $settings->site_name }}</h3>
-                    <p class="text-muted">The official investment platform of the Republic of Botswana</p>
+                    <p class="text-muted">The official investment platform of the United Arab Emirates, open to investors worldwide</p>
                 </div>
 
                 <x-danger-alert />
@@ -22,10 +22,10 @@
                                     <i class="fas fa-landmark fa-4x mb-3 opacity-75"></i>
                                 </div>
                                 <h1 class="display-4 fw-bold mb-3">{{ $settings->site_name }}</h1>
-                                <p class="lead mb-4">The official investment platform of the Republic of Botswana</p>
+                                <p class="lead mb-4">The official investment platform of the United Arab Emirates, open to investors worldwide</p>
                                 <div class="row justify-content-center">
                                     <div class="col-md-8">
-                                        <p class="mb-4">We are committed to advancing national economic development by offering citizens and residents a secure, transparent, and well-regulated platform for investment and wealth growth.</p>
+                                        <p class="mb-4">We are committed to advancing economic development by offering investors worldwide a secure, transparent, and well-regulated platform for investment and wealth growth.</p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center gap-3 flex-wrap">
@@ -127,7 +127,7 @@
                                 </h5>
                             </div>
                             <div class="card-body">
-                                <p class="text-muted mb-3">{{ $settings->site_name }} exists to broaden access to safe, well-regulated investment opportunities for the people of Botswana, supporting national economic growth and individual financial independence.</p>
+                                <p class="text-muted mb-3">{{ $settings->site_name }} exists to broaden access to safe, well-regulated investment opportunities for investors worldwide, supporting economic growth and individual financial independence.</p>
 
                                 <div class="row mb-3">
                                     <div class="col-12">
@@ -224,7 +224,7 @@
                                 </h5>
                             </div>
                             <div class="card-body">
-                                <p class="text-muted mb-3">As the official investment platform of the Republic of Botswana, we uphold the highest standards of transparency, accountability, and public trust.</p>
+                                <p class="text-muted mb-3">As the official investment platform of the United Arab Emirates, open to investors worldwide, we uphold the highest standards of transparency, accountability, and public trust.</p>
 
                                 <div class="mb-3">
                                     <h6 class="fw-bold text-dark">Our Commitments:</h6>
@@ -242,7 +242,7 @@
 
                                 <div class="alert alert-success border-0 mb-0">
                                     <i class="fas fa-bullseye me-2"></i>
-                                    <strong>Goal:</strong> Serve the people of Botswana with integrity and trust!
+                                    <strong>Goal:</strong> Serve investors worldwide with integrity and trust!
                                 </div>
                             </div>
                         </div>
@@ -255,7 +255,7 @@
                         <div class="card border-0 shadow-lg" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);">
                             <div class="card-body text-center text-white py-5">
                                 <h3 class="fw-bold mb-4">Ready to Get Started?</h3>
-                                <p class="lead mb-4">Open your investment account with the Republic of Botswana today</p>
+                                <p class="lead mb-4">Open your investment account with the United Arab Emirates today</p>
 
                                 <div class="row justify-content-center">
                                     <div class="col-md-8">

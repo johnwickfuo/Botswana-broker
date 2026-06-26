@@ -134,7 +134,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                     </div>
                                     <div class="mb-5 col-md-6">
                                         <h2 class="text-{{ $text }}">{{ $kyc->id_number ?? '—' }}</h2>
-                                        <small class="text-muted">Omang / National ID number</small>
+                                        <small class="text-muted">National ID / Passport</small>
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <img src="{{ asset('storage/app/public/' . $kyc->frontimg) }}" alt=""

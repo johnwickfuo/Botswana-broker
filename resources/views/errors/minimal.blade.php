@@ -45,7 +45,7 @@
 			font-weight: 600;
 			letter-spacing: .14em;
 			text-transform: uppercase;
-			color: var(--bw-blue, #00A3DD);
+			color: var(--bw-blue, #009639);
 			margin-bottom: .75rem;
 		}
 		.bw-error__code {
@@ -68,7 +68,7 @@
 		}
 		.bw-error__home {
 			display: inline-block;
-			background-color: var(--bw-blue, #00A3DD);
+			background-color: var(--bw-blue, #009639);
 			color: #fff;
 			text-decoration: none;
 			font-weight: 600;
@@ -76,7 +76,7 @@
 			border-radius: .4rem;
 		}
 		.bw-error__home:hover {
-			background-color: var(--bw-blue-dark, #0089BA);
+			background-color: var(--bw-blue-dark, #00732F);
 			color: #fff;
 		}
 		.bw-error__site {

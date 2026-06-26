@@ -29,7 +29,7 @@ blockquote {
 }
 
 a {
-    color: #00A3DD;
+    color: #009639;
     text-decoration: none;
 }
 
@@ -119,7 +119,7 @@ img {
     padding: 28px 0;
     text-align: center;
     background-color: #111111;
-    border-bottom: 3px solid #00A3DD;
+    border-bottom: 3px solid #009639;
 }
 
 .header a {
@@ -130,7 +130,7 @@ img {
 }
 
 .header a:hover {
-    color: #00A3DD;
+    color: #009639;
 }
 
 /* Logo */
@@ -200,7 +200,7 @@ img {
 }
 
 .footer a {
-    color: #00A3DD;
+    color: #009639;
     text-decoration: none;
 }
 
@@ -275,11 +275,11 @@ img {
 /* Primary action - sky blue */
 .button-blue,
 .button-primary {
-    background-color: #00A3DD;
-    border-bottom: 12px solid #00A3DD;
-    border-left: 22px solid #00A3DD;
-    border-right: 22px solid #00A3DD;
-    border-top: 12px solid #00A3DD;
+    background-color: #009639;
+    border-bottom: 12px solid #009639;
+    border-left: 22px solid #009639;
+    border-right: 22px solid #009639;
+    border-top: 12px solid #009639;
 }
 
 /* Secondary action - near-black */
@@ -304,7 +304,7 @@ img {
 /* Panels - restrained light callout with sky-blue rule */
 
 .panel {
-    border-left: 4px solid #00A3DD;
+    border-left: 4px solid #009639;
     margin: 24px 0;
     overflow: hidden;
 }
@@ -337,7 +337,7 @@ img {
 
 /* Panel variants kept restrained */
 .panel-success {
-    border-left-color: #00A3DD;
+    border-left-color: #009639;
 }
 
 .panel-success .panel-content {

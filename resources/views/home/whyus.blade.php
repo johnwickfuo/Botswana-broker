@@ -17,7 +17,7 @@
                     Why Invest With <span class="text-primary">{{ $settings->site_name }}</span>
                 </h1>
                 <p class="text-lg text-gray-600 max-w-2xl">
-                    {{ $settings->site_name }} gives citizens a transparent, regulated route to invest in verified national government assets of the Republic of Botswana, with returns paid in Pula.
+                    {{ $settings->site_name }} gives investors worldwide a transparent, regulated route to invest in verified national government assets of the United Arab Emirates, with returns paid in your selected currency.
                 </p>
 
                 <!-- Breadcrumb -->
@@ -55,7 +55,7 @@
                     <i class="fas fa-building-columns text-2xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Government-Backed Assets</h3>
-                <p class="text-gray-600">Every plan is tied to verified national assets of the Republic of Botswana, reviewed before being offered to citizens.</p>
+                <p class="text-gray-600">Every plan is tied to verified national assets of the United Arab Emirates, reviewed before being offered to investors.</p>
             </div>
 
             <!-- Transparency -->
@@ -72,8 +72,8 @@
                 <div class="w-16 h-16 mx-auto mb-6 bg-sky-50 rounded-xl flex items-center justify-center">
                     <i class="fas fa-coins text-2xl text-primary"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Returns Paid in Pula</h3>
-                <p class="text-gray-600">Periodic returns are paid in Pula, and your original principal is returned at maturity under the agreed terms.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Returns Paid to Your Wallet</h3>
+                <p class="text-gray-600">Periodic returns are paid in your selected currency, and your original principal is returned at maturity under the agreed terms.</p>
             </div>
 
             <!-- KYC protected -->
@@ -82,7 +82,7 @@
                     <i class="fas fa-shield-halved text-2xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">KYC-Protected</h3>
-                <p class="text-gray-600">Identity verification safeguards every account, helping ensure investments are held securely by the rightful citizen.</p>
+                <p class="text-gray-600">Identity verification safeguards every account, helping ensure investments are held securely by the rightful investor.</p>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 <span class="text-primary">Built on Trust</span>
             </h2>
-            <p class="text-lg text-gray-600">A regulated platform designed to protect citizen investors at every step.</p>
+            <p class="text-lg text-gray-600">A regulated platform designed to protect investors at every step.</p>
         </div>
     </div>
     <div class="container mx-auto px-4">
@@ -133,7 +133,7 @@
                     <i class="fas fa-shield-halved text-2xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Secure Accounts</h3>
-                <p class="text-gray-600">KYC verification and protected records keep each citizen's holdings safe.</p>
+                <p class="text-gray-600">KYC verification and protected records keep each investor's holdings safe.</p>
             </div>
         </div>
 

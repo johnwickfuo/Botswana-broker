@@ -13,10 +13,10 @@
                 <span>National Resource Investments</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Invest in Botswana's Mining and Energy Assets
+                Invest in the UAE's Energy and Oil Assets
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                Through {{ $settings->site_name }}, citizens and institutions can place capital in verified government holdings across the nation's mining and energy sectors. Returns are regulated, transparent and paid in Pula.
+                Through {{ $settings->site_name }}, investors and institutions worldwide can place capital in verified government holdings across the nation's energy and oil sectors. Returns are regulated, transparent and paid to your wallet.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
@@ -46,8 +46,8 @@
                 <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                     <i class="fa fa-shield-halved text-xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Stable, Pula-Denominated Returns</h3>
-                <p class="text-gray-600">Each plan defines its term and expected return in advance, with all settlements made in Pula under regulated oversight.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Stable, Regulated Returns</h3>
+                <p class="text-gray-600">Each plan defines its term and expected return in advance, with all settlements made in your selected currency under regulated oversight.</p>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
 <section class="py-16 bg-white border-t border-gray-100">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Support national development</h2>
-        <p class="text-lg text-gray-600 mb-8">Explore the available investment plans and contribute to the growth of Botswana's resource and energy sectors.</p>
+        <p class="text-lg text-gray-600 mb-8">Explore the available investment plans and contribute to the growth of the UAE's energy and oil sectors.</p>
         <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
             View Investment Plans
             <i class="fa fa-arrow-right ml-2"></i>

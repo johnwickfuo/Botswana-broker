@@ -7,7 +7,7 @@
 
 Dear Administrator,
 
-A new deposit has been received on the Republic of Botswana Investment Platform:
+A new deposit has been received on the United Arab Emirates Investment Platform:
 
 **Deposit Details:**
 - **Account Holder:** {{$user->name}}
@@ -31,7 +31,7 @@ This deposit has been processed and the account holder's balance has been credit
 @if ($deposit->status == 'Processed')
 **Your deposit has been received and processed.**
 
-We confirm that your deposit of **{{$user->currency}}{{number_format($deposit->amount, 2)}}** has been received and credited to your investment account on the Republic of Botswana Investment Platform.
+We confirm that your deposit of **{{$user->currency}}{{number_format($deposit->amount, 2)}}** has been received and credited to your investment account on the United Arab Emirates Investment Platform.
 
 **Next Steps:**
 - Your funds are now available within your account
@@ -77,7 +77,7 @@ Contact Support
 
 Regards,<br>
 **The {{$settings->site_name}} Team**<br>
-Republic of Botswana Investment Platform
+United Arab Emirates Investment Platform
 
 @component('mail::subcopy')
 This is an automated message from {{$settings->site_name}}. For your security, please do not share this email with anyone. If you did not initiate this deposit, please contact our support team immediately. All investments carry risk; please ensure you understand the terms applicable to your investment.

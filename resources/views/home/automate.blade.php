@@ -16,7 +16,7 @@
                 Invest in National Infrastructure
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                {{ $settings->site_name }} enables citizens and institutions to invest in verified government infrastructure assets. Your capital supports the nation's development while earning regulated, transparent returns paid in Pula.
+                {{ $settings->site_name }} enables investors and institutions worldwide to invest in verified government infrastructure assets. Your capital supports the nation's development while earning regulated, transparent returns paid to your wallet.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
@@ -54,7 +54,7 @@
                     <i class="fa fa-handshake text-xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Lasting Impact</h3>
-                <p class="text-gray-600">Support infrastructure, water and agriculture projects that strengthen communities across Botswana.</p>
+                <p class="text-gray-600">Support infrastructure, ports and logistics, and real estate projects that strengthen communities across the United Arab Emirates.</p>
             </div>
         </div>
     </div>

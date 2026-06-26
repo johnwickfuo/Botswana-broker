@@ -456,7 +456,7 @@
             }
 
             .bg-purple-light {
-                background-color: #00A3DD;
+                background-color: #009639;
             }
 
             .bw-republic {
@@ -464,19 +464,19 @@
                 font-weight: 600;
                 letter-spacing: .14em;
                 text-transform: uppercase;
-                color: #00A3DD;
+                color: #009639;
                 margin-bottom: .5rem;
             }
 
             .bw-home-btn {
-                background-color: #00A3DD;
+                background-color: #009639;
                 color: #fff;
-                border-color: #00A3DD;
+                border-color: #009639;
             }
 
             .bw-home-btn:hover {
-                background-color: #0089BA;
-                border-color: #0089BA;
+                background-color: #00732F;
+                border-color: #00732F;
                 color: #fff;
             }
         </style>

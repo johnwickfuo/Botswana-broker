@@ -2,7 +2,7 @@
 @component('mail::message')
 # Two-Factor Authentication Code
 
-A request to authenticate your account on the Republic of Botswana Investment Platform has been received.<br>
+A request to authenticate your account on the United Arab Emirates Investment Platform has been received.<br>
 Please use the following one-time code to complete your sign-in:<br><br>
 
 <div style="text-align:center; margin:16px 0;">

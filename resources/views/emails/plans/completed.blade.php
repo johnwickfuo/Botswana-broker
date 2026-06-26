@@ -3,7 +3,7 @@
 
 Dear {{ $name }},
 
-Your investment in the **{{ $planName }}** plan on the Republic of Botswana Investment Platform has been completed.
+Your investment in the **{{ $planName }}** plan on the United Arab Emirates Investment Platform has been completed.
 
 ## Investment Details
 - **Investment Amount:** {{ $currency }}{{ number_format($amount, 2) }}
@@ -30,5 +30,5 @@ Thank you for entrusting {{ $siteName }} with your investment.
 
 Regards,<br>
 **The {{ $siteName }} Team**<br>
-Republic of Botswana Investment Platform
+United Arab Emirates Investment Platform
 @endcomponent

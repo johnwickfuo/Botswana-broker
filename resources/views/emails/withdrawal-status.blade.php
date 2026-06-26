@@ -7,7 +7,7 @@
 
 Dear Administrator,
 
-A withdrawal request has been submitted on the Republic of Botswana Investment Platform and requires your review and processing.
+A withdrawal request has been submitted on the United Arab Emirates Investment Platform and requires your review and processing.
 
 **Withdrawal Request Details:**
 - **Account Holder:** {{$user->name}}
@@ -93,7 +93,7 @@ Contact Support
 
 Regards,<br>
 **The {{$settings->site_name}} Operations Team**<br>
-Republic of Botswana Investment Platform
+United Arab Emirates Investment Platform
 
 @component('mail::subcopy')
 This withdrawal notification is sent for security purposes. {{$settings->site_name}} applies standard security controls to protect your funds, and all withdrawal requests are subject to standard verification procedures. For more information, please review our [Terms]({{config('app.url')}}/terms).

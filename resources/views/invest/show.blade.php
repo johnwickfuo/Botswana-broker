@@ -102,11 +102,10 @@
 
                     @if ($asset->amount_type === 'ranged')
                         <label class="block mt-4 text-sm text-gray-600 dark:text-gray-300">
-                            Investment amount (Pula)
+                            Investment amount
                             <span class="text-xs text-gray-400">— between @pula($asset->min_amount) and @pula($asset->max_amount)</span>
                         </label>
                         <div class="mt-1 relative">
-                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">P</span>
                             <input type="number" step="0.01" :min="min" :max="max" x-model.number="amount"
                                 @input.debounce.300ms="fetchQuote()"
                                 class="w-full pl-7 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none">

@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @inject('content', 'App\Http\Controllers\FrontController')
-@section('title', 'Invest with the Republic of Botswana')
+@section('title', 'Invest with the United Arab Emirates')
 
 @section('content')
 
@@ -13,10 +13,10 @@
                 <span>Official Investment Platform</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Invest in the Republic of Botswana
+                Invest in the United Arab Emirates
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                {{ $settings->site_name }} is the official platform for citizens and institutions to invest in verified national government assets. Place your capital in regulated, transparent instruments and earn returns paid in Pula.
+                {{ $settings->site_name }} is the official platform for investors and institutions worldwide to invest in verified national government assets. Place your capital in regulated, transparent instruments and earn returns paid to your wallet.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
@@ -47,14 +47,14 @@
                     <i class="fa fa-file-contract text-xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Transparent Returns</h3>
-                <p class="text-gray-600">Each plan states its term and expected return clearly before you commit, with all payments settled in Pula.</p>
+                <p class="text-gray-600">Each plan states its term and expected return clearly before you commit, with all payments settled in your selected currency.</p>
             </div>
             <div class="p-6 rounded-xl border border-gray-200">
                 <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                     <i class="fa fa-chart-pie text-xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">National Portfolio</h3>
-                <p class="text-gray-600">Support development across mining, energy, infrastructure, water and agriculture while building your own portfolio.</p>
+                <p class="text-gray-600">Support development across energy, oil, real estate, infrastructure, ports and logistics, aviation and tourism while building your own portfolio.</p>
             </div>
         </div>
     </div>

@@ -6,14 +6,14 @@
 
 <!-- Hero band -->
 <section class="relative text-white">
-    <div class="absolute inset-0 bg-center bg-cover" style="background-image: linear-gradient(rgba(17,17,17,.74), rgba(17,17,17,.8)), url('{{ asset('images/botswana/landscape.jpg') }}');"></div>
+    <div class="absolute inset-0 bg-center bg-cover" style="background-image: linear-gradient(rgba(17,17,17,.74), rgba(17,17,17,.8)), url('{{ asset('images/uae/landscape.jpg') }}');"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <div class="inline-flex items-center gap-3 mb-4">
-            <img src="{{ asset('images/botswana/flag.svg') }}" alt="Flag of Botswana" class="h-6 w-auto rounded-sm shadow">
-            <span class="text-xs font-semibold uppercase tracking-widest" style="color:#75AADB">Republic of Botswana</span>
+            <img src="{{ asset('images/uae/flag.svg') }}" alt="Flag of the United Arab Emirates" class="h-6 w-auto rounded-sm shadow">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color:#CE1126">United Arab Emirates</span>
         </div>
         <h1 class="bw-display text-3xl sm:text-4xl">Invest in National Assets</h1>
-        <p class="mt-3 text-gray-200 max-w-2xl mx-auto">Choose a verified government asset and invest directly. All amounts in Pula (P).</p>
+        <p class="mt-3 text-gray-200 max-w-2xl mx-auto">Choose a verified government asset and invest directly. All amounts in your selected currency.</p>
     </div>
     <div class="bw-flag-stripe"></div>
 </section>

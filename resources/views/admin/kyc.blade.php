@@ -26,7 +26,7 @@ if (Auth('admin')->User()->dashboard_style == 'light') {
                                 <thead>
                                     <tr>
                                         <th>User</th>
-                                        <th>Omang / National ID</th>
+                                        <th>National ID / Passport</th>
                                         <th>KYC Status</th>
                                         <th></th>
                                     </tr>

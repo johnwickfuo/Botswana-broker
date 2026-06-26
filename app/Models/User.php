@@ -75,12 +75,12 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Botswana-only platform: the wallet currency is always Pula (P),
-     * regardless of any legacy stored value (e.g. "$").
+     * The investor's chosen display currency (selected at sign-up). Falls back
+     * to the platform default (AED) when not set.
      */
     public function getCurrencyAttribute($value)
     {
-        return 'P';
+        return $value ?: 'AED';
     }
 
 

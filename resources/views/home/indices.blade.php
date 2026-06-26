@@ -13,10 +13,10 @@
                 <span>National Development</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Invest Across Botswana's National Sectors
+                Invest Across the United Arab Emirates' National Sectors
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                {{ $settings->site_name }} offers citizens and institutions access to verified government assets spanning mining, energy, infrastructure, water and agriculture. Returns are regulated, transparent and paid in Pula.
+                {{ $settings->site_name }} offers investors worldwide and institutions access to verified United Arab Emirates government assets spanning energy & oil, real estate, ports & logistics, aviation and tourism. Returns are regulated, transparent and paid in your selected currency.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
@@ -53,8 +53,8 @@
                 <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                     <i class="fa fa-file-contract text-xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Clear Returns in Pula</h3>
-                <p class="text-gray-600">Each plan defines its term and expected return in advance, with all payments settled in Pula.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Clear Returns in Your Currency</h3>
+                <p class="text-gray-600">Each plan defines its term and expected return in advance, with all payments settled to your wallet.</p>
             </div>
         </div>
     </div>

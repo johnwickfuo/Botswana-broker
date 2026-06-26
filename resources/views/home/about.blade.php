@@ -14,10 +14,10 @@
             </div>
             <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
                 <span class="block">About {{ $settings->site_name }}</span>
-                <span class="block mt-2 text-primary">Enabling citizens to invest in the nation</span>
+                <span class="block mt-2 text-primary">Enabling investors to invest in the nation</span>
             </h1>
             <p class="max-w-2xl mt-5 mx-auto text-xl text-gray-600">
-                {{ $settings->site_name }} is the official investment platform of the Republic of Botswana, giving citizens a transparent and regulated way to invest in verified national government assets.
+                {{ $settings->site_name }} is the official investment platform of the United Arab Emirates, giving investors worldwide a transparent and regulated way to invest in verified national government assets.
             </p>
         </div>
     </div>
@@ -34,13 +34,13 @@
         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden p-6 md:p-10">
             <div class="prose prose-lg max-w-none text-gray-700">
                 <p>
-                    {{ $settings->site_name }} exists to make participation in the nation's development accessible to every eligible citizen. Through the platform, individuals can place their savings into verified government-backed assets of the Republic of Botswana and earn regulated returns over clearly defined terms.
+                    {{ $settings->site_name }} exists to make participation in the nation's development accessible to investors worldwide. Through the platform, individuals can place their savings into verified government-backed assets of the United Arab Emirates and earn regulated returns over clearly defined terms.
                 </p>
                 <p>
-                    Every asset offered on the platform is reviewed and documented before it is made available for investment. Supporting certificates are published so that citizens can see exactly what stands behind their investment. Returns are paid in Pula, and the original principal is returned at maturity in accordance with the terms accepted at the time of investment.
+                    Every asset offered on the platform is reviewed and documented before it is made available for investment. Supporting certificates are published so that investors can see exactly what stands behind their investment. Returns are paid in your selected currency, and the original principal is returned at maturity in accordance with the terms accepted at the time of investment.
                 </p>
                 <p>
-                    Our purpose is simple: to channel citizen savings into the country's long-term priorities while protecting investors through transparency, identity verification, and clear, predictable terms.
+                    Our purpose is simple: to channel investor savings into the country's long-term priorities while protecting investors through transparency, identity verification, and clear, predictable terms.
                 </p>
             </div>
         </div>
@@ -62,7 +62,7 @@
                     <i class="fas fa-building-columns text-3xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Government-Backed</h3>
-                <p class="text-gray-600">Every opportunity is tied to verified national assets of the Republic of Botswana, reviewed before being offered to citizens.</p>
+                <p class="text-gray-600">Every opportunity is tied to verified national assets of the United Arab Emirates, reviewed before being offered to investors.</p>
             </div>
 
             <!-- Value Card 2 -->
@@ -71,7 +71,7 @@
                     <i class="fas fa-file-contract text-3xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Transparency</h3>
-                <p class="text-gray-600">Supporting certificates and clear terms are published for every asset, so citizens always know what backs their investment.</p>
+                <p class="text-gray-600">Supporting certificates and clear terms are published for every asset, so investors always know what backs their investment.</p>
             </div>
 
             <!-- Value Card 3 -->
@@ -80,7 +80,7 @@
                     <i class="fas fa-shield-halved text-3xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Protection</h3>
-                <p class="text-gray-600">Identity verification (KYC) safeguards every account, and returns are paid in Pula under regulated, predictable terms.</p>
+                <p class="text-gray-600">Identity verification (KYC) safeguards every account, and returns are paid in your selected currency under regulated, predictable terms.</p>
             </div>
 
             <!-- Value Card 4 -->
@@ -89,7 +89,7 @@
                     <i class="fas fa-handshake text-3xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Accessibility</h3>
-                <p class="text-gray-600">A straightforward process lets eligible citizens invest within clear plan limits and follow their holdings with confidence.</p>
+                <p class="text-gray-600">A straightforward process lets investors invest within clear plan limits and follow their holdings with confidence.</p>
             </div>
         </div>
     </div>
@@ -107,7 +107,7 @@
             <div class="w-full lg:w-1/2">
                 <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 md:p-8">
                     <p class="text-gray-700">
-                        {{ $settings->site_name }} operates under defined governance and oversight intended to protect citizen investors. Assets are documented and verified before listing, investor funds are administered under regulated terms, and the platform maintains records that allow holdings and returns to be tracked over time.
+                        {{ $settings->site_name }} operates under defined governance and oversight intended to protect investors. Assets are documented and verified before listing, investor funds are administered under regulated terms, and the platform maintains records that allow holdings and returns to be tracked over time.
                     </p>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-coins text-primary mt-1"></i>
-                        <p class="ml-3 text-lg font-medium text-gray-900">Returns paid in Pula</p>
+                        <p class="ml-3 text-lg font-medium text-gray-900">Returns paid to your wallet</p>
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-shield-halved text-primary mt-1"></i>

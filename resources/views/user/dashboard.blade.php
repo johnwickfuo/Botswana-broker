@@ -13,8 +13,8 @@
     <div class="relative overflow-hidden rounded-2xl mb-6 sm:mb-8 ring-1 ring-black/10 shadow-sm">
         <!-- Botswana imagery + dark overlay -->
         <div class="absolute inset-0 bg-center bg-cover"
-             style="background-image: url('{{ asset('images/botswana/okavango.jpg') }}');"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f2a]/95 via-[#0b1f2a]/80 to-[#00A3DD]/40"></div>
+             style="background-image: url('{{ asset('images/uae/okavango.jpg') }}');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f2a]/95 via-[#0b1f2a]/80 to-[#009639]/40"></div>
 
         <!-- Flag-stripe accent: thin black bar bordered top & bottom by white -->
         <div class="bw-flag-stripe absolute top-0 inset-x-0" style="height:8px;background:#111111;border-top:2px solid #fff;border-bottom:2px solid #fff;"></div>
@@ -24,10 +24,10 @@
                 <div class="text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white/90 text-[11px] sm:text-xs font-medium ring-1 ring-white/20 mb-3">
                         <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
-                        Republic of Botswana Investment Platform
+                        United Arab Emirates Investment Platform
                     </div>
                     <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-                        Dumela, {{ Auth::user()->name }}
+                        Marhaba, {{ Auth::user()->name }}
                     </h1>
                     <p class="text-sm sm:text-base text-white/70 mt-1">Your national investment dashboard overview</p>
 
@@ -38,7 +38,6 @@
                             <span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white break-all">
                                 {{ Auth::user()->currency }}{{ number_format(Auth::user()->account_bal ?? 0, 2, '.', ',') }}
                             </span>
-                            <span class="text-xs sm:text-sm font-medium text-white/60">Pula</span>
                         </div>
                     </div>
                 </div>
@@ -54,7 +53,7 @@
                             <i data-lucide="check-circle" class="w-4 h-4"></i> Wallet Connected
                         </div>
                     @endif
-                    <a href="{{ route('invest.index') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-black/20 hover:opacity-90 transition text-sm" style="background:#00A3DD;">
+                    <a href="{{ route('invest.index') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-black/20 hover:opacity-90 transition text-sm" style="background:#009639;">
                         <i data-lucide="landmark" class="w-4 h-4"></i> Browse Assets
                     </a>
                     <a href="{{ route('investments.mine') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#0b1f2a] font-semibold shadow-lg shadow-black/20 hover:bg-gray-100 transition text-sm">
@@ -95,7 +94,7 @@
         <div class="bg-white dark:bg-gray-900 rounded-xl p-4 sm:p-6 shadow-sm ring-1 ring-gray-200 dark:ring-gray-800">
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#75AADB]/15 text-[#00A3DD]">
+                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#CE1126]/15 text-[#009639]">
                         <i data-lucide="{{ $signalIcon }}" class="w-4 h-4"></i>
                     </span>
                     <h2 class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-100">Portfolio Activity</h2>
@@ -149,12 +148,12 @@
             <div class="flex justify-between items-start mb-4 pt-1">
                 <div class="text-center sm:text-left w-full sm:w-auto">
                     <h2 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-white flex items-center justify-center sm:justify-start">
-                        <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#00A3DD]/10 text-[#00A3DD] mr-2">
+                        <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#009639]/10 text-[#009639] mr-2">
                             <i data-lucide="wallet" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                         </span>
                         Account Balance
                     </h2>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Your available funds in Pula</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Your available funds in your selected currency</p>
                 </div>
             </div>
 
@@ -217,10 +216,10 @@
             @endphp
 
             @foreach($cards as $card)
-                <div class="rounded-xl bg-white dark:bg-gray-900 p-3 sm:p-4 shadow-sm ring-1 ring-gray-200 dark:ring-gray-800 flex flex-col hover:ring-[#75AADB]/60 transition">
+                <div class="rounded-xl bg-white dark:bg-gray-900 p-3 sm:p-4 shadow-sm ring-1 ring-gray-200 dark:ring-gray-800 flex flex-col hover:ring-[#CE1126]/60 transition">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ $card['label'] }}</span>
-                        <div class="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg bg-[#75AADB]/15 text-[#00A3DD]">
+                        <div class="w-7 h-7 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg bg-[#CE1126]/15 text-[#009639]">
                             <i data-lucide="{{ $card['icon'] }}" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
                         </div>
                     </div>
@@ -245,12 +244,12 @@
     <div class="mb-6 sm:mb-8">
         <div class="flex items-center justify-between mb-3">
             <div class="flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#75AADB]/15 text-[#00A3DD]">
+                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#CE1126]/15 text-[#009639]">
                     <i data-lucide="landmark" class="w-4 h-4"></i>
                 </span>
                 <h2 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100">Invest in National Assets</h2>
             </div>
-            <a href="{{ route('invest.index') }}" class="text-sm font-medium text-[#00A3DD] hover:underline">View all</a>
+            <a href="{{ route('invest.index') }}" class="text-sm font-medium text-[#009639] hover:underline">View all</a>
         </div>
 
         @if(isset($assets) && $assets->count())
@@ -284,7 +283,7 @@
                         </div>
                         <div class="px-4 pb-4">
                             <a href="{{ route('invest.show', $asset->id) }}"
-                               class="block text-center text-white text-sm font-semibold py-2 rounded-lg transition" style="background:#00A3DD;">
+                               class="block text-center text-white text-sm font-semibold py-2 rounded-lg transition" style="background:#009639;">
                                 Invest
                             </a>
                         </div>
@@ -331,8 +330,8 @@
                     <div class="p-4 sm:p-6 border-b border-gray-100 dark:border-gray-800">
                         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#00A3DD]/10 rounded-xl flex items-center justify-center">
-                                    <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6 text-[#00A3DD]"></i>
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#009639]/10 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6 text-[#009639]"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-1">
@@ -346,8 +345,8 @@
 
                             <!-- Toggle Button -->
                             <button @click="kycDropdownOpen = !kycDropdownOpen"
-                                    class="w-full sm:w-auto px-4 py-2.5 text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-[#00A3DD]/30 hover:opacity-90"
-                                    style="background:#00A3DD;">
+                                    class="w-full sm:w-auto px-4 py-2.5 text-white text-sm font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-[#009639]/30 hover:opacity-90"
+                                    style="background:#009639;">
                                 <span class="flex items-center justify-center gap-2">
                                     <span>View Details</span>
                                     <i data-lucide="chevron-down"
@@ -425,8 +424,8 @@
 
                                 <!-- Verify Button -->
                                 <a href="{{ route('account.verify') }}"
-                                   class="inline-flex items-center gap-2 px-6 py-3 text-white font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-[#00A3DD]/30 hover:opacity-90"
-                                   style="background:#00A3DD;">
+                                   class="inline-flex items-center gap-2 px-6 py-3 text-white font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-[#009639]/30 hover:opacity-90"
+                                   style="background:#009639;">
                                     <i data-lucide="user-check" class="w-4 h-4"></i>
                                     <span>Start Verification</span>
                                 </a>
@@ -446,17 +445,17 @@
             <div class="relative bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 ring-1 ring-gray-200 dark:ring-gray-700 overflow-hidden">
                 <div class="bw-flag-stripe absolute top-0 inset-x-0" style="height:6px;background:#111111;border-bottom:2px solid #fff;"></div>
                 <div class="flex flex-col sm:flex-row items-start gap-4 pt-1">
-                    <div class="p-3 bg-[#00A3DD]/10 rounded-xl mx-auto sm:mx-0">
-                        <i data-lucide="landmark" class="w-6 h-6 sm:w-8 sm:h-8 text-[#00A3DD]"></i>
+                    <div class="p-3 bg-[#009639]/10 rounded-xl mx-auto sm:mx-0">
+                        <i data-lucide="landmark" class="w-6 h-6 sm:w-8 sm:h-8 text-[#009639]"></i>
                     </div>
                     <div class="flex-1 text-center sm:text-left">
-                        <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">Invest in the Republic of Botswana</h3>
+                        <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">Invest in the United Arab Emirates</h3>
                         <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                            Browse verified national government assets and start earning transparent, regulated returns in Pula.
+                            Browse verified national government assets and start earning transparent, regulated returns in your selected currency.
                         </p>
                         <a href="{{ route('invest.index') }}"
                            class="inline-flex items-center gap-2 px-4 py-2.5 text-white rounded-xl font-medium transition-all duration-200 text-sm hover:opacity-90"
-                           style="background:#00A3DD;">
+                           style="background:#009639;">
                             <i data-lucide="plus" class="w-4 h-4"></i>
                             View Assets
                         </a>
@@ -477,21 +476,21 @@
         <div class="xl:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 p-4 sm:p-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
                 <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#00A3DD]/10 text-[#00A3DD]">
+                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#009639]/10 text-[#009639]">
                         <i data-lucide="trending-up" class="w-4 h-4"></i>
                     </span>
                     Your investments at a glance
                 </h3>
-                <a href="{{ route('investments.mine') }}" class="text-[#00A3DD] hover:underline text-sm font-medium text-center sm:text-left">My Portfolio</a>
+                <a href="{{ route('investments.mine') }}" class="text-[#009639] hover:underline text-sm font-medium text-center sm:text-left">My Portfolio</a>
             </div>
             <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Welcome to {{ $settings->site_name }}, the official investment platform of the Republic of Botswana.
+                Welcome to {{ $settings->site_name }}, the official investment platform of the United Arab Emirates.
                 Review your holdings and explore the government-backed assets available to you.
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <a href="{{ route('investments.mine') }}"
                    class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition p-4">
-                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-[#00A3DD]/10 text-[#00A3DD]">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-[#009639]/10 text-[#009639]">
                         <i data-lucide="file-text" class="w-5 h-5"></i>
                     </span>
                     <span>
@@ -501,7 +500,7 @@
                 </a>
                 <a href="{{ route('invest.index') }}"
                    class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition p-4">
-                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-[#00A3DD]/10 text-[#00A3DD]">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-[#009639]/10 text-[#009639]">
                         <i data-lucide="landmark" class="w-5 h-5"></i>
                     </span>
                     <span>
@@ -514,7 +513,7 @@
         <div class="xl:col-span-1 flex flex-col gap-4 sm:gap-6">
             <!-- Invest with confidence banner -->
             <div class="relative text-white rounded-xl shadow-sm p-5 sm:p-6 text-center flex flex-col items-center justify-center min-h-[120px] overflow-hidden ring-1 ring-black/10">
-                <div class="absolute inset-0 bg-center bg-cover" style="background-image:url('{{ asset('images/botswana/baobab.jpg') }}');"></div>
+                <div class="absolute inset-0 bg-center bg-cover" style="background-image:url('{{ asset('images/uae/baobab.jpg') }}');"></div>
                 <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(11,31,42,.92), rgba(0,163,221,.55));"></div>
                 <div class="bw-flag-stripe absolute bottom-0 inset-x-0" style="height:6px;background:#111111;border-top:2px solid #fff;"></div>
                 <div class="relative">
@@ -527,7 +526,7 @@
             <!-- Account summary -->
             <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 p-4 sm:p-6">
                 <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#00A3DD]/10 text-[#00A3DD]">
+                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#009639]/10 text-[#009639]">
                         <i data-lucide="coins" class="w-4 h-4"></i>
                     </span>
                     Account summary
@@ -542,7 +541,7 @@
                         <span class="font-semibold text-gray-900 dark:text-white">{{ Auth::user()->currency }}{{ number_format(Auth::user()->roi, 2, '.', ',') }}</span>
                     </li>
                 </ul>
-                <a href="{{ route('investments.mine') }}" class="mt-4 block text-center text-sm text-[#00A3DD] font-semibold hover:underline">Go to My Portfolio</a>
+                <a href="{{ route('investments.mine') }}" class="mt-4 block text-center text-sm text-[#009639] font-semibold hover:underline">Go to My Portfolio</a>
             </div>
         </div>
     </div>
@@ -554,7 +553,7 @@
         <!-- Recent Activity -->
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 p-4 sm:p-6">
             <h4 class="font-semibold text-base sm:text-lg mb-4 text-gray-900 dark:text-white flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#00A3DD]/10 text-[#00A3DD]">
+                <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#009639]/10 text-[#009639]">
                     <i data-lucide="file-text" class="w-4 h-4"></i>
                 </span>
                 Recent Activity
@@ -592,7 +591,7 @@
                                 @elseif($history->type == 'LOSE')
                                     <span class="inline-flex items-center px-2 py-1 rounded-lg bg-gray-100 text-gray-700 dark:bg-gray-900/20 dark:text-gray-400 text-xs font-medium">Closed</span>
                                 @else
-                                    <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#00A3DD]/10 text-[#00A3DD] text-xs font-medium">{{ $history->type }}</span>
+                                    <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#009639]/10 text-[#009639] text-xs font-medium">{{ $history->type }}</span>
                                 @endif
                                 <div class="text-xs text-gray-400 mt-1 hidden sm:block">{{ $history->created_at->toDayDateTimeString() }}</div>
                             </td>
@@ -601,27 +600,27 @@
                     </tbody>
                 </table>
             </div>
-            <a href="{{ route('accounthistory') }}" class="block text-center mt-4 text-[#00A3DD] font-semibold hover:underline">View All</a>
+            <a href="{{ route('accounthistory') }}" class="block text-center mt-4 text-[#009639] font-semibold hover:underline">View All</a>
         </div>
 
         <!-- Referrals -->
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 p-6 flex flex-col justify-between">
             <div>
                 <h4 class="font-semibold text-lg mb-2 text-gray-900 dark:text-white flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#00A3DD]/10 text-[#00A3DD]">
+                    <span class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#009639]/10 text-[#009639]">
                         <i data-lucide="users" class="w-4 h-4"></i>
                     </span>
                     Referrals
                 </h4>
                 <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Present our project to your network and enjoy financial benefits. You don't need an active deposit to earn affiliate commissions.</p>
-                <a href="{{ route('referuser') }}" class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-xl hover:opacity-90 transition text-sm font-medium" style="background:#00A3DD;">
+                <a href="{{ route('referuser') }}" class="inline-flex items-center gap-2 text-white px-4 py-2.5 rounded-xl hover:opacity-90 transition text-sm font-medium" style="background:#009639;">
                     <i data-lucide="info" class="w-4 h-4"></i> Learn More
                 </a>
                 <div class="bg-gray-50 dark:bg-gray-900 rounded-xl ring-1 ring-gray-200 dark:ring-gray-700 p-4 sm:p-6 mt-4">
                     <h4 class="font-semibold mb-2 text-gray-900 dark:text-white text-sm sm:text-base">Personal Referral Link</h4>
                     <div class="flex flex-col sm:flex-row items-stretch gap-2">
                         <input type="text" class="form-input flex-1 rounded-lg border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:text-white text-gray-900 text-xs sm:text-sm min-w-0" value="{{ Auth::user()->ref_link }}" readonly>
-                        <button class="text-white px-4 py-2 rounded-lg text-xs sm:text-sm whitespace-nowrap hover:opacity-90 transition" style="background:#00A3DD;" x-on:click="navigator.clipboard.writeText('{{ Auth::user()->ref_link }}'); showCopied = true">Copy</button>
+                        <button class="text-white px-4 py-2 rounded-lg text-xs sm:text-sm whitespace-nowrap hover:opacity-90 transition" style="background:#009639;" x-on:click="navigator.clipboard.writeText('{{ Auth::user()->ref_link }}'); showCopied = true">Copy</button>
                     </div>
                     <p x-show="showCopied" class="text-xs sm:text-sm text-green-500 mt-1">Copied to clipboard!</p>
                 </div>
@@ -636,20 +635,20 @@
         <div class="bw-flag-stripe absolute top-0 inset-x-0" style="height:6px;background:#111111;border-bottom:2px solid #fff;"></div>
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-1">
             <div class="flex items-start gap-3">
-                <span class="flex items-center justify-center w-12 h-12 rounded-xl bg-[#00A3DD]/10 text-[#00A3DD] text-xl">
+                <span class="flex items-center justify-center w-12 h-12 rounded-xl bg-[#009639]/10 text-[#009639] text-xl">
                     <i data-lucide="landmark" class="w-6 h-6"></i>
                 </span>
                 <div>
                     <h3 class="font-semibold text-base sm:text-lg text-gray-900 dark:text-white">Government-backed national assets</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-2xl">
                         {{ $settings->site_name }} offers a range of secure, government-backed national assets designed
-                        to help citizens grow their savings. Review the available options and choose the asset that suits you.
+                        to help investors grow their savings. Review the available options and choose the asset that suits you.
                     </p>
                 </div>
             </div>
             <a href="{{ route('invest.index') }}"
                class="inline-flex items-center justify-center gap-2 px-5 py-3 text-white rounded-xl font-medium hover:opacity-90 transition whitespace-nowrap"
-               style="background:#00A3DD;">
+               style="background:#009639;">
                 <i data-lucide="file-text" class="w-4 h-4"></i>
                 Browse Assets
             </a>

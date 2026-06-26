@@ -16,7 +16,7 @@
                 Build a Diversified National Portfolio
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                {{ $settings->site_name }} lets you spread your capital across verified government assets in mining, energy, infrastructure, water and agriculture. Earn regulated, transparent returns paid in Pula.
+                {{ $settings->site_name }} lets you spread your capital across verified United Arab Emirates government assets in energy & oil, real estate, ports & logistics, aviation and tourism. Earn regulated, transparent returns paid to your wallet.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
@@ -53,8 +53,8 @@
                 <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                     <i class="fa fa-file-contract text-xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Returns in Pula</h3>
-                <p class="text-gray-600">Terms and expected returns are stated clearly, with all payments settled in Pula.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Returns in Your Currency</h3>
+                <p class="text-gray-600">Terms and expected returns are stated clearly, with all payments settled in your selected currency.</p>
             </div>
         </div>
     </div>

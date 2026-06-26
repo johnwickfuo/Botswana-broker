@@ -112,7 +112,7 @@
                                 <li>Full name</li>
                                 <li>Residential address</li>
                                 <li>Contact details (telephone number, email address)</li>
-                                <li>Date and place of birth, gender, place of citizenship</li>
+                                <li>Date and place of birth, gender, nationality</li>
                                 <li>Your status as a politically exposed person</li>
                                 <li>Source of funds & proof of address</li>
                                 <li>Passport and/or national driver's license or government-issued identification card to verify your identity</li>

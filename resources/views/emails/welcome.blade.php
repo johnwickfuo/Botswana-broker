@@ -2,11 +2,11 @@
 @component('mail::message')
 # Welcome to {{$settings->site_name}}, {{$user->name}}
 
-## The Republic of Botswana Investment Platform
+## The United Arab Emirates Investment Platform
 
 Dear {{$user->name}},
 
-We are pleased to confirm that your account on the **{{$settings->site_name}}** has been established. This platform is the official channel of the Republic of Botswana for managing your investment in a secure and transparent manner.
+We are pleased to confirm that your account on the **{{$settings->site_name}}** has been established. This platform is the official channel of the United Arab Emirates, open to investors worldwide, for managing your investment in a secure and transparent manner.
 
 <hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 
@@ -44,7 +44,7 @@ Contact Support
 
 <hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 
-We look forward to supporting your investment with the Republic of Botswana Investment Platform.
+We look forward to supporting your investment with the United Arab Emirates Investment Platform.
 
 **The {{$settings->site_name}} Team**
 

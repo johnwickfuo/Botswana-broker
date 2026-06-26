@@ -39,14 +39,14 @@
 
                         <!-- Title -->
                         <div class="flex items-center justify-center gap-2 mb-3">
-                            <img src="{{ asset('images/botswana/flag.svg') }}" alt="Flag of the Republic of Botswana" class="h-5 w-auto rounded-sm shadow">
-                            <span class="text-[11px] font-semibold uppercase tracking-widest" style="color:#75AADB">Republic of Botswana</span>
+                            <img src="{{ asset('images/uae/flag.svg') }}" alt="Flag of the United Arab Emirates" class="h-5 w-auto rounded-sm shadow">
+                            <span class="text-[11px] font-semibold uppercase tracking-widest" style="color:#CE1126">United Arab Emirates</span>
                         </div>
                         <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">
                             Welcome Back
                         </h1>
                         <h2 class="text-lg sm:text-xl font-semibold mb-3">
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00A3DD] to-[#75AADB]">{{ $settings->site_name }}</span>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#009639] to-[#CE1126]">{{ $settings->site_name }}</span>
                         </h2>
                         <p class="text-gray-300 text-sm sm:text-base">
                             Access your investment dashboard

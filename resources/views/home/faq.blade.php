@@ -17,7 +17,7 @@
                 <span class="block mt-2 text-primary">Investing With {{ $settings->site_name }}</span>
             </h1>
             <p class="max-w-2xl mt-5 mx-auto text-xl text-gray-600">
-                Answers to common questions about investing in verified national government assets of the Republic of Botswana.
+                Answers to common questions about investing in verified national government assets of the United Arab Emirates.
             </p>
         </div>
     </div>
@@ -103,7 +103,7 @@
                                 </svg>
                             </button>
                             <div x-show="active === 0" x-collapse x-cloak class="mt-3 text-gray-600">
-                                <p>National assets are verified government-backed assets of the Republic of Botswana that have been reviewed and documented before being made available for investment on the platform.</p>
+                                <p>National assets are verified government-backed assets of the United Arab Emirates that have been reviewed and documented before being made available for investment on the platform.</p>
                             </div>
                         </div>
 

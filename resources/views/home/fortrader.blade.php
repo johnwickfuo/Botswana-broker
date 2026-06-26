@@ -13,7 +13,7 @@
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">How to Invest With {{ $settings->site_name }}</h1>
             <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-                A clear, step-by-step guide to investing in verified national government assets of the Republic of Botswana, with returns paid in Pula.
+                A clear, step-by-step guide to investing in verified national government assets of the United Arab Emirates, with returns paid to your wallet.
             </p>
 
             <script type="application/ld+json">
@@ -76,7 +76,7 @@
                     <h3 class="text-xl font-bold text-gray-900">1. Browse Plans</h3>
                 </div>
                 <p class="text-gray-600">
-                    Explore the available investment plans. Each plan is tied to a verified national asset of the Republic of Botswana, with published supporting certificates you can review before deciding.
+                    Explore the available investment plans. Each plan is tied to a verified national asset of the United Arab Emirates, with published supporting certificates you can review before deciding.
                 </p>
             </div>
 
@@ -130,7 +130,7 @@
                     <h3 class="text-xl font-bold text-gray-900">5. Receive Returns &amp; Principal</h3>
                 </div>
                 <p class="text-gray-600">
-                    Throughout the term you receive periodic returns paid in Pula. When the plan reaches maturity, your original principal is returned to you in full, in accordance with the terms you accepted.
+                    Throughout the term you receive periodic returns paid in your selected currency. When the plan reaches maturity, your original principal is returned to you in full, in accordance with the terms you accepted.
                 </p>
             </div>
         </div>
@@ -157,7 +157,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Verified Assets</h3>
                 <p class="text-gray-600">
-                    Every plan is backed by a documented national asset of the Republic of Botswana.
+                    Every plan is backed by a documented national asset of the United Arab Emirates.
                 </p>
             </div>
 
@@ -165,9 +165,9 @@
                 <div class="w-16 h-16 rounded-full bg-sky-50 flex items-center justify-center mb-6 mx-auto">
                     <i class="fas fa-coins text-2xl text-primary"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Returns in Pula</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Returns to Your Wallet</h3>
                 <p class="text-gray-600">
-                    Periodic returns and your principal are paid in Pula under regulated terms.
+                    Periodic returns and your principal are paid in your selected currency under regulated terms.
                 </p>
             </div>
 

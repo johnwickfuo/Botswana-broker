@@ -21,11 +21,10 @@ class Settings extends Model
     // }
 
     /**
-     * Botswana-only platform: the platform currency is always Pula (P),
-     * regardless of any legacy stored value (e.g. "$").
+     * Platform default display currency (used for guests). Defaults to AED.
      */
     public function getCurrencyAttribute($value)
     {
-        return 'P';
+        return $value ?: 'AED';
     }
 }

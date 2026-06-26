@@ -27,7 +27,7 @@
                         Join <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{{ $settings->site_name }}</span>
                     </h1>
                     <p class="text-gray-300 text-sm sm:text-base lg:text-lg mb-6">
-                        Open your Republic of Botswana investment account
+                        Open your United Arab Emirates investment account — open to investors worldwide
                     </p>
 
                     <!-- Platform Stats - Mobile Responsive -->
@@ -215,8 +215,46 @@
 
     <!-- All fields in a single responsive grid (1 column on mobile, 2 columns on sm+ for better spacing) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        {{-- Botswana-only platform: country is fixed, no selector --}}
-        <input type="hidden" name="country" value="Botswana">
+        <!-- Country (open worldwide) -->
+        <div class="space-y-2">
+            <label for="country" class="block text-sm font-bold text-gray-200">
+                Country <span class="text-red-400">*</span>
+            </label>
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-4 z-10">
+                    <i data-lucide="globe" class="h-5 w-5 text-gray-400 group-focus-within:text-blue-400 transition-colors"></i>
+                </div>
+                <select name="country" id="country" required
+                        class="block w-full rounded-xl border border-gray-600 bg-gray-900 pl-12 pr-8 py-4 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 focus:bg-gray-800 transition-all duration-200 text-sm font-bold appearance-none">
+                    <option value="" selected disabled class="text-gray-400">Select your country</option>
+                    @include('auth.countries')
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                    <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preferred currency -->
+        <div class="space-y-2">
+            <label for="currency" class="block text-sm font-bold text-gray-200">
+                Preferred Currency <span class="text-red-400">*</span>
+            </label>
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-4 z-10">
+                    <i data-lucide="coins" class="h-5 w-5 text-gray-400 group-focus-within:text-blue-400 transition-colors"></i>
+                </div>
+                <select name="currency" id="currency" required
+                        class="block w-full rounded-xl border border-gray-600 bg-gray-900 pl-12 pr-8 py-4 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 focus:bg-gray-800 transition-all duration-200 text-sm font-bold appearance-none">
+                    @foreach (['AED' => 'AED — UAE Dirham', 'USD' => 'USD — US Dollar', 'EUR' => 'EUR — Euro', 'GBP' => 'GBP — British Pound', 'SAR' => 'SAR — Saudi Riyal', 'INR' => 'INR — Indian Rupee', 'NGN' => 'NGN — Nigerian Naira', 'ZAR' => 'ZAR — South African Rand', 'KES' => 'KES — Kenyan Shilling', 'EGP' => 'EGP — Egyptian Pound', 'CAD' => 'CAD — Canadian Dollar', 'AUD' => 'AUD — Australian Dollar'] as $code => $label)
+                        <option value="{{ $code }}" {{ $code === 'AED' ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                    <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
+                </div>
+            </div>
+        </div>
 
         <!-- Field 1: Investment Experience -->
         <div class="space-y-2">
@@ -516,7 +554,7 @@
 
                     <p class="text-xs text-gray-500">
                         © {{ date('Y') }} {{ $settings->site_name }}. All rights reserved. |
-                        Official investment platform of the Republic of Botswana.
+                        Official investment platform of the United Arab Emirates.
                     </p>
                 </div>
             </form>
@@ -621,7 +659,12 @@
                         }
 
                     } else if (step === 1) {
-                        // Botswana-only platform: country is fixed, nothing to validate here.
+                        // Validate location
+                        const country = document.getElementById('country').value;
+                        if (!country) {
+                            missingFields.push('Country');
+                            isValid = false;
+                        }
 
                     } else if (step === 2) {
                         // Validate security

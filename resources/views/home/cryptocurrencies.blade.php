@@ -13,10 +13,10 @@
                 <span>Water & Agriculture</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Invest in Botswana's Water and Agriculture
+                Invest in the United Arab Emirates' Water and Agriculture
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                Through {{ $settings->site_name }}, citizens and institutions can invest in verified government water and agriculture assets. Your capital supports food and water security while earning regulated, transparent returns in Pula.
+                Through {{ $settings->site_name }}, investors worldwide and institutions can invest in verified United Arab Emirates government water and agriculture assets. Your capital supports food and water security while earning regulated, transparent returns in your selected currency.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
@@ -46,8 +46,8 @@
                 <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
                     <i class="fa fa-file-contract text-xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Transparent Returns in Pula</h3>
-                <p class="text-gray-600">Each plan states its term and expected return clearly, with all settlements made in Pula under regulated oversight.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Transparent Returns in Your Currency</h3>
+                <p class="text-gray-600">Each plan states its term and expected return clearly, with all settlements made to your wallet under regulated oversight.</p>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
 <section class="py-16 bg-white border-t border-gray-100">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Support food and water security</h2>
-        <p class="text-lg text-gray-600 mb-8">Explore the available investment plans and contribute to the resilience of Botswana's communities.</p>
+        <p class="text-lg text-gray-600 mb-8">Explore the available investment plans and contribute to the resilience of the United Arab Emirates' communities.</p>
         <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm">
             View Investment Plans
             <i class="fa fa-arrow-right ml-2"></i>

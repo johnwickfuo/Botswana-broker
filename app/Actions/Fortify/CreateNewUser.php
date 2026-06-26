@@ -78,10 +78,10 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'phone' => $input['phone'],
             'username' => $input['username'],
-            'country' => 'Botswana',
+            'country' => $input['country'] ?? null,
             'ref_by' => $ref_by_id,
             'status' => 'active',
-            'currency' => 'P',
+            'currency' => $input['currency'] ?? 'AED',
             'password' => Hash::make($input['password']),
         ]);
 

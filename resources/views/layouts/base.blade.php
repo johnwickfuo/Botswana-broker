@@ -14,9 +14,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#00A3DD',
+                        primary: '#009639',
                         secondary: '#10B981',
-                        accent: '#00A3DD',
+                        accent: '#009639',
                         warning: '#F59E0B',
                         danger: '#EF4444',
                         dark: {
@@ -132,15 +132,15 @@
         }
     </style>
 
-    <title>{{$settings->site_name}} | Republic of Botswana Investment Platform</title>
+    <title>{{$settings->site_name}} | United Arab Emirates Investment Platform</title>
     <link rel="manifest" href="./">
     <meta name="theme-color" content="#111111">    <meta property="x-session-id" content="ghJjEOrjZ3KUPun1UQksVUbvK88y21dgIhKtb8GT">
     <meta property="og:site_name" content="{{$settings->site_name}}">
-    <meta property="og:description" content="Official investment platform of the Republic of Botswana. Invest in verified national government assets with transparent, regulated returns.">
-    <meta name="description" content="Official investment platform of the Republic of Botswana. Invest in verified national government assets with transparent, regulated returns.">
-    <meta name="keywords" content="Republic of Botswana, government investment, national assets, Pula, treasury, public investment, sovereign assets, Botswana investment platform">
+    <meta property="og:description" content="Official investment platform of the United Arab Emirates. Invest in verified national assets with transparent, regulated returns.">
+    <meta name="description" content="Official investment platform of the United Arab Emirates. Invest in verified national assets with transparent, regulated returns.">
+    <meta name="keywords" content="United Arab Emirates, UAE investment, national assets, Dubai, Abu Dhabi, treasury, public investment, sovereign assets, UAE investment platform">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Republic of Botswana Investment Platform | {{$settings->site_name}}">
+    <meta property="og:title" content="United Arab Emirates Investment Platform | {{$settings->site_name}}">
     <meta property="og:image" content="{{ asset('storage/app/public/'.$settings->logo) }}">
 
     <!-- Favicon -->
@@ -254,7 +254,7 @@ window.smartsupp||(function(d) {
                 <div class="flex-shrink-0">
                     <a href="/" class="flex items-center gap-3">
                         @if (!empty($settings->emblem))
-                            <img class="h-12 w-auto" src="{{ asset('storage/app/public/'.$settings->emblem) }}" alt="Republic of Botswana emblem">
+                            <img class="h-12 w-auto" src="{{ asset('storage/app/public/'.$settings->emblem) }}" alt="United Arab Emirates emblem">
                             <span class="hidden sm:block h-10 w-px bg-black" aria-hidden="true"></span>
                         @endif
                         <img class="h-16 w-auto" src="{{ asset('storage/app/public/'.$settings->logo)}}" alt="{{$settings->site_name}}">
@@ -427,9 +427,9 @@ window.smartsupp||(function(d) {
                                 <img class="h-8 w-auto" src="{{ asset('storage/app/public/'.$settings->logo)}}" alt="{{$settings->site_name}}">
                             </a>
                         </div>
-                        <p class="text-sm text-gray-400 mb-2 font-semibold text-white">Republic of Botswana</p>
+                        <p class="text-sm text-gray-400 mb-2 font-semibold text-white">United Arab Emirates</p>
                         <p class="text-sm text-gray-400 mb-6">
-                            {{$settings->site_name}} is the official investment platform of the Republic of Botswana, enabling citizens to invest in verified national government assets with transparent, regulated returns.
+                            {{$settings->site_name}} is the official investment platform of the United Arab Emirates, enabling investors worldwide to invest in verified national assets with transparent, regulated returns.
                         </p>
                         <div class="flex space-x-4">
                             <a href="#" class="text-gray-400 hover:text-white">
@@ -520,14 +520,14 @@ window.smartsupp||(function(d) {
             <div class="py-6">
                 <div class="text-xs text-gray-400">
                     <p class="mb-4 leading-relaxed">
-                        <span class="font-semibold text-gray-300">DISCLOSURE:</span> {{$settings->site_name}} is the official investment platform of the Republic of Botswana. All investments are in verified national government assets and are subject to the published terms, offer windows and maturity conditions. The value of an investment and the returns realised depend on the terms of the selected plan. Please read the plan terms and disclosure documents carefully before investing.
+                        <span class="font-semibold text-gray-300">DISCLOSURE:</span> {{$settings->site_name}} is the official investment platform of the United Arab Emirates. All investments are in verified national assets and are subject to the published terms, offer windows and maturity conditions. The value of an investment and the returns realised depend on the terms of the selected asset. Please read the asset terms and disclosure documents carefully before investing.
                     </p>
                     <div class="flex flex-wrap gap-4 mb-4">
                         <a href="terms" class="text-blue-400 hover:text-blue-300 transition">Terms of Use</a>
                         <a href="privacy" class="text-blue-400 hover:text-blue-300 transition">Privacy Policy</a>
                         <a href="licensing" class="text-blue-400 hover:text-blue-300 transition">Legal &amp; Disclosure</a>
                     </div>
-                    <p>© <script>document.write(new Date().getFullYear())</script> {{$settings->site_name}} · Republic of Botswana. All Rights Reserved.</p>
+                    <p>© <script>document.write(new Date().getFullYear())</script> {{$settings->site_name}} · United Arab Emirates. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
@@ -536,7 +536,7 @@ window.smartsupp||(function(d) {
     @include('layouts.lang')
 </footer>
 
-<!-- Market ticker removed in the Republic of Botswana rebrand -->
+<!-- Market ticker removed in the United Arab Emirates rebrand -->
 
 <!-- Live Chat Button -->
 {{-- <div class="fixed bottom-20 right-6 z-40">
@@ -555,7 +555,7 @@ window.smartsupp||(function(d) {
 
 
 
-        <!-- TradingView ticker removed in the Republic of Botswana rebrand -->
+        <!-- TradingView ticker removed in the United Arab Emirates rebrand -->
 
 
         <!-- GetButton.io widget -->

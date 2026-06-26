@@ -4,7 +4,7 @@
 
 ## Dear {{$user->name}},
 
-We are writing to confirm that a new return has been generated on your investment with the Republic of Botswana Investment Platform and credited to your account.
+We are writing to confirm that a new return has been generated on your investment with the United Arab Emirates Investment Platform and credited to your account.
 
 ### Return Details
 
@@ -45,7 +45,7 @@ Thank you for entrusting {{$settings->site_name}} with your investment.
 
 **Regards,**<br>
 **The {{$settings->site_name}} Team**<br>
-Republic of Botswana Investment Platform
+United Arab Emirates Investment Platform
 
 <hr style="border:none; border-top:1px solid #111111; margin:24px 0;">
 

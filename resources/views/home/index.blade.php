@@ -1,23 +1,23 @@
 @extends('layouts.base')
 
-@section('title', 'Republic of Botswana Investment Platform')
+@section('title', 'United Arab Emirates Investment Platform')
 
 @section('content')
 
 <!-- Hero -->
 <section class="relative text-white">
-    <div class="absolute inset-0 bg-center bg-cover" style="background-image: linear-gradient(rgba(17,17,17,.78), rgba(17,17,17,.82)), url('{{ asset('images/botswana/okavango.jpg') }}');"></div>
+    <div class="absolute inset-0 bg-center bg-cover" style="background-image: linear-gradient(rgba(17,17,17,.78), rgba(17,17,17,.82)), url('{{ asset('images/uae/okavango.jpg') }}');"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36">
         <div class="max-w-3xl">
             <div class="inline-flex items-center gap-3 mb-6">
-                <img src="{{ asset('images/botswana/flag.svg') }}" alt="Flag of the Republic of Botswana" class="h-7 w-auto rounded-sm shadow">
-                <span class="text-sm font-semibold uppercase tracking-widest text-flag-blue" style="color:#75AADB">Republic of Botswana</span>
+                <img src="{{ asset('images/uae/flag.svg') }}" alt="Flag of the United Arab Emirates" class="h-7 w-auto rounded-sm shadow">
+                <span class="text-sm font-semibold uppercase tracking-widest text-flag-blue" style="color:#CE1126">United Arab Emirates</span>
             </div>
             <h1 class="bw-display text-4xl sm:text-5xl lg:text-6xl">
                 Invest in the assets that build the nation
             </h1>
             <p class="mt-6 text-lg text-gray-200 max-w-2xl">
-                {{ $settings->site_name }} is the official platform for citizens to invest in verified national government assets — transparent terms, regulated returns, all in Pula.
+                {{ $settings->site_name }} is the official platform for investors worldwide to invest in verified United Arab Emirates national assets — transparent terms, regulated returns, all in your selected currency.
             </p>
             <div class="mt-10 flex flex-wrap gap-4">
                 <a href="{{ route('invest.index') }}" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors">
@@ -38,7 +38,7 @@
         @php($trust = [
             ['fa-shield-halved', 'Government-backed', 'Verified national assets'],
             ['fa-file-lines', 'Transparent', 'Published certificates'],
-            ['fa-coins', 'Paid in Pula', 'Returns to your wallet'],
+            ['fa-coins', 'Paid to your wallet', 'Returns in your selected currency'],
             ['fa-lock', 'Protected', 'KYC-verified & secured'],
         ])
         @foreach ($trust as [$icon, $title, $sub])
@@ -56,20 +56,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl">
             <h2 class="text-3xl font-bold text-gray-900">National asset categories</h2>
-            <p class="mt-3 text-gray-600">Investments are backed by tangible assets of the Republic of Botswana.</p>
+            <p class="mt-3 text-gray-600">Investments are backed by tangible assets of the United Arab Emirates.</p>
         </div>
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @php($cats = [
-                ['Mining &amp; Minerals', 'Diamonds, copper and strategic minerals.', 'mining.jpg'],
-                ['Energy', 'Power generation and national energy supply.', 'landscape.jpg'],
-                ['Infrastructure', 'Roads, transport and public works.', 'gaborone.jpg'],
-                ['Water &amp; Sanitation', 'Water security for communities.', 'okavango.jpg'],
-                ['Agriculture', 'Farming, livestock and food security.', 'agriculture.jpg'],
-                ['Tourism &amp; Wildlife', 'Conservation and the visitor economy.', 'wildlife.jpg'],
+                ['Energy &amp; Oil', 'National oil, gas and clean energy production.', 'mining.jpg'],
+                ['Real Estate', 'Landmark developments across Dubai and Abu Dhabi.', 'landscape.jpg'],
+                ['Ports &amp; Logistics', 'World-class ports, free zones and trade routes.', 'gaborone.jpg'],
+                ['Banking &amp; Finance', 'Financial institutions and capital markets.', 'okavango.jpg'],
+                ['Aviation', 'Global airlines, airports and air freight.', 'agriculture.jpg'],
+                ['Tourism &amp; Hospitality', 'Luxury hotels, resorts and the visitor economy.', 'wildlife.jpg'],
             ])
             @foreach ($cats as [$title, $desc, $img])
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-100 transition-shadow">
-                    <div class="h-44 bg-center bg-cover bg-gray-200 dark:bg-gray-700" style="background-image:url('{{ asset('images/botswana/'.$img) }}');"></div>
+                    <div class="h-44 bg-center bg-cover bg-gray-200 dark:bg-gray-700" style="background-image:url('{{ asset('images/uae/'.$img) }}');"></div>
                     <div class="bw-flag-stripe" style="height:6px;border-width:2px"></div>
                     <div class="p-6">
                         <h3 class="font-semibold text-gray-900">{!! $title !!}</h3>
@@ -93,10 +93,10 @@
         </div>
         <div class="mt-14 grid grid-cols-1 md:grid-cols-4 gap-8">
             @php($steps = [
-                ['fa-user-check', 'Register &amp; verify', 'Create an account and complete KYC with your Omang.'],
+                ['fa-user-check', 'Register &amp; verify', 'Create an account and complete KYC with your National ID / Passport.'],
                 ['fa-landmark', 'Choose an asset', 'Select an asset and an amount within its limits.'],
                 ['fa-file-contract', 'Accept terms &amp; invest', 'Funds are committed and locked until maturity.'],
-                ['fa-coins', 'Earn returns', 'Scheduled returns in Pula; principal back at maturity.'],
+                ['fa-coins', 'Earn returns', 'Scheduled returns in your selected currency; principal back at maturity.'],
             ])
             @foreach ($steps as $i => [$icon, $title, $desc])
                 <div class="text-center">
@@ -113,20 +113,20 @@
 <section class="py-20 bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-            <span class="text-sm font-semibold uppercase tracking-widest" style="color:#75AADB">National investment, citizen ownership</span>
-            <h2 class="mt-4 text-3xl font-bold">A stake in Botswana's future</h2>
+            <span class="text-sm font-semibold uppercase tracking-widest" style="color:#CE1126">National investment, investor ownership</span>
+            <h2 class="mt-4 text-3xl font-bold">A stake in the United Arab Emirates' future</h2>
             <p class="mt-4 text-gray-300">
-                Every asset is verified by the government, with its certificate published for citizens to view. Returns are calculated transparently and paid in Pula, and your principal is protected until maturity.
+                Every asset is verified by the government, with its certificate published for investors to view. Returns are calculated transparently and paid in your selected currency, and your principal is protected until maturity.
             </p>
             <ul class="mt-6 space-y-3 text-gray-200">
-                <li class="flex items-start gap-3"><i class="fas fa-circle-check mt-1" style="color:#75AADB"></i><span>Asset-backed, government-verified national assets</span></li>
-                <li class="flex items-start gap-3"><i class="fas fa-circle-check mt-1" style="color:#75AADB"></i><span>Publicly viewable certificates &amp; clear terms</span></li>
-                <li class="flex items-start gap-3"><i class="fas fa-circle-check mt-1" style="color:#75AADB"></i><span>Returns and principal paid in Pula to your wallet</span></li>
+                <li class="flex items-start gap-3"><i class="fas fa-circle-check mt-1" style="color:#CE1126"></i><span>Asset-backed, government-verified national assets</span></li>
+                <li class="flex items-start gap-3"><i class="fas fa-circle-check mt-1" style="color:#CE1126"></i><span>Publicly viewable certificates &amp; clear terms</span></li>
+                <li class="flex items-start gap-3"><i class="fas fa-circle-check mt-1" style="color:#CE1126"></i><span>Returns and principal paid to your wallet in your selected currency</span></li>
             </ul>
             <a href="register" class="mt-8 inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors">Get started</a>
         </div>
         <div class="relative">
-            <img src="{{ asset('images/botswana/gaborone.jpg') }}" alt="Botswana" class="rounded-2xl shadow-2xl w-full object-cover h-80">
+            <img src="{{ asset('images/uae/gaborone.jpg') }}" alt="The United Arab Emirates" class="rounded-2xl shadow-2xl w-full object-cover h-80">
             <div class="absolute -bottom-3 left-6 right-6 bw-flag-stripe rounded"></div>
         </div>
     </div>
@@ -136,7 +136,7 @@
 <section class="bw-flag-band">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <div class="relative inline-block bg-white/95 rounded-2xl px-8 py-10 shadow-xl">
-            <h2 class="text-3xl font-bold text-gray-900">Start investing in the Republic of Botswana</h2>
+            <h2 class="text-3xl font-bold text-gray-900">Start investing in the United Arab Emirates</h2>
             <p class="mt-3 text-gray-600 max-w-xl mx-auto">Create your account, complete verification and choose an asset backed by the nation.</p>
             <div class="mt-7 flex flex-wrap justify-center gap-4">
                 <a href="register" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors">Create an Account</a>
