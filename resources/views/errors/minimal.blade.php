@@ -21,7 +21,7 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="{{ asset('error/css/style.css') }}" />
 
-	<!-- Republic of Botswana brand layer (loaded last to override the theme) -->
+	<!-- United Arab Emirates brand layer (loaded last to override the theme) -->
 	<link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
 	<style>
 		body {
@@ -90,7 +90,7 @@
 <body>
 	<div class="bw-error">
 		<div class="bw-error__inner">
-			<p class="bw-error__republic">Republic of Botswana</p>
+			<p class="bw-error__republic">United Arab Emirates</p>
 			<h1 class="bw-error__code">@yield('code')</h1>
 			<hr class="bw-divider">
 			<p class="bw-error__message">@yield('message')</p>

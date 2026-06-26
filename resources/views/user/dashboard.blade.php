@@ -11,7 +11,7 @@
     <!-- Hero / Welcome band                                           -->
     <!-- ============================================================= -->
     <div class="relative overflow-hidden rounded-2xl mb-6 sm:mb-8 ring-1 ring-black/10 shadow-sm">
-        <!-- Botswana imagery + dark overlay -->
+        <!-- UAE imagery + dark overlay -->
         <div class="absolute inset-0 bg-center bg-cover"
              style="background-image: url('{{ asset('images/uae/okavango.jpg') }}');"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f2a]/95 via-[#0b1f2a]/80 to-[#009639]/40"></div>
@@ -31,7 +31,7 @@
                     </h1>
                     <p class="text-sm sm:text-base text-white/70 mt-1">Your national investment dashboard overview</p>
 
-                    <!-- Prominent wallet balance in Pula -->
+                    <!-- Prominent wallet balance -->
                     <div class="mt-5">
                         <p class="text-[11px] sm:text-xs uppercase tracking-wider text-white/60">Available wallet balance</p>
                         <div class="flex items-baseline justify-center lg:justify-start gap-2 mt-1">

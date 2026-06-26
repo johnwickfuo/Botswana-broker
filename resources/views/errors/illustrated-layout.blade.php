@@ -481,14 +481,14 @@
             }
         </style>
 
-        <!-- Republic of Botswana brand layer (loaded last to override the theme) -->
+        <!-- United Arab Emirates brand layer (loaded last to override the theme) -->
         <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
     </head>
     <body class="antialiased font-sans">
         <div class="md:flex min-h-screen">
             <div class="w-full md:w-1/2 bg-white flex items-center justify-center">
                 <div class="max-w-sm m-8">
-                    <p class="bw-republic">Republic of Botswana</p>
+                    <p class="bw-republic">United Arab Emirates</p>
                     <div class="text-black text-5xl md:text-15xl font-black">
                         @yield('code', __('Oh no'))
                     </div>

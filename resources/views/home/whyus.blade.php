@@ -67,7 +67,7 @@
                 <p class="text-gray-600">Supporting certificates are published for each asset, so you can see exactly what backs your investment.</p>
             </div>
 
-            <!-- Returns in Pula -->
+            <!-- Returns to wallet -->
             <div class="h-full p-6 bg-white rounded-xl border border-gray-200 transition-all duration-300 hover:shadow-md text-center">
                 <div class="w-16 h-16 mx-auto mb-6 bg-sky-50 rounded-xl flex items-center justify-center">
                     <i class="fas fa-coins text-2xl text-primary"></i>

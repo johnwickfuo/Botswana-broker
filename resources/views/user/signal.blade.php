@@ -25,9 +25,9 @@
             </h1>
 
             <p class="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-xl mx-auto mb-8">
-                {{ $settings->site_name }} is the official investment platform of the Republic of Botswana.
+                {{ $settings->site_name }} is the official investment platform of the United Arab Emirates.
                 Rather than speculative trading, the platform offers a selection of secure, government-backed
-                assets designed to help citizens grow their savings with confidence.
+                assets designed to help investors grow their savings with confidence.
             </p>
 
             <a href="{{ route('invest.index') }}"

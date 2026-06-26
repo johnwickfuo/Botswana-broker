@@ -3,7 +3,7 @@
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
 <img src="{{ asset('storage/app/public/'. $settings->logo) }}" alt="{{ $settings->site_name }}" style="height: 72px; width: auto;">
-<div style="color:#FFFFFF; font-size:12px; font-weight:600; letter-spacing:1px; margin-top:8px; text-transform:uppercase;">Republic of Botswana</div>
+<div style="color:#FFFFFF; font-size:12px; font-weight:600; letter-spacing:1px; margin-top:8px; text-transform:uppercase;">United Arab Emirates</div>
 @endcomponent
 @endslot
 
@@ -23,7 +23,7 @@
 @slot('footer')
 @component('mail::footer')
 **{{ $settings->site_name }}**<br>
-Republic of Botswana Investment Platform<br>
+United Arab Emirates Investment Platform<br>
 @isset($settings->contact_email)
 {{ $settings->contact_email }}<br>
 @endisset

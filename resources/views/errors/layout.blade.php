@@ -53,13 +53,13 @@
             }
         </style>
 
-        <!-- Republic of Botswana brand layer (loaded last to override the theme) -->
+        <!-- United Arab Emirates brand layer (loaded last to override the theme) -->
         <link rel="stylesheet" href="{{ asset('css/botswana-brand.css') }}">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <p class="republic">Republic of Botswana</p>
+                <p class="republic">United Arab Emirates</p>
                 <div class="title">
                     @yield('message')
                 </div>

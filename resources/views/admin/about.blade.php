@@ -144,7 +144,7 @@
                                 <div class="d-flex flex-wrap gap-2 mb-3">
                                     <span class="badge bg-success">✅ Government Oversight</span>
                                     <span class="badge bg-success">✅ Secure & Compliant</span>
-                                    <span class="badge bg-success">✅ Accessible to All Citizens</span>
+                                    <span class="badge bg-success">✅ Accessible to All Investors</span>
                                 </div>
                             </div>
                         </div>

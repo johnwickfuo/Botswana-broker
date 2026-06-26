@@ -189,7 +189,7 @@
 
                     <div class="space-y-2">
                         <label class="block text-sm font-medium text-gray-300">
-                            Omang / National ID Number <span class="text-red-400">*</span>
+                            National ID / Passport Number <span class="text-red-400">*</span>
                         </label>
                         <input type="text" name="id_number" required value="{{ old('id_number') }}"
                                placeholder="e.g. 000000000"

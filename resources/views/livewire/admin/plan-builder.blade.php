@@ -112,7 +112,7 @@
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="activeSwitch"
                                     wire:model.defer="active">
-                                <label class="custom-control-label" for="activeSwitch">Active (available to citizens)</label>
+                                <label class="custom-control-label" for="activeSwitch">Active (available to investors)</label>
                             </div>
                         </div>
 

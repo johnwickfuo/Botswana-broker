@@ -15,13 +15,13 @@
                 </div>
                 <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl mb-4">
                     <span class="block">Invest in the</span>
-                    <span class="block text-primary">Republic of Botswana</span>
+                    <span class="block text-primary">United Arab Emirates</span>
                 </h1>
                 <p class="mt-3 text-xl font-medium text-gray-700 mb-6">
-                    Verified national assets. Regulated returns in Pula.
+                    Verified national assets. Regulated returns in your selected currency.
                 </p>
                 <p class="text-base text-gray-600 sm:text-lg max-w-xl">
-                    {{ $settings->site_name }} lets citizens place their savings into verified government-backed assets of the Republic of Botswana. Each investment follows clear terms: funds are committed until maturity, periodic returns are paid in Pula, and your principal is returned when the plan matures.
+                    {{ $settings->site_name }} lets investors worldwide place their savings into verified government-backed assets of the United Arab Emirates. Each investment follows clear terms: funds are committed until maturity, periodic returns are paid in your selected currency, and your principal is returned when the plan matures.
                 </p>
                 <div class="mt-8 flex flex-wrap gap-4">
                     <a href="{{ route('invest.index') }}" class="inline-flex items-center px-6 py-3 text-base font-medium rounded-md shadow-sm text-white bg-primary hover:opacity-90 transition duration-300">
@@ -57,7 +57,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-coins text-primary mt-1"></i>
-                            <span class="ml-3 text-gray-700">Periodic returns paid in Pula</span>
+                            <span class="ml-3 text-gray-700">Periodic returns paid to your wallet</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-handshake text-primary mt-1"></i>
@@ -81,7 +81,7 @@
                 <span class="block">Investment Plans</span>
             </h2>
             <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-                Each plan is tied to verified national assets, with defined amount limits, maturity terms, and returns paid in Pula.
+                Each plan is tied to verified national assets, with defined amount limits, maturity terms, and returns paid in your selected currency.
             </p>
         </div>
 
@@ -107,7 +107,7 @@
                 <div class="space-y-4">
                     <div class="flex justify-between items-center">
                         <span class="text-gray-500">Returns:</span>
-                        <span class="text-gray-900 font-medium">Paid in Pula</span>
+                        <span class="text-gray-900 font-medium">Paid to your wallet</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-gray-500">Payment Schedule:</span>
@@ -191,7 +191,7 @@
                     <span class="text-xl font-bold text-primary">5</span>
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-2">Returns &amp; Principal</h3>
-                <p class="text-gray-600 text-sm">Receive periodic returns in Pula, plus your principal back at maturity.</p>
+                <p class="text-gray-600 text-sm">Receive periodic returns in your selected currency, plus your principal back at maturity.</p>
             </div>
         </div>
 
@@ -215,7 +215,7 @@
                     <i class="fas fa-shield-halved text-2xl text-primary"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Verified Assets</h3>
-                <p class="text-gray-600">Every plan is backed by a documented national asset of the Republic of Botswana, reviewed before listing.</p>
+                <p class="text-gray-600">Every plan is backed by a documented national asset of the United Arab Emirates, reviewed before listing.</p>
             </div>
 
             <div class="bg-white rounded-xl p-6 border border-gray-200 text-center h-full">
@@ -230,8 +230,8 @@
                 <div class="w-16 h-16 rounded-full bg-sky-50 flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-coins text-2xl text-primary"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Returns in Pula</h3>
-                <p class="text-gray-600">Returns are paid in Pula under regulated terms, with principal returned at maturity.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Returns to Your Wallet</h3>
+                <p class="text-gray-600">Returns are paid in your selected currency under regulated terms, with principal returned at maturity.</p>
             </div>
         </div>
     </div>
