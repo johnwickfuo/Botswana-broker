@@ -115,7 +115,7 @@
                                 </svg>
                             </button>
                             <div x-show="active === 1" x-collapse x-cloak class="mt-3 text-gray-600">
-                                <p>Each asset is documented and its supporting certificates are published on the platform. This allows citizens to review what stands behind a plan before deciding to invest.</p>
+                                <p>Each asset is documented and its supporting certificates are published on the platform. This allows investors to review what stands behind a plan before deciding to invest.</p>
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                                 </svg>
                             </button>
                             <div x-show="active === 1" x-collapse x-cloak class="mt-3 text-gray-600">
-                                <p>All returns and the return of principal are paid in Pula (BWP).</p>
+                                <p>All returns and the return of principal are paid in your selected currency, which you choose at sign-up.</p>
                             </div>
                         </div>
 
@@ -181,7 +181,7 @@
                                 </svg>
                             </button>
                             <div x-show="active === 0" x-collapse x-cloak class="mt-3 text-gray-600">
-                                <p>Yes. Identity verification (KYC) is required before you can invest. It protects your account and helps ensure that investments are held securely by the rightful citizen.</p>
+                                <p>Yes. Identity verification (KYC) is required before you can invest. It protects your account and helps ensure that investments are held securely by the rightful investor.</p>
                             </div>
                         </div>
 
@@ -193,7 +193,7 @@
                                 </svg>
                             </button>
                             <div x-show="active === 1" x-collapse x-cloak class="mt-3 text-gray-600">
-                                <p>Eligible citizens who can complete identity verification may open an account and invest. You will be asked to provide the information needed to verify your identity during registration.</p>
+                                <p>Investors worldwide who can complete identity verification may open an account and invest. You will be asked to provide the information needed to verify your identity, such as a National ID / Passport, during registration.</p>
                             </div>
                         </div>
 
@@ -226,7 +226,7 @@
                     </div>
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Still have questions?</h2>
                 </div>
-                <p class="text-gray-600 mb-6">Our support team can help you with any questions about investing in national assets of the Republic of Botswana.</p>
+                <p class="text-gray-600 mb-6">Our support team can help you with any questions about investing in national assets of the United Arab Emirates.</p>
                 <div class="flex space-x-4 pt-2">
                     <a href="/contact" class="inline-flex items-center px-6 py-3 text-base font-medium rounded-md shadow-sm text-white bg-primary hover:opacity-90 transition duration-150">
                         Contact Support
